@@ -9,6 +9,7 @@ x0vncserver -display :0 -passwordfile /root/.vnc/passwd&
 
 # placeholder for tensorflow/board/projector start 
 ./tensorflow 
+jupyter notebook --notebook-dir=/tf --ip 127.0.0.1 --no-browser --allow-root
 
 echo "done"
 read n -1
