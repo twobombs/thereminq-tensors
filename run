@@ -8,7 +8,7 @@ x0vncserver -display :0 -passwordfile /root/.vnc/passwd&
 /usr/share/novnc/utils/launch.sh --vnc localhost:5900&
 
 # placeholder for tensorflow/board/projector start 
-./tensorflow 
+./root/.local/bin/tensorboard --logdir --db sqlite:~/.tensorboard.db --host=127.0.0.1
 jupyter notebook --notebook-dir=/tf --ip 127.0.0.1 --no-browser --allow-root
 
 echo "done"
