@@ -4,3 +4,4 @@ RUN cd /root && git clone https://github.com/Qiskit/qiskit-iqx-tutorials.git
 COPY run /root/run
 RUN chmod 744 /root/run¸
 EXPOSE 6006 8888
+ENTRYPOINT /root/run
