@@ -3,6 +3,7 @@ FROM twobombs/cudacluster
 # Install pyqrack
 RUN pip3 install pyqrack
 RUN pip3 install pyzx 
+RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git
 
 # Install SimulaQron 
 RUN pip3 install simulaqron
