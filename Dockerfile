@@ -2,7 +2,8 @@ FROM twobombs/cudacluster
 
 # Install pyqrack
 RUN pip3 install pyqrack
-RUN pip3 install pyzx 
+RUN pip3 install pyzx
+RUN pip install mitiq
 RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git
 
 # Install SimulaQron 
