@@ -13,7 +13,9 @@ RUN pip3 install simulaqron
 # Install IBM QC connector
 RUN pip3 install -U IBMQuantumExperience
 # Install Qiskit
-RUN pip3 install qiskit
+RUN pip3 install qiskit[visualization]
+# Install qc-client WebUI
+RUN apt install npm && npm install -g qps-client & apt clean all
 
 # install tensorboard
 RUN pip3 install --user --upgrade tensorflow && pip3 install tensorboard jupyter matplotlib tensorflow jupyter_http_over_ws jupyterlab notebook jupyter-book
