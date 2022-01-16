@@ -10,6 +10,7 @@ export DISPLAY=:0&&xterm -e "xset s off"
 # placeholder for tensorflow/board/projector start 
 ./root/.local/bin/tensorboard --logdir --db sqlite:~/.tensorboard.db --host=127.0.0.1
 jupyter notebook --notebook-dir=/tf --ip 127.0.0.1 --no-browser --allow-root
+qps-client -p 8443
 
 echo "done"
 
