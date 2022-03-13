@@ -7,4 +7,5 @@ CUDA-CLuster VDI with
 - Qiskit
 - Mitiq
 - PyQrack
+- SimulaQron
 - Tensor Board, Tensor Flow 2.x
