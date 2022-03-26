@@ -1,0 +1,23 @@
+FROM twobombs/deploy-nvidia-cuda:minimum
+
+# Install pyqrack
+RUN pip3 install pyqrack
+RUN pip3 install pyzx
+RUN pip install mitiq
+RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git
+
+# Install SimulaQron 
+RUN pip3 install simulaqron
+# RUN simulaqron set backend pyqrack
+
+# Install IBM QC connector
+RUN pip3 install -U IBMQuantumExperience
+# Install Qiskit
+RUN pip3 install qiskit[visualization]
+# Install qc-client WebUI
+RUN apt install npm && npm install -g qps-client & apt clean all
+
+COPY run /root/run
+RUN chmod 744 /root/run
+EXPOSE 6006 8888
+ENTRYPOINT /root/run
