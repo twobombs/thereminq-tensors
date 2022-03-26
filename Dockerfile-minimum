@@ -1,4 +1,4 @@
-FROM twobombs/deploy-nvidia-cuda:minimum
+FROM twobombs/deploy-nvidia-docker:minimum
 
 # Install pyqrack
 RUN pip3 install pyqrack
