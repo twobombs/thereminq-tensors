@@ -14,6 +14,10 @@ Run without GPU VDI:
 
 docker run -p 6080:6080 --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors
 
-Run with Nvidia-Docker and/or Intel GPU VDI:
+Run with Nvidia-Docker and/or Intel GPU Full VDI:
 
 docker run --gpus all --privileged -p 6080:6080 --device=/dev/dri:/dev/dri -d twobombs/thereminq
+
+Minimum CPU only version tag
+
+docker run -p 6080:6080 -d twobombs/thereminq:minimum
