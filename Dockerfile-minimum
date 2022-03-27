@@ -1,7 +1,7 @@
 FROM twobombs/deploy-nvidia-docker:minimum
 
 # Install pyqrack
-RUN apt-get update && apt-get install python3-pip
+RUN apt-get update && apt-get install -y python3-pip
 RUN pip3 install pyqrack
 RUN pip3 install pyzx
 RUN pip3 install mitiq
