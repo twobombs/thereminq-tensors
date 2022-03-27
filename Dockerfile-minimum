@@ -19,6 +19,8 @@ RUN pip3 install qiskit[visualization]
 # Install qc-client WebUI
 RUN apt install -y npm && npm install -g qps-client & apt clean all
 
+RUN adduser --disabled-password --gecos "" user
+
 COPY run /root/run
 RUN chmod 744 /root/run
 EXPOSE 6006 8888
