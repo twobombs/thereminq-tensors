@@ -20,4 +20,4 @@ docker run -p 6080:6080 -d twobombs/thereminq-tensors
 
 Minimum CPU only Shell VDI:
 
-docker run -p 6080:6080 -d twobombs/thereminq:minimum
+docker run -p 6080:6080 -d twobombs/thereminq-tensors:minimum
