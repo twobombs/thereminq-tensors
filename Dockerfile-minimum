@@ -22,4 +22,5 @@ RUN apt install -y npm && npm install -g qps-client & apt clean all
 
 EXPOSE 6006 8888
 COPY run /root/run-minimum
+RUN chmod 744 /root/run-minimum
 ENTRYPOINT /root/run-minimum
