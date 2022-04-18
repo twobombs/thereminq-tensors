@@ -12,7 +12,7 @@
 
 ## Run with Nvidia-Docker and/or Intel GPU Full VDI:
 
-docker run --gpus all --privileged -p 6080:6080 --device=/dev/dri:/dev/dri -d twobombs/thereminq
+docker run --gpus all --privileged -p 6080:6080 --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors
 
 ## CPU accelerated Full VDI:
 
