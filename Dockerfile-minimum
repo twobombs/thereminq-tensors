@@ -1,11 +1,13 @@
 FROM twobombs/deploy-nvidia-docker:minimum
 
-# Install pyqrack
+# Install pyqrack en reqs.
 RUN apt-get update && apt-get install -y python3-pip
 RUN pip3 install pyqrack
 RUN pip3 install pyzx
 RUN pip3 install mitiq
 RUN pip3 install ipyparallel
+
+# benchmarks
 RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git
 
 # Install SimulaQron 
@@ -15,7 +17,6 @@ RUN pip3 install simulaqron
 # Install IBM QC connector
 RUN pip3 install -U IBMQuantumExperience
 # Install Qiskit
-
 RUN pip3 install qiskit[visualization]
 # Install qc-client WebUI
 RUN apt install -y npm && npm install -g qps-client & apt clean all
