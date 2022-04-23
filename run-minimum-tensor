@@ -15,7 +15,7 @@ x0vncserver -display :0 -passwordfile /root/.vnc/passwd &
 
 # start firefox session with jupyter notebook
 jupyter notebook --notebook-dir=/pyqrack-jupyter --ip 127.0.0.1 --no-browser --allow-root &
-firefox http://127.0.0.1:8888
+DISPLAY=:0 && firefox http://127.0.0.1:8888
 
 # start default xterm
 export DISPLAY=:0&&xterm -e "xset s off" && export HOME=/home/user && export DISPLAY=:0 && xterm -e "sudo su -c '/bin/bash' -s /bin/bash user"
