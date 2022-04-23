@@ -10,6 +10,8 @@ RUN pip3 install pyqrack
 RUN pip3 install pyzx
 RUN pip install mitiq
 RUN pip install ipyparallel
+RUN pip install pennylane
+RUN pip install pennylane-qrack
 RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git && git clone https://github.com/eclipse/xacc.git
 
 # install quantum-benchmark + reqs.
