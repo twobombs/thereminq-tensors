@@ -12,6 +12,7 @@ RUN pip install mitiq
 RUN pip install ipyparallel
 RUN pip install pennylane
 RUN pip install pennylane-qrack
+RUN pip install qutechopenql
 RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git && git clone https://github.com/eclipse/xacc.git
 
 # install quantum-benchmark + reqs.
