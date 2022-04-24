@@ -6,8 +6,8 @@ RUN pip3 install --user --upgrade tensorflow && pip3 install tensorboard jupyter
 RUN cd /root && git clone https://github.com/Qiskit/qiskit-iqx-tutorials.git && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
 
 # Install pyqrack + runtime requirement
-RUN pip3 install pyqrack
-RUN pip3 install pyzx
+RUN pip install pyqrack
+RUN pip install pyzx
 RUN pip install mitiq
 RUN pip install ipyparallel
 RUN pip install pennylane
@@ -24,12 +24,12 @@ RUN cd /quantum-benchmarks && ./bin/benchmark install
 
 # Install SimulaQron 
 RUN pip3 install simulaqron
-# RUN simulaqron set backend pyqrack
+RUN simulaqron set backend pyqrack
 
 # Install IBM QC connector
-RUN pip3 install -U IBMQuantumExperience
+RUN pip install -U IBMQuantumExperience
 # Install Qiskit
-RUN pip3 install qiskit[visualization]
+RUN pip install qiskit[visualization]
 # Install qc-client WebUI
 RUN apt install npm && npm install -g qps-client & apt clean all
 
