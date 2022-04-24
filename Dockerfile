@@ -25,7 +25,7 @@ RUN cd /quantum-benchmarks && ./bin/benchmark install
 
 # Install SimulaQron 
 RUN pip3 install simulaqron
-RUN simulaqron set backend pyqrack
+# RUN simulaqron set backend pyqrack
 
 # Install IBM QC connector
 RUN pip install -U IBMQuantumExperience
