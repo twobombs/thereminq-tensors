@@ -8,6 +8,7 @@
 - Mitiq
 - PyQrack
 - SimulaQron
+- Pennylane
 - Tensor Board, Tensor Flow 2.x
 
 ## Run with Nvidia-Docker and/or Intel GPU Full VDI:
