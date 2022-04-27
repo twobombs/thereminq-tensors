@@ -20,6 +20,7 @@ RUN git clone https://github.com/eclipse/xacc.git
 
 # install & setup quantum-benchmark + reqs.
 RUN git clone https://github.com/yardstiq/quantum-benchmarks.git
+RUN pip install cmake
 #
 RUN apt update & apt install -y libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6 cmake & apt clean
 RUN wget https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh && chmod 744 Anaconda3-2021.11-Linux-x86_64.sh && bash ./Anaconda3-2021.11-Linux-x86_64.sh -b -p $HOME/anaconda3 && rm Anaconda3-2021.11-Linux-x86_64.sh
