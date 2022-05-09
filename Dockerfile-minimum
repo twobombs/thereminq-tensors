@@ -2,12 +2,15 @@ FROM twobombs/deploy-nvidia-docker:minimum
 
 # Install pyqrack en reqs.
 RUN apt-get update && apt-get install -y python3-pip
-RUN pip3 install pyqrack
-RUN pip3 install pyzx
-RUN pip3 install cirq
-RUN pip3 install mitiq
-RUN pip3 install ipyparallel
-RUN pip3 install mistune
+RUN pip install pyqrack
+RUN pip install pyzx
+RUN pip install cirq
+RUN pip install mitiq
+RUN pip install ipyparallel
+RUN pip install mistune
+RUN pip install pennylane
+RUN pip install pennylane-qrack
+RUN pip install qutechopenql
 
 # benchmarks
 RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git
