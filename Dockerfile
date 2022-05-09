@@ -13,7 +13,8 @@ RUN pip install ipyparallel
 RUN pip install pennylane
 RUN pip install pennylane-qrack
 RUN pip install qutechopenql
-RUN pip install simulaqron
+RUN pip install mistune
+
 #
 RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git 
 RUN git clone https://github.com/eclipse/xacc.git
