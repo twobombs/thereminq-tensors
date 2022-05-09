@@ -1,7 +1,7 @@
 FROM twobombs/cudacluster
 
 # install tensorboard
-RUN pip install --user --upgrade tensorflow && pip install tensorboard jupyter matplotlib tensorflow jupyter_http_over_ws jupyterlab notebook jupyter-book
+RUN pip install --user --upgrade tensorflow && pip install tensorboard jupyter ipython3 matplotlib tensorflow jupyter_http_over_ws jupyterlab notebook jupyter-book
 # qiskit examples
 RUN cd /root && git clone https://github.com/Qiskit/qiskit-iqx-tutorials.git && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
 
