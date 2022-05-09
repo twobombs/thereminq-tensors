@@ -7,6 +7,7 @@ RUN pip3 install pyzx
 RUN pip3 install cirq
 RUN pip3 install mitiq
 RUN pip3 install ipyparallel
+RUN pip3 install mistune
 
 # benchmarks
 RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git
