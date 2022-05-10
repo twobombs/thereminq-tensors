@@ -1,10 +1,13 @@
 FROM twobombs/cudacluster
-
-# install tensorboard
-RUN pip install --user --upgrade tensorflow && pip install tensorboard jupyter ipython3 matplotlib tensorflow jupyter_http_over_ws jupyterlab notebook jupyter-book
+#
+# install apt packages because 
+RUN apt update && apt install ipython3 && apt clean all
+#
+# install tensorboard and requisies
+RUN pip install --user --upgrade tensorflow && pip install tensorboard jupyter matplotlib tensorflow jupyter_http_over_ws jupyterlab notebook jupyter-book
 # qiskit examples
 RUN cd /root && git clone https://github.com/Qiskit/qiskit-iqx-tutorials.git && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
-
+#
 # Install pyqrack + couplings and runtime requirements
 RUN pip install pyqrack
 RUN pip install pyzx
