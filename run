@@ -14,8 +14,8 @@ qps-client -p 8443 &
 #
 # start firefox session with jupyter notebook
 jupyter notebook --notebook-dir=/pyqrack-jupyter --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
-jupyter notebook --notebook-dir=/tf --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
-export DISPLAY=:0 && firefox http://127.0.0.1:8888
+jupyter notebook --notebook-dir=/qiskit-iqx-tutorials --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
+export DISPLAY=:0 && firefox http://127.0.0.1:8888 http://127.0.0.1:8889
 
 echo "done"
 
