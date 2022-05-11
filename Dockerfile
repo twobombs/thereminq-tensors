@@ -16,7 +16,9 @@ RUN pip install ipyparallel
 RUN pip install pennylane
 RUN pip install pennylane-qrack
 RUN pip install qutechopenql
+#
 RUN pip install mistune
+RUN pip install traitlets
 
 #
 RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git 
