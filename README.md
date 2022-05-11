@@ -19,7 +19,7 @@ docker run --gpus all --privileged -p 6080:6080 --device=/dev/dri:/dev/dri -d tw
 
 docker run -p 6080:6080 -d twobombs/thereminq-tensors
 
-## Minimum CPU Shell-only VDI:
+## Minimum CPU kiosk VDI:
 
 docker run -p 6080:6080 -d twobombs/thereminq-tensors:minimum
 
