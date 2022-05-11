@@ -4,22 +4,12 @@ FROM twobombs/cudacluster
 RUN apt update && apt install ipython3 && apt clean all
 #
 # install tensorboard and requisies
-RUN pip install --user --upgrade tensorflow && pip install tensorboard jupyter matplotlib tensorflow jupyter_http_over_ws jupyterlab notebook jupyter-book
+RUN pip install --user --upgrade tensorflow && pip install traitlets tensorboard jupyter matplotlib tensorflow jupyter_http_over_ws jupyterlab notebook jupyter-book
 # qiskit examples
 RUN cd /root && git clone https://github.com/Qiskit/qiskit-iqx-tutorials.git && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
 #
-# Install pyqrack + couplings and runtime requirements
-RUN pip install pyqrack
-RUN pip install pyzx
-RUN pip install mitiq
-RUN pip install ipyparallel
-RUN pip install pennylane
-RUN pip install pennylane-qrack
-RUN pip install qutechopenql
-#
-RUN pip install mistune
-RUN pip install traitlets
-
+# Install pyqrack + couplings, runtime requirements
+RUN pip install --user --upgrade pyqrack pyzx mitiq ipyparallel pennylane pennylane-qrack qutechopenql mistune
 #
 RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git 
 RUN git clone https://github.com/eclipse/xacc.git
@@ -44,8 +34,8 @@ RUN pip install -U IBMQuantumExperience
 RUN pip install qiskit[visualization]
 # Install qc-client WebUI
 RUN apt install npm && npm install -g qps-client & apt clean all
-
+#
 COPY run /root/run
 RUN chmod 744 /root/run
-EXPOSE 6006 8888
+EXPOSE 6080
 ENTRYPOINT /root/run
