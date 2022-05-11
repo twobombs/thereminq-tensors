@@ -12,7 +12,7 @@ RUN git clone https://github.com/Qiskit/qiskit-iqx-tutorials.git && mkdir tensor
 RUN pip install --user --upgrade pyqrack pyzx mitiq ipyparallel pennylane pennylane-qrack qutechopenql mistune
 #
 RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git 
-RUN git clone https://github.com/eclipse/xacc.git
+RUN git clone https://github.com/eclipse/xacc.git && cd xacc && mkdir build && cd build && cmake .. -DXACC_BUILD_EXAMPLES=TRUE -DXACC_BUILD_TESTS=TRUE && make install 
 
 # install & setup quantum-benchmark + reqs.
 RUN git clone https://github.com/yardstiq/quantum-benchmarks.git
@@ -35,6 +35,10 @@ RUN pip install qiskit[visualization]
 # Install qc-client WebUI
 RUN apt install npm && npm install -g qps-client & apt clean all
 #
+# convert all ipynb files to python
+RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
+RUN cd qiskit-iqx-tutorials.git && jupyter nbconvert --to script *.ipynb
+
 COPY run /root/run
 RUN chmod 744 /root/run
 EXPOSE 6080
