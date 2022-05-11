@@ -6,7 +6,7 @@ RUN apt update && apt install ipython3 && apt clean all
 # install tensorboard and requisies
 RUN pip install --user --upgrade tensorflow && pip install traitlets tensorboard jupyter matplotlib tensorflow jupyter_http_over_ws jupyterlab notebook jupyter-book
 # qiskit examples
-RUN cd /root && git clone https://github.com/Qiskit/qiskit-iqx-tutorials.git && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
+RUN git clone https://github.com/Qiskit/qiskit-iqx-tutorials.git && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
 #
 # Install pyqrack + couplings, runtime requirements
 RUN pip install --user --upgrade pyqrack pyzx mitiq ipyparallel pennylane pennylane-qrack qutechopenql mistune
