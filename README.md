@@ -22,3 +22,13 @@ docker run -p 6080:6080 -d twobombs/thereminq-tensors
 ## Minimum CPU Shell-only VDI:
 
 docker run -p 6080:6080 -d twobombs/thereminq-tensors:minimum
+
+
+## Code from the following awesome companies and initiatives are in this container
+
+![](https://user-images.githubusercontent.com/12692227/57654809-61c07f00-75d5-11e9-9005-38d60d8d4db4.png)
+
+All rights and kudos belong to their respective owners. If (your) code resides in this container image and you don't want that please let me know.
+
+Code of conduct : Contributor Covenant 
+https://github.com/EthicalSource/contributor_covenant
