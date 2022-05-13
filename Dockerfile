@@ -1,7 +1,7 @@
 FROM twobombs/cudacluster
 #
 # install apt packages because 
-RUN apt update && apt install ipython3 jupyter && apt clean all
+RUN apt update && apt install ipython3 jupyter cmake && apt clean all
 #
 # install tensorboard and requisies
 RUN pip install --user --upgrade tensorflow && pip install traitlets tensorboard jupyter matplotlib tensorflow jupyter_http_over_ws jupyterlab notebook jupyter-book
