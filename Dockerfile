@@ -35,8 +35,8 @@ RUN pip install qiskit[visualization]
 RUN apt install npm && npm install -g qps-client & apt clean all
 #
 # convert all ipynb files to python
-RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
-RUN cd qiskit-iqx-tutorials.git && jupyter nbconvert --to script *.ipynb
+# RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
+# RUN cd qiskit-iqx-tutorials.git && jupyter nbconvert --to script *.ipynb
 
 COPY run /root/run
 RUN chmod 744 /root/run
