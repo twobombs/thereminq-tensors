@@ -1,1 +1,1 @@
-ipython /pyqrack-jupyter/shors.py > /var/log/thereminq/shors-128qb_"$(date +%F_%R_%S).log"
+./pyqrack-jupyter/shors_winloop > /var/log/thereminq/shors-128qb_"$(date +%F_%R_%S).log"
