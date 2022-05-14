@@ -15,6 +15,10 @@
 
 docker run --gpus all --privileged -p 6080:6080 --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors
 
+## Shors' pyQrack 2-primes always-win-loop 
+docker run --gpus all --privileged -p 6080:6080 --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:shors
+![Screenshot from 2022-05-14 20-08-34](https://user-images.githubusercontent.com/12692227/168443560-2b001178-0a5c-46aa-b151-ce856cf53804.png)
+
 ## CPU accelerated Full VDI:
 
 docker run -p 6080:6080 -d twobombs/thereminq-tensors
