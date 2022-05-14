@@ -11,7 +11,6 @@ for i in {1..4294967295}
 	sed -i "s/toFactor=.*/toFactor=$fact/g" /pyqrack-jupyter/shor.py
 	ipython3 /pyqrack-jupyter/shor.py > factoring
 	cat factoring | grep 'Factors found'
-	cat factoring | grep Failed
 	echo 'Prime #1:   ' $prime 'Prime #2:   ' $prime2 'Multiplied: ' $fact
 	echo ' '
     done
