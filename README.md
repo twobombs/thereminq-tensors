@@ -28,9 +28,6 @@ docker run -p 6080:6080 -d twobombs/thereminq-tensors
 ## Minimum CPU kiosk VDI:
 docker run -p 6080:6080 -d twobombs/thereminq-tensors:minimum
 
-![Screenshot from 2022-05-11 21-21-17](https://user-images.githubusercontent.com/12692227/167929172-2101d17c-64da-4e75-9c81-d3063cf54171.png)
-
-
 ## Code from the following awesome companies and initiatives are in this container
 
 ![](https://user-images.githubusercontent.com/12692227/57654809-61c07f00-75d5-11e9-9005-38d60d8d4db4.png)
