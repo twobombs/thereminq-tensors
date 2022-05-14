@@ -1,5 +1,7 @@
 FROM twobombs/thereminq-tensors
 
 COPY runfiles/run-shors /root
+COPY runfiles/shors_winloop.sh
+
 EXPOSE 6080
 ENTRYPOINT /root/run-shors
