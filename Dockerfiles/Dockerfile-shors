@@ -1,5 +1,10 @@
 FROM twobombs/thereminq-tensors
 
+# install shors' input req.
+RUN apt update && apt install gnome-calculator mathomatic-primes mathomatic libssl-dev
+# RUN git clone https://github.com/openssh/openssh-portable.git && cd openssh-portable && autoreconf && sed -i 's/#define SSH_RSA_MINIMUM_MODULUS_SIZE.*/#define SSH_RSA_MINIMUM_MODULUS_SIZE   1024/g' sshkey.h && ./configure && make && mkdir /var/empty && make tests && make install
+# RUN git clone https://github.com/openssl/openssl.git && cd openssl && ./Configure enable-weak-ssl-ciphers -DOPENSSL_TLS_SECURITY_LEVEL=0 && make && make install
+
 COPY runfiles/run-shors /root
 EXPOSE 6080
 ENTRYPOINT /root/run-shors
