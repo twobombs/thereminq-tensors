@@ -1,21 +1,23 @@
 # ThereminQ Tensors [ Work in Progress ]
 ![147117984-86c4b4b6-d55d-41ba-aab8-f056a6403902](https://user-images.githubusercontent.com/12692227/157748781-65b8bc1c-6be8-4f8e-b957-cb18027132e5.gif)
 
-### CUDA-CLuster VDI with
+### CUDA-CLuster VDI
 
-- IBMQuantumExperience
-- Qiskit
-- Mitiq
-- PyQrack
-- SimulaQron
-- Pennylane
+Jupyter Notebooks
+- PyQrack examples
+- Qiskit examples
 - Tensor Board, Tensor Flow 2.x
+
+Plugins
+- SimulaQron
+- Mitiq
+- Pennylane-qrack
+- IBMQuantumExperience
 
 ## Run with Nvidia-Docker and/or Intel GPU Full VDI:
 docker run --gpus all --privileged -p 6080:6080 --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors
 
 ![Screenshot from 2022-05-14 20-10-47](https://user-images.githubusercontent.com/12692227/168443646-35d34d39-b85b-4289-a8d7-a463c89ddc20.png)
-
 
 ## Shors' pyQrack 2-primes always-win-loop 
 docker run --gpus all --privileged -p 6080:6080 --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:shors
