@@ -2,4 +2,4 @@ FROM twobombs/thereminq-tensors
 
 COPY runfiles/run-shors /root
 EXPOSE 6080
-EXTRYPOINT /root/run-shors
+ENTRYPOINT /root/run-shors
