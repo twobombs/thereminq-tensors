@@ -28,7 +28,10 @@ RUN apt install npm && npm install -g qps-client & apt clean all
 # convert all ipynb files to python
 RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
 RUN cd qiskit-iqx-tutorials && jupyter nbconvert --to script *.ipynb
-COPY run /root/run
-RUN chmod 744 /root/run
+#
+# make log dir for measured results
+RUN mkdir /var/log/thereminq
+
+COPY runfiles/run /root/run
 EXPOSE 6080
 ENTRYPOINT /root/run

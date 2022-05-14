@@ -1,0 +1,5 @@
+FROM twobombs/thereminq-tensors
+
+COPY runfile/run-shors /root
+EXPOSE 6080
+EXTRYPOINT /root/run-shors
