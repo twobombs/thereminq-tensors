@@ -1,4 +1,4 @@
-for i in {1..4294967295}
+for i in {1..55108}
     do
 	for j in {1..10}
 	do
