@@ -8,7 +8,7 @@ Jupyter Notebooks
 - Qiskit examples
 - Tensor Board, Tensor Flow 2.x
 
-Plugins
+Plugins / Connectors
 - SimulaQron
 - Mitiq
 - Pennylane-qrack
