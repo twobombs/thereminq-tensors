@@ -12,7 +12,7 @@ RUN git clone https://github.com/Qiskit/qiskit-iqx-tutorials.git && mkdir tensor
 RUN pip install --upgrade pyqrack pyzx mitiq ipyparallel pennylane pennylane-qrack qutechopenql mistune cmake
 #
 RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git 
-RUN git clone https://github.com/twobombs/thereminq.git
+RUN git clone https://github.com/twobombs/thereminq-tensors.git
 #
 # Install SimulaQron 
 RUN pip3 install simulaqron
