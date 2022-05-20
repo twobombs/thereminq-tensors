@@ -17,8 +17,8 @@ jupyter notebook --notebook-dir=/qiskit-iqx-tutorials --ip 127.0.0.1 --no-browse
 jupyter notebook --notebook-dir=/tensorboard-projector --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
 #
 # RSA key magick AYB64 - keygen pub & private, convert to pem and extract Integers in text
-< /dev/zero ssh-keygen -q -b 1024 -N ""
-cd /root/.ssh && cat id_rsa > grep -v OPENSSH | xxd -p $1 > id_rsa.hex
+< /dev/zero ssh-keygen -q -b 1024 -t rsa -m PEM -N ""
+cd /root/.ssh && openssl asn1parse -in id_rsa > id_rsa.vars &
 ssh-keygen -f id_rsa.pub -e -m pem > id_rsa_pub.pem && openssl asn1parse -in id_rsa_pub.pem > id_rsa_pub_pem.vars &
 
 #
