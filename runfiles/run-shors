@@ -11,14 +11,14 @@ export DISPLAY=:0&&xterm -e "xset s off"&&
 ./root/.local/bin/tensorboard --logdir --db sqlite:~/.tensorboard.db --host=127.0.0.1 &
 qps-client -p 8443 &
 #
-# start firefox session with jupyter notebook
+# start rsaConverter, firefox session with jupyter notebook
 jupyter notebook --notebook-dir=/pyqrack-jupyter --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
 jupyter notebook --notebook-dir=/qiskit-iqx-tutorials --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
 jupyter notebook --notebook-dir=/tensorboard-projector --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
 #
-export DISPLAY=:0 && firefox http://127.0.0.1:8888 http://127.0.0.1:8889 http://127.0.0.1:8890 &
 < /dev/zero ssh-keygen -q -b 1024 -N "" &
-export DISPLAY=:0 && ./thereminq-tensors/runfile/rsaConverter &
+export DISPLAY=:0 && ./thereminq-tensors/runfiles/rsaConverter &
+export DISPLAY=:0 && firefox http://127.0.0.1:8888 http://127.0.0.1:8889 http://127.0.0.1:8890 &
 # export DISPLAY=:0 && ./pyqrack-jupyter/shors_winloop > /var/log/thereminq/shors-128qb_"$(date +%F_%R_%S).log"
 #
 echo "done"
