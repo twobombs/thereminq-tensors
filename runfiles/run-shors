@@ -6,9 +6,8 @@ sleep 10
 x0vncserver -display :0 -passwordfile ~/.vnc/passwd &
 /usr/share/novnc/utils/launch.sh --vnc localhost:5900 &
 export DISPLAY=:0&&xterm -e "xset s off"&&
-
-# placeholder for tensorflow/board/projector start 
-./root/.local/bin/tensorboard --logdir --db sqlite:~/.tensorboard.db --host=127.0.0.1 &
+#
+# qps client connector
 qps-client -p 8443 &
 #
 # start rsaConverter, firefox session with jupyter notebook
@@ -38,7 +37,7 @@ echo "compare first 310 decimal numbers of modulus from prime1*prime2" && cat mo
 # start apps
 export DISPLAY=:0 && ./thereminq-tensors/runfiles/rsaConverter &
 sleep 10 && export DISPLAY=:0 && firefox http://127.0.0.1:8888 http://127.0.0.1:8889 http://127.0.0.1:8890 &
-# export DISPLAY=:0 && ./pyqrack-jupyter/shors_winloop > /var/log/thereminq/shors-128qb_"$(date +%F_%R_%S).log"
+# export DISPLAY=:0 && ./pyqrack-jupyter/shors_modulus > /var/log/thereminq/shors-modulus_"$(date +%F_%R_%S).log"
 #
 echo "done"
 # end run, do not stop container
