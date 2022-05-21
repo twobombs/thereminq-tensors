@@ -22,9 +22,18 @@ cd /root/.ssh && openssl asn1parse -in id_rsa > id_rsa.vars
 ssh-keygen -f id_rsa.pub -e -m pem > id_rsa_pub.pem && openssl asn1parse -in id_rsa_pub.pem > id_rsa_pub_pem.vars
 openssl rsa -in id_rsa -noout -text > id_rsa_text.vars
 sed 's/://g' id_rsa_text.vars | tr -d '\:\n' | sed "s/    //g" > id_rsa_text.parsable
+# extract modulus and convert it to dec
 cat id_rsa_text.parsable | sed -e 's/.*modulus\(.*\)publicExponent.*/\1/' | tr "a-z" "A-Z" > modulus.hex
 modulus=$(< modulus.hex)  &&  echo "ibase=16; "$modulus |BC_LINE_LENGTH=0 bc > modulus.dec
-#
+# extract prime1 and convert it to dec
+cat id_rsa_text.parsable | sed -e 's/.*prime1\(.*\)prime2.*/\1/' | tr "a-z" "A-Z" > prime1.hex
+prime1=$(< prime1.hex)  &&  echo "ibase=16; "$prime1 |BC_LINE_LENGTH=0 bc > prime1.dec
+# extract prime2 and convert it to dec
+cat id_rsa_text.parsable | sed -e 's/.*prime2\(.*\)exponent.*/\1/' | tr "a-z" "A-Z" > prime2.hex
+prime2=$(< prime2.hex)  &&  echo "ibase=16; "$prime2 |BC_LINE_LENGTH=0 bc > prime2.dec
+# multiply two primes and compare
+prime1dec=$(< prime1.dec) && prime2dec=$(< prime2.dec) && echo $prime1dec "*" $prime2dec | BC_LINE_LENGTH=0 bc > modulus2.dec
+diff modulus.dec modulus2.dec
 # start apps
 export DISPLAY=:0 && ./thereminq-tensors/runfiles/rsaConverter &
 sleep 10 && export DISPLAY=:0 && firefox http://127.0.0.1:8888 http://127.0.0.1:8889 http://127.0.0.1:8890 &
