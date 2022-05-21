@@ -18,7 +18,7 @@ prime2=$(< prime2.hex)  &&  echo "ibase=16; "$prime2 |BC_LINE_LENGTH=0 bc > prim
 # multiply two primes and compare
 prime1dec=$(< prime1.dec) && prime2dec=$(< prime2.dec) && echo $prime1dec "*" $prime2dec | BC_LINE_LENGTH=0 bc > modulus2.dec
 modulus=$(< modulus2.dec)  &&  echo "obase=16; ibase=10; "$modulus |BC_LINE_LENGTH=0 bc > modulus2.hex
-echo "compare first 310 decimal numbers of modulus from prime1*prime2" && cat modulus.dec && tail -n 310 modulus2.dec 
+echo "compare 310 decimal numbers of modulus from prime1*prime2" && cat modulus.dec && tail -n 310 modulus2.dec 
 #
 # factor the primes from the primes and modulus of the generated key in /root/.ssh
 #
