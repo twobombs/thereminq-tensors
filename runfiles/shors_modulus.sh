@@ -1,8 +1,13 @@
 #!/bin/bash
-# Shors' RSA keypair generation and modulus analysis using Qrack's Quantum inspired Monte-Carlo Shors' algo 
-# this script is made to be run inside a container as root. if run on a regular OS the ssh keypair in /root/.ssh will be used.
+#
+# Shors' RSA keypair generation and modulus analysis using Qrack's Qimsifa
+# a Quantum inspired Monte-Carlo Shors' algo : https://github.com/vm6502q/qimcifa
+#
+# this script is made to be run inside a container as root
+# when ran on a regular OS the ssh keypair in /root/.ssh will be used and need to be RSA compatible
 #
 # RSA key magick AYB64 - rsa keygen pub & private, convert to pem and extract Integers, Primes + vars in text and make it bot-readable
+#
 < /dev/zero ssh-keygen -q -b 1024 -t rsa -m PEM -N ""
 cd /root/.ssh && openssl asn1parse -in id_rsa > id_rsa.vars
 ssh-keygen -f id_rsa.pub -e -m pem > id_rsa_pub.pem && openssl asn1parse -in id_rsa_pub.pem > id_rsa_pub_pem.vars
