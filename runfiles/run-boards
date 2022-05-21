@@ -7,8 +7,9 @@ x0vncserver -display :0 -passwordfile ~/.vnc/passwd &
 /usr/share/novnc/utils/launch.sh --vnc localhost:5900 &
 export DISPLAY=:0&&xterm -e "xset s off"&&
 #
-# placeholder for tensorflow/board/projector start 
-./root/.local/bin/tensorboard --logdir --db sqlite:~/.tensorboard.db --host=127.0.0.1 &
+# placeholder for tensorflow/board/projector start, test GPUs
+tensorboard --logdir --db sqlite:~/.tensorboard.db --host=127.0.0.1 &
+python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
 #
 # start firefox session with jupyter notebooks
 jupyter notebook --notebook-dir=/pyqrack-jupyter --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
