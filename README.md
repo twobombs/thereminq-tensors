@@ -26,7 +26,7 @@ docker run --gpus all --privileged -p 6080:6080 --device=/dev/dri:/dev/dri -d tw
 ## CPU accelerated Full VDI:
 docker run -p 6080:6080 -d twobombs/thereminq-tensors
 
-## Minimum CPU kiosk VDI:
+## Minimum CPU-only Jupyter notebook kiosk VDI:
 docker run -p 6080:6080 -d twobombs/thereminq-tensors:minimum
 
 ## Code from the following awesome companies and initiatives are in this container
