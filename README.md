@@ -1,4 +1,4 @@
-## ThereminQ Tensors - Jupyter notebooks, Shors' and TensorBoards [ Work in Progress ]
+## ThereminQ Tensors - Jupyter notebooks, Shors' and TensorBoards
 <img width="200" alt="ThereminQ" src="https://user-images.githubusercontent.com/12692227/147117984-86c4b4b6-d55d-41ba-aab8-f056a6403902.gif">
 
 ### CUDA-CLuster VDI
