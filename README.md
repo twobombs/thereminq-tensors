@@ -18,7 +18,7 @@ docker run --gpus all --privileged -p 6080:6080 --device=/dev/dri:/dev/dri -d tw
 
 ![Screenshot from 2022-05-14 20-10-47](https://user-images.githubusercontent.com/12692227/168443646-35d34d39-b85b-4289-a8d7-a463c89ddc20.png)
 
-## Shors' RSA SSH Keypair extraction+factorials with 2-primes-always-win test loop 
+## Shors' RSA SSH Keypair extraction+factorials and 2-primes-always-win test loop 
 docker run --gpus all --privileged -p 6080:6080 --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:shors
 
 ![Screenshot from 2022-05-14 20-08-34](https://user-images.githubusercontent.com/12692227/168443560-2b001178-0a5c-46aa-b151-ce856cf53804.png)
