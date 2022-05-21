@@ -22,6 +22,8 @@ cd /root/.ssh && openssl asn1parse -in id_rsa > id_rsa.vars
 ssh-keygen -f id_rsa.pub -e -m pem > id_rsa_pub.pem && openssl asn1parse -in id_rsa_pub.pem > id_rsa_pub_pem.vars
 openssl rsa -in id_rsa -noout -text > id_rsa_text.vars
 sed 's/://g' id_rsa_text.vars | tr -d '\:\n' | sed "s/    //g" > id_rsa_text.parsable
+cat id_rsa_text.parsable | sed -e 's/.*modulus\(.*\)publicExponent.*/\1/' | tr "a-z" "A-Z" > modulus.hex
+modulus=$(< modulus.hex)  &&  echo "ibase=16; "$modulus |BC_LINE_LENGTH=0 bc > modulus.dec
 #
 # start apps
 export DISPLAY=:0 && ./thereminq-tensors/runfiles/rsaConverter &
