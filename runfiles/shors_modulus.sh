@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 # RSA key magick AYB64 - rsa keygen pub & private, convert to pem and extract Integers, Primes + vars in text and make it bot-readable
 < /dev/zero ssh-keygen -q -b 1024 -t rsa -m PEM -N ""
@@ -21,13 +22,12 @@ echo "compare first 310 decimal numbers of modulus from prime1*prime2" && cat mo
 #
 # factor the primes from the modulus of the generated key in /root/.ssh
 #
-fact=$(</root/.ssh/modulus2.dec)
-sed -i "s/toFactor=.*/toFactor=$fact/g" /pyqrack-jupyter/shor.py
-#
 for j in {1...100}
     do
-    ipython3 /pyqrack-jupyter/shor.py > factoring
-    cat factoring | grep 'Factors found'
-    echo 'Prime #1:   ' $prime 'Prime #2:   ' $prime2 'Multiplied: ' $fact
+    cat prime1.dec | ./qimcyfa/qimcyfa $1 > prime1.fact
+    cat prime2.dec | ./qimcyfa/qimcyfa $1 > prime2.fact
+    cat modulus2.dec | ./qimcyfa/qimcyfa $1 > modulus2.fact
+    cat factor1 && cat factor2 && cat modulus.fact
+#   echo 'Prime #1:   ' $factor1 'Prime #2:   ' $factor2 'Multiplied: ' $modulus.fact
     echo ' '
 done
