@@ -1,7 +1,7 @@
 FROM twobombs/thereminq-tensors
 
 # install rsa primes UI & Shors' input requirement. 
-RUN add-apt-repository -y ppa:linuxuprising/libpng12 && apt update && apt install xxd libpng12-0 libcanberra-gtk-module gtk2-engines-pixbuf libcanberra-gtk3-module && apt clean all
+RUN add-apt-repository -y ppa:linuxuprising/libpng12 && apt update && apt install libboost-all-dev xxd libpng12-0 libcanberra-gtk-module gtk2-engines-pixbuf libcanberra-gtk3-module && apt clean all
 RUN apt update && apt install gnome-calculator mathomatic-primes mathomatic libssl-dev && apt clean all
 #
 # nerfed rsa prime generators install
