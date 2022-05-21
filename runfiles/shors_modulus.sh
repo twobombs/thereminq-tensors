@@ -27,7 +27,6 @@ for j in {1...100}
     cat prime1.dec | ./qimcifa/qimcifa $1 > prime1.fact
     cat prime2.dec | ./qimcifa/qimcifa $1 > prime2.fact
     cat modulus2.dec | ./qimcifa/qimcifa $1 > modulus2.fact
-    cat factor1 && cat factor2 && cat modulus.fact
-#   echo 'Prime #1:   ' $factor1 'Prime #2:   ' $factor2 'Multiplied: ' $modulus.fact
+    cat prime1.fact && cat prime2.fact && cat modulus2.fact
     echo ' '
 done
