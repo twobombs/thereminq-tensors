@@ -1,7 +1,7 @@
 FROM twobombs/cudacluster
 #
 # install apt packages because 
-RUN apt update && apt install cmake nodejs libssl-dev && apt clean all
+RUN apt update && apt install cmake nodejs npm libssl-dev && apt clean all
 RUN npm install -g qps-client
 # install tensorboard and requisies
 RUN pip install --upgrade tensorflow && pip install ipython tensorboard jupyter traitlets nbconvert matplotlib tensorflow jupyter_http_over_ws jupyterlab notebook jupyter-book
