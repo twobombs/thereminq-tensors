@@ -24,9 +24,9 @@ echo "compare first 310 decimal numbers of modulus from prime1*prime2" && cat mo
 #
 for j in {1...100}
     do
-    cat prime1.dec | ./qimcyfa/qimcyfa $1 > prime1.fact
-    cat prime2.dec | ./qimcyfa/qimcyfa $1 > prime2.fact
-    cat modulus2.dec | ./qimcyfa/qimcyfa $1 > modulus2.fact
+    cat prime1.dec | ./qimcyfa/qimcifa $1 > prime1.fact
+    cat prime2.dec | ./qimcyfa/qimcifa $1 > prime2.fact
+    cat modulus2.dec | ./qimcyfa/qimcifa $1 > modulus2.fact
     cat factor1 && cat factor2 && cat modulus.fact
 #   echo 'Prime #1:   ' $factor1 'Prime #2:   ' $factor2 'Multiplied: ' $modulus.fact
     echo ' '
