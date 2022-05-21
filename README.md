@@ -4,7 +4,7 @@
 ### CUDA-CLuster VDI
 
 PyQrack & Qiskit Jupyter Notebooks in :latest <br>
-Shors' Algorithm in :shors <br>
+Shors' Algorithm Analysis in :shors <br>
 Tensor Board, Tensor Flow in :boards <br>
 
 Plugins / Connectors
