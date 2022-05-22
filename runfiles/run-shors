@@ -18,7 +18,7 @@ jupyter notebook --notebook-dir=/qiskit-iqx-tutorials --ip 127.0.0.1 --no-browse
 jupyter notebook --notebook-dir=/tensorboard-projector --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
 #
 sleep 10 && export DISPLAY=:0 && firefox http://127.0.0.1:8888 http://127.0.0.1:8889 http://127.0.0.1:8890 &
-export DISPLAY=:0 && ./root/shors_modulus.sh > /var/log/thereminq/shors-modulus_"$(date +%F_%R_%S).log"
+export DISPLAY=:0 && xterm -e "/root/shors_modulus.sh > /var/log/thereminq/shors-modulus_'$(date +%F_%R_%S).log'" 
 #
 echo "done"
 # end run, do not stop container
