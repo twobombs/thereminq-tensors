@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Shors' RSA keypair generation and modulus analysis using Qrack's Qimsifa
+echo "Shors RSA keypair generation and modulus analysis using Qrack's Qimsifa"
 # a Quantum inspired Monte-Carlo Shors' algo : https://github.com/vm6502q/qimcifa
 #
 # this script is made to be run inside a container as root
@@ -27,13 +27,17 @@ prime1dec=$(< prime1.dec) && prime2dec=$(< prime2.dec) && echo $prime1dec "*" $p
 modulus=$(< modulus2.dec)  &&  echo "obase=16; ibase=10; "$modulus |BC_LINE_LENGTH=0 bc > modulus2.hex
 echo "compare 310 decimal numbers of modulus from prime1*prime2" && cat modulus.dec && tail -n 310 modulus2.dec 
 #
-# factor the primes from the primes and modulus of the generated key in /root/.ssh
+echo "factoring the primes from the primes and modulus of the generated keys in /root/.ssh"
 #
 for j in {1...100}
     do
+    echo "Generating factorial on Prime#1"
     cat prime1.dec | /qimcifa/qimcifa $1 > prime1.fact
+    echo "Generating factorial on Prime#2"
     cat prime2.dec | /qimcifa/qimcifa $1 > prime2.fact
+    echo "Generating factorial on Modulus#2"
     cat modulus2.dec | /qimcifa/qimcifa $1 > modulus2.fact
+    echo "results:"
     cat prime1.fact && cat prime2.fact && cat modulus2.fact
     echo ' '
 done
