@@ -14,19 +14,21 @@ Plugins / Connectors
 - IBMQuantumExperience
 
 ## Run with Nvidia-Docker and/or Intel GPU Full VDI:
-docker run --gpus all --privileged -p 6080:6080 --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:<tag>
+docker run --gpus all --privileged -p 6080:6080 --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:tag
 
 ![Screenshot from 2022-05-14 20-10-47](https://user-images.githubusercontent.com/12692227/168443646-35d34d39-b85b-4289-a8d7-a463c89ddc20.png)
+Python Jupyter PyQrack & Qiskit environment
 
 ## Shors' RSA SSH Keypair factorization and 2-primes test loop 
 docker run --gpus all --privileged -p 6080:6080 --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:shors
 
-![Screenshot from 2022-05-14 20-08-34](https://user-images.githubusercontent.com/12692227/168443560-2b001178-0a5c-46aa-b151-ce856cf53804.png)
+![Screenshot from 2022-05-22 20-43-30](https://user-images.githubusercontent.com/12692227/169710747-32ef4926-0286-487a-b9ed-e8c676b2a43a.png)
+C-style Shors' environment
 
-## CPU accelerated Full VDI:
+## CPU accelerated the same VDI:
 docker run -p 6080:6080 -d twobombs/thereminq-tensors
 
-## Minimum CPU-only Jupyter notebook kiosk VDI:
+## Minimalistic CPU-only Jupyter notebook kiosk VDI:
 docker run -p 6080:6080 -d twobombs/thereminq-tensors:minimum
 
 ## Code from the following awesome companies and initiatives are in this container
