@@ -15,8 +15,8 @@ RUN mkdir /root/.ssh
 #
 COPY runfiles/run-shors /root/run-shors
 COPY runfiles/shors_winloop.sh /pyqrack-jupyter/shors_winloop.sh
-COPY runfiles/shors_winloop.sh /pyqrack-jupyter/shors_modulus.sh
-COPY runfiles/shors_winloop.sh /root/shors_modulus.sh
+COPY runfiles/shors_modulus.sh /pyqrack-jupyter/shors_modulus.sh
+COPY runfiles/shors_modulus.sh /root/shors_modulus.sh
 #
 EXPOSE 6080
 ENTRYPOINT /root/run-shors
