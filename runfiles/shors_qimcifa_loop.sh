@@ -11,4 +11,6 @@ for i in {1..4294967295..65535}
 	fact=$(<fact)
 	echo $fact | /qimcifa/qimcifa $1 > qimfact
 	cat qimfact | grep 'Success: Found'
+	cat qimfact | grep 'elapsed'
+	cat qimfact | grep 'Bits'
 done
