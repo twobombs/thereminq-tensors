@@ -10,13 +10,11 @@ export DISPLAY=:0&&xterm -e "xset s off"&&
 # qps client connector
 qps-client -p 8443 &
 #
-# start apps
-export DISPLAY=:0 && ./thereminq-tensors/runfiles/rsaConverter &
-#
 # start rsaConverter, firefox session with lower yield rsa keygen site 
 # and shors demo on generated 1kbit rsa key ( which will eat the host ) 
-# 
-sleep 10 && export DISPLAY=:0 && firefox https://www.mobilefish.com/services/rsa_key_generation/rsa_key_generation.php &
+#
+export DISPLAY=:0 && ./thereminq-tensors/runfiles/rsaConverter &
+export DISPLAY=:0 && firefox https://www.mobilefish.com/services/rsa_key_generation/rsa_key_generation.php &
 export DISPLAY=:0 && xterm -e "/root/shors_modulus.sh > /var/log/thereminq/shors-modulus_'$(date +%F_%R_%S).log'" 
 #
 echo "done"
