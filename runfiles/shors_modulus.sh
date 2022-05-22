@@ -31,9 +31,9 @@ echo "compare 310 decimal numbers of modulus from prime1*prime2" && cat modulus.
 #
 for j in {1...100}
     do
-    cat prime1.dec | ./qimcifa/qimcifa $1 > prime1.fact
-    cat prime2.dec | ./qimcifa/qimcifa $1 > prime2.fact
-    cat modulus2.dec | ./qimcifa/qimcifa $1 > modulus2.fact
+    cat prime1.dec | /qimcifa/qimcifa $1 > prime1.fact
+    cat prime2.dec | /qimcifa/qimcifa $1 > prime2.fact
+    cat modulus2.dec | /qimcifa/qimcifa $1 > modulus2.fact
     cat prime1.fact && cat prime2.fact && cat modulus2.fact
     echo ' '
 done
