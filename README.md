@@ -9,8 +9,8 @@ Tensor Board, Tensor Flow in :boards [work in progress]<br>
 
 Plugins / Connectors
 - SimulaQron
-- Mitiq
-- Pennylane-qrack
+- Mitiq / Cirq
+- Qiskit-qrack-provider
 - IBMQuantumExperience
 
 ## Run with Nvidia-Docker and/or Intel GPU Full VDI:
