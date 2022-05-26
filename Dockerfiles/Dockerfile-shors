@@ -9,7 +9,7 @@ RUN apt update && apt install gnome-calculator mathomatic-primes mathomatic libs
 # RUN git clone https://github.com/openssl/openssl.git && cd openssl && ./Configure enable-weak-ssl-ciphers -DOPENSSL_TLS_SECURITY_LEVEL=0 && make && make install
 #
 # vm6502q/qimcifa has an LGPL license. Report (re)use of code to Dan Strano.
-RUN git clone --branch opencl https://github.com/vm6502q/qimcifa.git && cd /qimcifa && make 
+RUN git clone --branch opencl https://github.com/vm6502q/qimcifa.git && cd /qimcifa && cmake 
 #
 RUN mkdir /root/.ssh
 #
