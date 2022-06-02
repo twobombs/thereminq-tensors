@@ -25,5 +25,8 @@ COPY runfiles/shors_modulus.sh /pyqrack-jupyter/shors_modulus.sh
 COPY runfiles/shors_modulus.sh /pyqrack-jupyter/shors_modulus.sh
 COPY runfiles/shors_qimcifa_loop.sh /root/shors_qimcifa_loop.sh
 #
+# make log dir for measured results
+RUN mkdir /var/log/thereminq
+#
 EXPOSE 6080
 ENTRYPOINT /root/run-shors
