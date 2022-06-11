@@ -1,4 +1,4 @@
-FROM twobombs/cudacluster
+FROM twobombs/cudacluster:dev
 #
 # install apt packages because 
 RUN apt update && apt install cmake nodejs npm libssl-dev && apt clean all
