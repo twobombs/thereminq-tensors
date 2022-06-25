@@ -26,7 +26,7 @@ COPY runfiles/shors_winloop.sh /pyqrack-jupyter/shors_winloop.sh
 COPY runfiles/shors_modulus.sh /pyqrack-jupyter/shors_modulus.sh
 #
 # make log dir for measured results
-RUN mkdir /var/log/thereminq
+RUN mkdir /var/log/shors
 #
 EXPOSE 6080
 ENTRYPOINT /root/run-shors
