@@ -31,6 +31,10 @@ docker run -p 6080:6080 -d twobombs/thereminq-tensors
 ## Minimalistic CPU-only Jupyter notebook kiosk VDI:
 docker run -p 6080:6080 -d twobombs/thereminq-tensors:minimum
 
+Initial vnc password is 00000000
+- noVNC website is avaliable at port 6080 
+- xRDP running at port 3389 to vnc 127.0.0.1:5900
+
 ## Code from the following awesome companies and initiatives are in this container
 
 ![](https://user-images.githubusercontent.com/12692227/57654809-61c07f00-75d5-11e9-9005-38d60d8d4db4.png)
