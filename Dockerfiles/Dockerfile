@@ -13,6 +13,7 @@ RUN pip install --upgrade pyqrack pyzx mitiq ipyparallel pennylane pennylane-qra
 #
 RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git 
 RUN git clone https://github.com/twobombs/thereminq-tensors.git
+RUN git clone https://github.com/vm6502q/simulator-benchmarks.git
 #
 # Install SimulaQron 
 RUN pip3 install simulaqron
@@ -25,7 +26,7 @@ RUN pip install qiskit[visualization] qiskit-qrack-provider
 # Install qc-client WebUI
 RUN apt install npm && npm install -g qps-client & apt clean all
 #
-# convert all ipynb files to python
+# convert all the ipynb files to python
 RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
 RUN cd qiskit-iqx-tutorials && jupyter nbconvert --to script *.ipynb
 #
