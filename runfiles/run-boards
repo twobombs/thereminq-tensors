@@ -16,9 +16,11 @@ python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'
 jupyter notebook --notebook-dir=/pyqrack-jupyter --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
 jupyter notebook --notebook-dir=/qiskit-iqx-tutorials --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
 jupyter notebook --notebook-dir=/tensorboard-projector --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
+jupyter notebook --notebook-dir=/Cirq --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
+jupyter notebook --notebook-dir=/Cirq/docs/simulate --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
 #
 # start apps
-sleep 10 && export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default-browser-check --no-first-run --no-sandbox --password-store=basic http://127.0.0.1:8888 http://127.0.0.1:8889 http://127.0.0.1:8890 &
+sleep 10 && export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default-browser-check --no-first-run --no-sandbox --password-store=basic http://127.0.0.1:8888 http://127.0.0.1:8889 http://127.0.0.1:8890 http://127.0.0.1:8891 http://127.0.0.1:8892 &
 #
 echo "done"
 # end run, do not stop container
