@@ -2,7 +2,7 @@ FROM twobombs/thereminq-tensors
 #
 RUN mkdir /root/.ssh
 #
-COPY runfiles/run-shors /root/run-boards
+COPY runfiles/run-boards /root/run-boards
 #
 EXPOSE 6080
 ENTRYPOINT /root/run-boards
