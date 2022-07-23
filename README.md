@@ -8,12 +8,12 @@ Shors' Algorithm Analysis in :shors <br>
 Tensor Board, Tensor Flow in :boards [work in progress]<br>
 
 Plugins / Connectors / Jupyter NoteBooks
-- SimulaQron
-- Mitiq 
-- Cirq
-- Qiskit-qrack-provider
-- IBMQuantumExperience
-- QUDA
+- SimulaQron            http://www.simulaqron.org/
+- Mitiq                 https://mitiq.readthedocs.io/en/stable/
+- Cirq                  https://quantumai.google/cirq
+- Qiskit-qrack-provider https://github.com/vm6502q/qiskit-qrack-provider
+- IBMQuantumExperience  https://quantum-computing.ibm.com/
+- QUDA                  http://lattice.github.io/quda/
 
 ## Run with Nvidia-Docker and/or Intel GPU Full VDI:
 docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:tag
