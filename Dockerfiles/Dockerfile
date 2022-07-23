@@ -4,7 +4,7 @@ FROM twobombs/cudacluster:dev
 RUN apt update && apt install cmake nodejs npm libssl-dev && apt clean all
 RUN npm install -g qps-client
 # install tensorboard and requisies
-RUN pip install --upgrade tensorflow && pip install ipython tensorboard jupyter traitlets nbconvert matplotlib tensorflow jupyter_http_over_ws jupyterlab notebook jupyter-book
+RUN pip install --upgrade tensorflow && pip install jupytext ipython tensorboard jupyter traitlets nbconvert matplotlib tensorflow jupyter_http_over_ws jupyterlab notebook jupyter-book
 # qiskit examples
 RUN git clone https://github.com/Qiskit/qiskit-iqx-tutorials.git && mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
 #
@@ -32,6 +32,9 @@ RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
 RUN cd qiskit-iqx-tutorials && jupyter nbconvert --to script *.ipynb
 RUN cd Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
 #
+# convert some of the py files to ipynb for convenience
+RUN cd simulator-benchmarks && jupytext --to notebook *.py
+
 # make log dir for measured results
 RUN mkdir /var/log/thereminq
 
