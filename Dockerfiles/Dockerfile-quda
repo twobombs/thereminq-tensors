@@ -1,0 +1,7 @@
+FROM twobombs/thereminq-tensors
+
+RUN apt install gfortran && apt clean all
+RUN git clone https://github.com/lattice/quda && mkdir qudabuild && cd qudabuild && cmake /quda/ && make 
+
+EXPOSE 6080
+ENTRYPOINT /root/run
