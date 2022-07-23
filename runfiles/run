@@ -19,7 +19,7 @@ jupyter notebook --notebook-dir=/qiskit-iqx-tutorials --ip 127.0.0.1 --no-browse
 jupyter notebook --notebook-dir=/tensorboard-projector --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
 jupyter notebook --notebook-dir=/simulator-benchmarks --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
 
-export DISPLAY=:0 && chrome --disable-fre --no-default-browser-check --no-first-run --no-sandbox --pasword-store=basic http://127.0.0.1:8888 http://127.0.0.1:8889 http://127.0.0.1:8890 http://127.0.0.1:8891
+export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default-browser-check --no-first-run --no-sandbox --password-store=basic http://127.0.0.1:8888 http://127.0.0.1:8889 http://127.0.0.1:8890 http://127.0.0.1:8891
 
 echo "done"
 
