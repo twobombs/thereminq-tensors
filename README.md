@@ -7,7 +7,7 @@ PyQrack & Qiskit Jupyter Notebooks in :latest <br>
 Shors' Algorithm Analysis in :shors <br>
 Tensor Board, Tensor Flow in :boards [work in progress]<br>
 
-Plugins / Connectors
+Plugins / Connectors / Jupyter NoteBooks
 - SimulaQron
 - Mitiq 
 - Cirq
