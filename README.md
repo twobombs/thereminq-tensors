@@ -9,9 +9,11 @@ Tensor Board, Tensor Flow in :boards [work in progress]<br>
 
 Plugins / Connectors
 - SimulaQron
-- Mitiq / Cirq
+- Mitiq 
+- Cirq
 - Qiskit-qrack-provider
 - IBMQuantumExperience
+- QUDA
 
 ## Run with Nvidia-Docker and/or Intel GPU Full VDI:
 docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:tag
