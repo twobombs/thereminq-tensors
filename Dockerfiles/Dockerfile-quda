@@ -1,7 +1,7 @@
 FROM twobombs/thereminq-tensors
 
 RUN apt install gfortran && apt clean all
-RUN git clone https://github.com/lattice/quda && mkdir qudabuild && cd qudabuild && cmake -DQUDA_GPU_ARCH=sm_60 /quda/ && make -i -k -j 2
+RUN git clone https://github.com/lattice/quda && mkdir qudabuild && cd qudabuild && cmake -DQUDA_GPU_ARCH=sm_60 /quda/ && make -i -k -j 2 && make install
 
 EXPOSE 6080
 ENTRYPOINT /root/run
