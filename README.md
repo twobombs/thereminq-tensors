@@ -14,6 +14,7 @@ Plugins / Connectors / Jupyter NoteBooks
 - Qiskit-qrack-provider https://github.com/vm6502q/qiskit-qrack-provider
 - IBMQuantumExperience  https://quantum-computing.ibm.com/
 - QUDA                  http://lattice.github.io/quda/
+- cuQuantum             https://developer.nvidia.com/cuquantum-sdk
 
 ## Run with Nvidia-Docker and/or Intel GPU Full VDI:
 docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:tag
