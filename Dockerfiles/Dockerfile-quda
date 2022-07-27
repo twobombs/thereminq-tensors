@@ -1,7 +1,7 @@
 FROM twobombs/thereminq-tensors
 
 RUN apt install gfortran doxygen && apt clean all
-RUN git clone https://github.com/lattice/quda.git && mkdir qudabuild && cd qudabuild && cmake -DQUDA_GPU_ARCH=sm_37 -DQUDA_HETEROGENOUS_ATOMICS=OFF /quda/ && make -i -k -j 2 && make install
+RUN git clone https://github.com/lattice/quda.git && mkdir qudabuild && cd qudabuild && cmake -DQUDA_GPU_ARCH=sm_37 -DQUDA_HETEROGENEOUS_ATOMIC_SUPPORT=OFF /quda/ && make -i -k -j 2 && make install
 
 # RUN wget https://github.com/lattice/quda/archive/refs/tags/v1.0.0.tar.gz && tar -xvf v1.0.0.tar.gz 
 # COPY runfiles/CMakeLists.txt /quda-1.0.0/CMakeLists.txt
