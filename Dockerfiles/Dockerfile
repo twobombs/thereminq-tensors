@@ -15,6 +15,7 @@ RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git
 RUN git clone https://github.com/twobombs/thereminq-tensors.git
 RUN git clone https://github.com/vm6502q/simulator-benchmarks.git
 RUN git clone https://github.com/quantumlib/Cirq.git
+RUN git clone https://github.com/vm6502q/qiskit-qrack-provider.git
 #
 # Install SimulaQron 
 RUN pip3 install simulaqron
