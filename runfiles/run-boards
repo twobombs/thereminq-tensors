@@ -21,8 +21,8 @@ jupyter notebook --notebook-dir=/Cirq/docs/simulate --ip 127.0.0.1 --no-browser 
 jupyter notebook --notebook-dir=/simulator-benchmarks --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
 #
 # start apps
-sleep 30 && export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default-browser-check --no-first-run --no-sandbox --password-store=basic http://127.0.0.1:8888 http://127.0.0.1:8889 http://127.0.0.1:8890 http://127.0.0.1:8891 http://127.0.0.1:8892 &
-sleep 10 && export DISPLAY=:0 && firefox http://127.0.0.1:8888 http://127.0.0.1:8889 http://127.0.0.1:8890 http://127.0.0.1:8891 http://127.0.0.1:8892 http://127.0.0.1:8893 &
+sleep 30 && export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default-browser-check --no-first-run --no-sandbox --password-store=basic http://127.0.0.1:8888 http://127.0.0.1:8889 http://127.0.0.1:8890 http://127.0.0.1:8891 http://127.0.0.1:8892 http://127.0.0.1:8893 http://127.0.0.1:8821 &
+sleep 10 && export DISPLAY=:0 && firefox http://127.0.0.1:8888 http://127.0.0.1:8889 http://127.0.0.1:8890 http://127.0.0.1:8891 http://127.0.0.1:8892 http://127.0.0.1:8893 http://127.0.0.1:8821 &
 #
 echo "done"
 # end run, do not stop container
