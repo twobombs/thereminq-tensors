@@ -17,6 +17,9 @@ jupyter notebook --notebook-dir=/pyqrack-jupyter --ip 127.0.0.1 --no-browser --a
 export DISPLAY=:0 && google-chrome-stable --no-sandbox --password-store=basic http://127.0.0.1:8888
 
 # start default xterm for debug purposes ( can be removed in production )
+
+export DISPLAY=:0&&xterm -e "xset s off" &
+export DISPLAY=:0&&xterm -e "neofetch && tail -f /dev/null" &
 export DISPLAY=:0 && xterm -e "xset s off" && export HOME=/home/user && export DISPLAY=:0 && xterm -e "sudo su -c '/bin/bash' -s /bin/bash user"
 
 echo "done"
