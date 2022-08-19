@@ -20,6 +20,9 @@ export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default-browser-che
 export DISPLAY=:0 && xterm -e "/root/shors_winloop.sh > /var/log/thereminq/shors-winloop_'$(date +%F_%R_%S).log'" &
 export DISPLAY=:0 && xterm -e "/root/shors_qimcifa_loop.sh > /var/log/thereminq/shors-qimcifa_loop_'$(date +%F_%R_%S).log'" 
 #
+export DISPLAY=:0&&xterm -e "xset s off" &
+export DISPLAY=:0&&xterm -e "neofetch && tail -f /dev/null" &
+
 echo "done"
 # end run, do not stop container
 tail -f /dev/null
