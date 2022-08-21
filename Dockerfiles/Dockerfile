@@ -9,7 +9,7 @@ RUN pip install --upgrade tensorflow && pip install jupytext ipython tensorboard
 RUN git clone https://github.com/Qiskit/qiskit-iqx-tutorials.git && mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
 #
 # Install pyqrack + couplings, runtime requirements
-RUN pip install --upgrade pyqrack pyzx mitiq ipyparallel pennylane pennylane-qrack qutechopenql mistune==2.0.2 cmake cirq
+RUN pip install --upgrade pyqrack pyzx mitiq ipyparallel pennylane pennylane-qrack qutechopenql mistune cmake cirq
 #
 RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git 
 RUN git clone https://github.com/twobombs/thereminq-tensors.git
@@ -27,14 +27,14 @@ RUN pip install -U IBMQuantumExperience
 RUN pip install qiskit[visualization] qiskit-qrack-provider
 # Install qc-client WebUI
 RUN apt install npm && npm install -g qps-client & apt clean all
-#
+# temp disabled because of mistune version conflict 
 # convert all the ipynb files to python
-RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
-RUN cd qiskit-iqx-tutorials && jupyter nbconvert --to script *.ipynb
-RUN cd Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
+# RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
+# RUN cd qiskit-iqx-tutorials && jupyter nbconvert --to script *.ipynb
+# RUN cd Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
 #
 # convert some of the py files to ipynb for convenience
-RUN cd simulator-benchmarks && jupytext --to notebook *.py
+# RUN cd simulator-benchmarks && jupytext --to notebook *.py
 
 # make log dir for measured results
 RUN mkdir /var/log/thereminq
