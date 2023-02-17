@@ -27,11 +27,10 @@ RUN pip install -U IBMQuantumExperience
 RUN pip install qiskit[visualization] qiskit-qrack-provider
 # Install qc-client WebUI
 RUN apt install npm && npm install -g qps-client & apt clean all
-# temp disabled because of mistune version conflict 
 # convert all the ipynb files to python
-# RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
-# RUN cd qiskit-iqx-tutorials && jupyter nbconvert --to script *.ipynb
-# RUN cd Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
+RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
+RUN cd qiskit-iqx-tutorials && jupyter nbconvert --to script *.ipynb
+RUN cd Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
 #
 # convert some of the py files to ipynb for convenience
 # RUN cd simulator-benchmarks && jupytext --to notebook *.py
