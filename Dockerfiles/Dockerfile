@@ -16,6 +16,7 @@ RUN git clone https://github.com/twobombs/thereminq-tensors.git
 RUN git clone https://github.com/vm6502q/simulator-benchmarks.git
 RUN git clone https://github.com/quantumlib/Cirq.git
 RUN git clone https://github.com/vm6502q/qiskit-qrack-provider.git
+RUN git clone https://github.com/unitaryfund/mitiq.git
 #
 # Install SimulaQron 
 RUN pip3 install simulaqron
@@ -33,7 +34,8 @@ RUN cd qiskit-iqx-tutorials && jupyter nbconvert --to script *.ipynb
 RUN cd Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
 #
 # convert some of the py files to ipynb for convenience
-# RUN cd simulator-benchmarks && jupytext --to notebook *.py
+RUN cd simulator-benchmarks && jupytext --to notebook *.py
+RUN cd mitiq/benchmarks && jupytext --to notebook benchmarks.py
 
 # make log dir for measured results
 RUN mkdir /var/log/thereminq
