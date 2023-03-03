@@ -17,6 +17,7 @@ RUN git clone https://github.com/vm6502q/simulator-benchmarks.git
 RUN git clone https://github.com/quantumlib/Cirq.git
 RUN git clone https://github.com/vm6502q/qiskit-qrack-provider.git
 RUN git clone https://github.com/unitaryfund/mitiq.git
+RUN git clone https://github.com/NVIDIA/cuQuantum.git
 #
 # Install SimulaQron 
 RUN pip3 install simulaqron
