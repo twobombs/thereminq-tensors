@@ -16,6 +16,15 @@ Plugins / Connectors / Jupyter NoteBooks
 - QUDA                  http://lattice.github.io/quda/
 - cuQuantum             https://developer.nvidia.com/cuquantum-sdk
 
+The following Python repos are included, converted to Jupyter when needed
+- https://github.com/vm6502q/pyqrack-jupyter.git 
+- https://github.com/twobombs/thereminq-tensors.git
+- https://github.com/vm6502q/simulator-benchmarks.git
+- https://github.com/quantumlib/Cirq.git
+- https://github.com/vm6502q/qiskit-qrack-provider.git
+- https://github.com/unitaryfund/mitiq.git
+- https://github.com/NVIDIA/cuQuantum.git
+
 ## Run with Nvidia-Docker and/or Intel GPU Full VDI:
 docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:tag
 
