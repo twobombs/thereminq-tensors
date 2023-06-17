@@ -32,6 +32,9 @@ RUN pip install qiskit[visualization] qiskit-qrack-provider
 # Install Qiskit metal
 RUN cd qiskit-metal && pip install --no-deps -e .
 
+# install munich qc toolkit
+RUn pip install mqt.problemsolver mqt.bench mqt.ddsim mqt.qecc
+
 # Install qc-client WebUI
 RUN apt install npm && npm install -g qps-client & apt clean all
 # convert all the ipynb files to python
