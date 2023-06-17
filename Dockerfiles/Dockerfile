@@ -22,7 +22,7 @@ RUN git clone https://github.com/unitaryfund/research
 RUN git clone https://github.com/Qiskit/qiskit-metal.git
 #
 # Install SimulaQron 
-RUN pip3 install simulaqron
+# RUN pip3 install simulaqron
 # RUN simulaqron set backend pyqrack
 
 # Install IBM QC connector
