@@ -1,7 +1,7 @@
 FROM twobombs/cudacluster:dev
 #
 # install apt packages because 
-RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && apt clean all
+RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator python3-numpy && apt clean all
 RUN npm install -g qps-client
 # install tensorboard and requisies
 RUN pip install --upgrade tensorflow && pip install jupytext ipython tensorboard jupyter covalent traitlets nbconvert matplotlib tensorflow jupyter_http_over_ws jupyterlab notebook jupyter-book
@@ -9,7 +9,7 @@ RUN pip install --upgrade tensorflow && pip install jupytext ipython tensorboard
 RUN git clone https://github.com/Qiskit/qiskit-iqx-tutorials.git && mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
 #
 # Install pyqrack + couplings, runtime requirements
-RUN pip install --upgrade pyqrack pyzx mitiq ipyparallel pennylane pennylane-qrack qutechopenql mistune cmake cirq numpy
+RUN pip install --upgrade pyqrack pyzx mitiq ipyparallel pennylane pennylane-qrack qutechopenql mistune cmake cirq 
 #
 RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git 
 RUN git clone https://github.com/twobombs/thereminq-tensors.git
