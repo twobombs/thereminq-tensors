@@ -1,7 +1,7 @@
 FROM twobombs/cudacluster:dev
 #
 # install apt packages because 
-RUN add-apt-repository -y ppa:deadsnakes/ppa
+
 RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator python3-numpy && apt clean all
 RUN npm install -g qps-client
 # install tensorboard and requisies
