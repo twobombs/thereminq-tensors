@@ -3,7 +3,7 @@ FROM twobombs/cudacluster
 RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && apt clean all
 
 # Install pyqrack + couplings, runtime requirements
-RUN pip install --upgrade qiskit-metal qrack
+RUN pip install --upgrade qiskit-metal pyqrack
 
 # Install IBM QC connector
 RUN pip install -U IBMQuantumExperience
