@@ -10,7 +10,7 @@ RUN pip install --upgrade tensorflow && pip install jupytext ipython tensorboard
 RUN git clone https://github.com/Qiskit/qiskit-iqx-tutorials.git && mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
 #
 # Install pyqrack + couplings, runtime requirements
-RUN pip install --upgrade pyqrack cirq pyzx mitiq ipyparallel pennylane pennylane-qrack qutechopenql mistune cmake cirq numpy==1.22.1
+RUN pip install --upgrade pyqrack cirq pyzx mitiq ipyparallel pennylane pennylane-qrack qutechopenql mistune cmake cirq numpy
 #
 RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git 
 RUN git clone https://github.com/twobombs/thereminq-tensors.git
@@ -20,7 +20,7 @@ RUN git clone https://github.com/vm6502q/qiskit-qrack-provider.git
 RUN git clone https://github.com/unitaryfund/mitiq.git
 RUN git clone https://github.com/NVIDIA/cuQuantum.git
 RUN git clone https://github.com/unitaryfund/research
-RUN git clone https://github.com/Qiskit/qiskit-metal.git
+# RUN git clone https://github.com/Qiskit/qiskit-metal.git
 #
 # Install SimulaQron 
 # RUN pip3 install simulaqron
@@ -29,9 +29,9 @@ RUN git clone https://github.com/Qiskit/qiskit-metal.git
 # Install IBM QC connector
 RUN pip install -U IBMQuantumExperience
 # Install Qiskit
-RUN pip install qiskit[visualization] qiskit-qrack-provider
+# RUN pip install qiskit[visualization] qiskit-qrack-provider
 # Install Qiskit metal
-RUN cd qiskit-metal && pip install --no-deps -e .
+# RUN cd qiskit-metal && pip install --no-deps -e .
 
 # install munich qc toolkit
 RUn pip install mqt.problemsolver mqt.bench mqt.ddsim mqt.qecc
