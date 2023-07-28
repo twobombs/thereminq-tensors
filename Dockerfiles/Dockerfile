@@ -10,7 +10,7 @@ RUN pip install jupytext ipython tensorboard jupyter covalent traitlets nbconver
 RUN git clone https://github.com/Qiskit/qiskit-iqx-tutorials.git && mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
 #
 # Install pyqrack + couplings, runtime requirements
-RUN pip install --upgrade pyqrack cirq pyzx mitiq ipyparallel pennylane pennylane-qrack qutechopenql mistune cmake cirq numpy
+RUN pip install --upgrade pyqrack cirq pyzx mitiq ipyparallel pennylane pennylane-qrack qutechopenql mistune cmake cirq
 #
 RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git 
 RUN git clone https://github.com/twobombs/thereminq-tensors.git
