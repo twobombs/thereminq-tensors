@@ -6,7 +6,8 @@ RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && ap
 RUN npm install -g qps-client
 # install tensorboard and requisies
 RUN pip install --upgrade pip
-RUN pip install jupytext ipython tensorboard jupyter covalent traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book
+RUN pip install jupytext ipython tensorboard jupyter traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book
+# covalent
 # qiskit examples
 RUN git clone https://github.com/Qiskit/qiskit-iqx-tutorials.git && mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
 #
