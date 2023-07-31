@@ -10,9 +10,6 @@ RUN pip install -U IBMQuantumExperience
 # Install Qiskit
 RUN pip3 install qiskit[visualization] qiskit-qrack-provider
 
-# make log dir for measured results
-RUN mkdir /var/log/thereminq
-
 COPY runfiles/run /root/run
 EXPOSE 6080
 ENTRYPOINT /root/run
