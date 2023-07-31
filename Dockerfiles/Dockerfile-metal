@@ -1,14 +1,14 @@
-FROM twobombs/cudacluster
+FROM twobombs/thereminq-tensors
 
 RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && apt clean all
 
 # Install pyqrack + couplings, runtime requirements
-RUN pip install --upgrade qiskit-metal pyqrack
+RUN pip3 install --upgrade qiskit-metal pyqrack
 
 # Install IBM QC connector
 RUN pip install -U IBMQuantumExperience
 # Install Qiskit
-RUN pip install qiskit[visualization] qiskit-qrack-provider
+RUN pip3 install qiskit[visualization] qiskit-qrack-provider
 
 # make log dir for measured results
 RUN mkdir /var/log/thereminq
