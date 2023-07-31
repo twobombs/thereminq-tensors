@@ -7,7 +7,8 @@ RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && ap
 RUN apt remove -y python3-distutils
 
 # install qps
-RUN npm install -g qps-client
+# RUN npm install -g qps-client
+
 # install tensorboard and requisies
 RUN pip install --upgrade pip
 RUN pip install jupytext ipython tensorboard jupyter traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book
