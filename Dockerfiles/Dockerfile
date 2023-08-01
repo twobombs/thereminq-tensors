@@ -58,6 +58,9 @@ RUN cd Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
 RUN cd simulator-benchmarks && jupytext --to notebook *.py
 RUN cd mitiq/benchmarks && jupytext --to notebook benchmarks.py
 
+# make sure novnc works
+RUN apt install -y novnc 
+
 # make log dir for measured results
 RUN mkdir /var/log/thereminq
 
