@@ -6,7 +6,7 @@ RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && ap
 RUN pip3 install --upgrade qiskit-metal pyqrack
 
 # Install IBM QC connector
-RUN pip install -U IBMQuantumExperience
+RUN pip3 install -U IBMQuantumExperience
 # Install Qiskit
 RUN pip3 install qiskit[visualization] qiskit-qrack-provider
 
