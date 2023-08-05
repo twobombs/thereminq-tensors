@@ -12,16 +12,6 @@ export DISPLAY=:0&&xterm -e "xset s off"&
 ./root/.local/bin/tensorboard --logdir --db sqlite:~/.tensorboard.db --host=127.0.0.1 &
 qps-client -p 8443 &
 
-#
-# start firefox session with jupyter notebook
-jupyter notebook --notebook-dir=/pyqrack-jupyter --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
-jupyter notebook --notebook-dir=/qiskit-iqx-tutorials --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
-jupyter notebook --notebook-dir=/tensorboard-projector --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
-jupyter notebook --notebook-dir=/simulator-benchmarks --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
-
-export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default-browser-check --no-first-run --no-sandbox --password-store=basic http://127.0.0.1:8888 http://127.0.0.1:8889 http://127.0.0.1:8890 http://127.0.0.1:8891
-export DISPLAY=:0 && firefox http://127.0.0.1:8888 http://127.0.0.1:8889 http://127.0.0.1:8890 http://127.0.0.1:8891
-
 export DISPLAY=:0&&xterm -e "xset s off" &
 export DISPLAY=:0&&xterm -e "neofetch && tail -f /dev/null" &
 
