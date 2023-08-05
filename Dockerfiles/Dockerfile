@@ -64,6 +64,8 @@ RUN cd mitiq/benchmarks && jupytext --to notebook benchmarks.py
 # make log dir for measured results
 RUN mkdir /var/log/thereminq
 
-COPY runfiles/run /root/run
+RUN mkdir /root/.ssh
+COPY runfiles/run-boards /root/run-boards
+
 EXPOSE 6080
-ENTRYPOINT /root/run
+ENTRYPOINT /root/run-boards
