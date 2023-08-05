@@ -37,12 +37,15 @@ RUN git clone https://github.com/unitaryfund/research
 # RUN pip3 install simulaqron
 # RUN simulaqron set backend pyqrack
 
+# isntall qiskit[metal/visualisation] requirements
+RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && apt clean all
+# Install pyqrack + couplings, runtime requirements
+RUN pip3 install --upgrade qiskit-metal pyqrack
+
 # Install IBM QC connector
 RUN pip3 install -U IBMQuantumExperience
-# Install Qiskit
-# RUN pip install qiskit[visualization] qiskit-qrack-provider
-# Install Qiskit metal
-# RUN cd qiskit-metal && pip install --no-deps -e .
+# Install Qiskit viz + pyqrack provider
+RUN pip3 install qiskit[visualization] qiskit-qrack-provider
 
 # install munich qc toolkit
 RUN pip3 install mqt.problemsolver mqt.bench mqt.ddsim mqt.qecc
