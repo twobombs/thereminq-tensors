@@ -1,6 +1,8 @@
 ## ThereminQ Tensors - Jupyter notebooks, Shors' and TensorBoards
 <img width="200" alt="ThereminQ" src="https://user-images.githubusercontent.com/12692227/147117984-86c4b4b6-d55d-41ba-aab8-f056a6403902.gif">
 
+Note: because of incompatibilities with the new CUDA 12.x image and Python requirements for CirQ and Qiskit the NoVNC functionality has been disabled on this repo; remote access is still provided through VNC on port 5900 and RDP on 3389. When these issues are resolved the NoVNC functionality will return. The other ThereminQ container images are not affected.
+
 ### CUDA-CLuster VDI
 
 PyQrack & Qiskit Jupyter Notebooks in :latest <br>
