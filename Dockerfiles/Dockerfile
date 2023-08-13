@@ -59,7 +59,7 @@ RUN cd Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
 #
 # convert some of the py files to ipynb for convenience
 RUN cd simulator-benchmarks && jupytext --to notebook *.py
-RUN cd mitiq/benchmarks && jupytext --to notebook benchmarks.py
+# RUN cd mitiq/benchmarks && jupytext --to notebook benchmarks.py
 
 # make sure novnc works
 # RUN apt install -y novnc 
