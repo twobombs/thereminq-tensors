@@ -47,8 +47,8 @@ RUN pip3 install -U IBMQuantumExperience
 # Install Qiskit viz + pyqrack provider
 RUN pip3 install qiskit[visualization] qiskit-qrack-provider
 
-# install munich qc toolkit
-RUN pip3 install mqt.problemsolver mqt.bench mqt.ddsim mqt.qecc
+# install munich qc toolkit - will move to other tag when needed -
+# RUN pip3 install mqt.problemsolver mqt.bench mqt.ddsim mqt.qecc
 
 # Install qc-client WebUI
 RUN apt install npm && npm install -g qps-client & apt clean all
