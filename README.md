@@ -1,7 +1,7 @@
 ## ThereminQ Tensors - Jupyter notebooks, Shors' and TensorBoards
 <img width="200" alt="ThereminQ" src="https://user-images.githubusercontent.com/12692227/147117984-86c4b4b6-d55d-41ba-aab8-f056a6403902.gif">
 
-Note: because of incompatibilities with the new CUDA 12.x image and Python requirements for CirQ and Qiskit the NoVNC functionality has been disabled on this repo; remote access is still provided through VNC on port 5900 and RDP on 3389. When these issues are resolved the NoVNC functionality will return. The other ThereminQ container images are not affected.
+Note: because of incompatibilities with the new `CUDA 12.x` image and Python requirements for CirQ and Qiskit the `NoVNC` functionality has been disabled on this repo; remote access is still provided through VNC on port `5900` and RDP on `3389`. When these issues are resolved the NoVNC functionality will return. The other ThereminQ container images are not affected.
 
 ### CUDA-CLuster VDI
 
@@ -53,9 +53,10 @@ docker run -p 6080:6080 -d twobombs/thereminq-tensors
 docker run -p 6080:6080 -d twobombs/thereminq-tensors:minimum
 ````
 
-Initial vnc password is 00000000
-- noVNC website is avaliable at port 6080 
-- xRDP running at port 3389 to vnc 127.0.0.1:5900
+Initial vnc password is `00000000`
+- VNC port avaliable on `5900`
+- noVNC website is avaliable at port `6080` 
+- xRDP running at port `3389` proxy to vnc `127.0.0.1:5900`
 
 ## Code from the following awesome companies and initiatives are in this container
 
