@@ -13,7 +13,7 @@ RUN pip install pennylane-qrack
 # RUN pip install qutechopenql - similar fail
 
 # benchmarks
-RUN git clone https://github.com/vm6502q/pyqrack-jupyter.git
+RUN git clone --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git
 
 # Install SimulaQron 
 # RUN pip3 install simulaqron
