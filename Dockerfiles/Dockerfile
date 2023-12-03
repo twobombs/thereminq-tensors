@@ -13,7 +13,7 @@ RUN npm install -g qps-client
 RUN apt install -y python3-pip
 RUN pip3 install --upgrade pip
 RUN apt remove -y python3-blinker
-RUN pip3 install jupytext ipython tensorboard jupyter traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book
+RUN pip3 install jupytext ipython tensorboard tensorflow_gnn jupyter traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book
 # covalent
 
 # qiskit examples
