@@ -14,7 +14,6 @@ RUN apt install -y python3-pip
 RUN pip3 install --upgrade pip
 RUN apt remove -y python3-blinker
 RUN pip3 install jupytext ipython tensorboard tensorflow_gnn jupyter traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book
-# covalent
 
 # qiskit examples
 RUN git clone --depth=1 https://github.com/Qiskit/qiskit-iqx-tutorials.git && mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
@@ -32,7 +31,8 @@ RUN git clone --depth=1 https://github.com/unitaryfund/mitiq.git
 RUN git clone --depth=1 https://github.com/NVIDIA/cuQuantum.git
 RUN git clone --depth=1 https://github.com/unitaryfund/research
 RUN git clone --depth=1 https://github.com/Qiskit/qiskit-metal.git
-#
+RUN git clone --depth=1 https://github.com/tensorflow/gnn.git tensorflow_gnn
+
 # Install SimulaQron 
 # RUN pip3 install simulaqron
 # RUN simulaqron set backend pyqrack
