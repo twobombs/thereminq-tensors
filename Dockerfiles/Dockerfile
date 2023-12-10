@@ -4,7 +4,9 @@ FROM twobombs/cudacluster:dev
 RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && apt clean all
 
 # remove python os installed packages that are needed by pip
-RUN apt remove -y python3-distutils
+# RUN apt remove -y python3-distutils
+# make sure novnc works
+# RUN apt install -y novnc 
 
 # install qps
 RUN npm install -g qps-client
@@ -12,7 +14,7 @@ RUN npm install -g qps-client
 # install tensorboard and requisites
 RUN apt install -y python3-pip
 RUN pip3 install --upgrade pip
-RUN apt remove -y python3-blinker
+# RUN apt remove -y python3-blinker
 RUN pip3 install jupytext ipython tensorboard tensorflow_gnn jupyter traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book
 
 # qiskit examples
@@ -34,8 +36,8 @@ RUN git clone --depth=1 https://github.com/Qiskit/qiskit-metal.git
 RUN git clone --depth=1 https://github.com/tensorflow/gnn.git tensorflow_gnn
 
 # Install SimulaQron 
-# RUN pip3 install simulaqron
-# RUN simulaqron set backend pyqrack
+RUN pip3 install simulaqron
+RUN simulaqron set backend pyqrack
 
 # isntall qiskit[metal/visualisation] requirements
 RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && apt clean all
@@ -48,7 +50,7 @@ RUN pip3 install -U IBMQuantumExperience
 RUN pip3 install qiskit[visualization] qiskit-qrack-provider
 
 # install munich qc toolkit - will move to other tag when needed -
-# RUN pip3 install mqt.problemsolver mqt.bench mqt.ddsim mqt.qecc
+RUN pip3 install mqt.problemsolver mqt.bench mqt.ddsim mqt.qecc
 
 # Install qc-client WebUI
 RUN apt install npm && npm install -g qps-client & apt clean all
@@ -60,9 +62,6 @@ RUN cd Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
 # convert some of the py files to ipynb for convenience
 RUN cd simulator-benchmarks && jupytext --to notebook *.py
 # RUN cd mitiq/benchmarks && jupytext --to notebook benchmarks.py
-
-# make sure novnc works
-# RUN apt install -y novnc 
 
 # make log dir for measured results
 RUN mkdir /var/log/thereminq
