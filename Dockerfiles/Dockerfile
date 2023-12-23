@@ -37,7 +37,7 @@ RUN git clone --depth=1 https://github.com/tensorflow/gnn.git tensorflow_gnn
 
 # Install SimulaQron 
 RUN pip3 install simulaqron
-RUN simulaqron set backend pyqrack
+# RUN simulaqron set backend pyqrack
 
 # isntall qiskit[metal/visualisation] requirements
 RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && apt clean all
