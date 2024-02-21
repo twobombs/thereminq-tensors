@@ -1,13 +1,13 @@
 FROM twobombs/thereminq-tensors
 
 RUN apt install gfortran doxygen && apt clean all
-RUN git clone --depth=1 https://github.com/lattice/quda.git && mkdir qudabuild && cd qudabuild && cmake -DQUDA_GPU_ARCH=sm_50 -DQUDA_HETEROGENEOUS_ATOMIC=OFF /quda/ && make -i -k -j 2 && make install
+RUN git clone --depth=1 https://github.com/lattice/quda.git && mkdir qudabuild && cd qudabuild && cmake -DQUDA_GPU_ARCH=sm_50 -DQUDA_HETEROGENEOUS_ATOMIC=OFF /quda/ && make -i -k -j $(grep -c ^processor /proc/cpuinfo) && make install
 
 # RUN wget https://github.com/lattice/quda/archive/refs/tags/v1.0.0.tar.gz && tar -xvf v1.0.0.tar.gz 
 # COPY runfiles/CMakeLists.txt /quda-1.0.0/CMakeLists.txt
 
 # RUN git clone --depth=1 -b release/1.0.x https://github.com/lattice/quda.git quda-1.0.0
-# RUN mkdir quda1build && cd quda1build && cmake -DQUDA_GPU_ARCH=sm_37 /quda-1.0.0/ && make -i -k -j 2
+# RUN mkdir quda1build && cd quda1build && cmake -DQUDA_GPU_ARCH=sm_37 /quda-1.0.0/ && make -i -k -j $(grep -c ^processor /proc/cpuinfo)
 
 EXPOSE 6080
 ENTRYPOINT /root/run
