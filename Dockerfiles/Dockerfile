@@ -36,7 +36,7 @@ RUN git clone --depth=1 https://github.com/Qiskit/qiskit-metal.git
 RUN git clone --depth=1 https://github.com/tensorflow/gnn.git tensorflow_gnn
 
 # Install SimulaQron 
-RUN pip3 install simulaqron
+# RUN pip3 install simulaqron
 # RUN simulaqron set backend pyqrack
 
 # isntall qiskit[metal/visualisation] requirements
