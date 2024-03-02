@@ -9,8 +9,8 @@ for i in {65535..4294967295..65535}
 	prime2=$(matho-primes -c 1 -u $i2)
 	echo $(($prime * $prime2)) > fact
 	fact=$(<fact)
-	echo $fact | /qimcifa/qimcifa $1 > qimfact
-	cat qimfact | grep 'Success: Found'
+	echo $fact | ./qimcifa $1 1 -1 1 > qimfact
+	cat qimfact | grep 'Found'
 	cat qimfact | grep 'elapsed'
 	cat qimfact | grep 'Bits'
 done
