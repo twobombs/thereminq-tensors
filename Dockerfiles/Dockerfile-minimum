@@ -4,7 +4,7 @@ FROM twobombs/deploy-nvidia-docker:minimum
 RUN apt-get update && apt-get install -y python3-pip python3-numpy
 RUN pip install pyqrack
 RUN pip install pyzx
-RUN pip install cirq
+# RUN pip install cirq
 # RUN pip install mitiq - numpy python>3.10 wheel probs
 RUN pip install ipyparallel
 RUN pip install mistune
