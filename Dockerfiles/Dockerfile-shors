@@ -2,29 +2,28 @@ FROM twobombs/thereminq-tensors
 
 # install apt packages because 
 RUN apt update && apt install -y pybind11-dev cmake nodejs npm libssl-dev xxd libgmp3-dev && apt clean all
-#
+
 # install rsa primes UI & Shors' input requirement. 
 RUN add-apt-repository -y ppa:linuxuprising/libpng12 && apt update && apt install libboost-all-dev opencl-headers xxd libpng12-0 libcanberra-gtk-module gtk2-engines-pixbuf libcanberra-gtk3-module && apt clean all
 RUN apt update && apt install libgtest-dev gnome-calculator mathomatic-primes mathomatic libssl-dev && apt clean all
-#
-# nerfed rsa prime generators install
-# RUN git clone --depth=1 https://github.com/openssh/openssh-portable.git && cd openssh-portable && autoreconf && sed -i 's/#define SSH_RSA_MINIMUM_MODULUS_SIZE.*/#define SSH_RSA_MINIMUM_MODULUS_SIZE   1024/g' sshkey.h && ./configure && make && mkdir /var/empty && make tests && make install
-# RUN git clone --depth=1 https://github.com/openssl/openssl.git && cd openssl && ./Configure enable-weak-ssl-ciphers -DOPENSSL_TLS_SECURITY_LEVEL=0 && make && make install
-#
-# vm6502q/qimcifa has an LGPL license. Report (re)use of code to Dan Strano
-# RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa64 && cd /qimcifa64 && cmake -DBIG_INT_BITS=64 . && make
-RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa128 && cd /qimcifa128 && cmake -DBIG_INT_BITS=128 -DUSE_GMP=OFF -DUSE_BOOST=OFF . && make
-# RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa512 && cd /qimcifa512 && cmake -DBIG_INT_BITS=512 . && make
+
+# 128+ qimcifa with loadbalancer
+RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa128 && cd /qimcifa128 && cmake -DBIG_INT_BITS=128 . && make
+RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa512 && cd /qimcifa512 && cmake -DBIG_INT_BITS=512 . && make
+RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa1024 && cd /qimcifa1024 && cmake -DBIG_INT_BITS=1024 . && make
+
+# 128+ qimcifa with RND dispatcher
+RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa128rnd && cd /qimcifa128rnd && cmake -DBIG_INT_BITS=128 -DIS_RANDOM=ON . && make
+RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa512rnd && cd /qimcifa512rnd && cmake -DBIG_INT_BITS=512 -DIS_RANDOM=ON . && make
+RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa1024rnd && cd /qimcifa1024rnd && cmake -DBIG_INT_BITS=1024 -DIS_RANDOM=ON . && make
+
 # old bigint build
 RUN git clone --depth=1 --branch opencl_bigint https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa-bigint && cd qimcifa-bigint && cmake . && make
 
-#
 # NV's BigINT implementation + reqs
 RUN git clone --depth=1 https://github.com/google/googletest.git && cd googletest && cmake . && make && make install 
 RUN git clone --depth=1 https://github.com/NVlabs/CGBN.git && cd CGBN && mv /googletest/googletest gtest && make
-#
-# RUN mkdir /root/.ssh
-#
+
 COPY runfiles/run-shors /root/run-shors
 COPY runfiles/shors_winloop.sh /pyqrack-jupyter/shors_winloop.sh
 COPY runfiles/shors_modulus.sh /pyqrack-jupyter/shors_modulus.sh
