@@ -18,7 +18,7 @@ RUN pip3 install qiskit-iqm
 # install IQM Klayout 
 RUN wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.0-1_amd64.deb
 RUN dpkg --force all -i klayout_0.29.0-1_amd64.deb
-RUN cd KQCircuits && python3 ./setup_within_klayout.py
+# RUN cd KQCircuits && python3 ./setup_within_klayout.py
 
 COPY runfiles/run /root/run
 EXPOSE 6080
