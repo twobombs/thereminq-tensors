@@ -8,10 +8,17 @@ RUN pip3 install --upgrade qiskit-metal pyqrack
 
 # Install IBM QC connector
 RUN pip3 install -U IBMQuantumExperience
+
 # Install Qiskit
 RUN pip3 install qiskit[visualization] qiskit-qrack-provider
+
 # install IQM connectors and libary
 RUN pip3 install qiskit-iqm 
+
+# install IQM Klayout 
+RUN wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.0-1_amd64.deb
+RUN dpkg --force all -i klayout_0.29.0-1_amd64.deb
+RUN git clone https://github.com/iqm-finland/KQCircuits && cd KQCircuits && python setup_within_klayout.py
 
 COPY runfiles/run /root/run
 EXPOSE 6080
