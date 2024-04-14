@@ -5,7 +5,7 @@
 ### CUDA-CLuster VDI
 
 PyQrack & Qiskit Jupyter Notebooks in `:latest` <br>
-Shors' Algorithm Analysis with Qimcifa and Qrack in `:shors` <br>
+Shors' Algorithm Analysis with Qimcifa and pyQrack in `:shors` <br>
 Tensor Board, Tensor Flow data analisys in `:boards` <br>
 Metal, Qiskit Metal and IQM KQCircuits design in `:metal` 
 
