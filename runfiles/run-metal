@@ -9,7 +9,11 @@ service xrdp start && xrdp &
 
 export DISPLAY=:0&&xterm -e "xset s off" &
 export DISPLAY=:0&&xterm -e "neofetch && tail -f /dev/null" &
+
+# start qiskit-metal jupyter notebook server
 export DISPLAY=:0&&cd qiskit-metal&&jupyter-notebook --allow-root &
+# start klayout
+export DISPLAY=:0&&klayout &
 
 echo "done"
 
