@@ -1,7 +1,7 @@
 FROM twobombs/thereminq-tensors
 
 RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator qtcreator qtbase5-dev qt5-qmake && apt clean all
-RUN git clone https://github.com/iqm-finland/KQCircuits.git & git clone https://github.com/iqm-finland/qiskit-on-iqm.git
+RUN git clone --recursive https://github.com/iqm-finland/KQCircuits.git & git clone --recursive https://github.com/iqm-finland/qiskit-on-iqm.git
 
 # Install pyqrack + couplings, runtime requirements
 RUN pip3 install --upgrade qiskit-metal pyqrack
@@ -18,7 +18,7 @@ RUN pip3 install qiskit-iqm
 # install IQM Klayout with dependancy fix
 RUN wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.0-1_amd64.deb
 RUN dpkg --force all -i klayout_0.29.0-1_amd64.deb && apt --fix-broken install
-# RUN cd KQCircuits && python3 ./setup_within_klayout.py
+RUN cd KQCircuits && python3 ./setup_within_klayout.py
 
 COPY runfiles/run /root/run
 EXPOSE 6080
