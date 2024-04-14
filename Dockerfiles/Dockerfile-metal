@@ -15,9 +15,9 @@ RUN pip3 install qiskit[visualization] qiskit-qrack-provider
 # install IQM connectors and libary
 RUN pip3 install qiskit-iqm 
 
-# install IQM Klayout 
+# install IQM Klayout with dependancy fix
 RUN wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.0-1_amd64.deb
-RUN dpkg --force all -i klayout_0.29.0-1_amd64.deb
+RUN dpkg --force all -i klayout_0.29.0-1_amd64.deb && apt --fix-broken install
 # RUN cd KQCircuits && python3 ./setup_within_klayout.py
 
 COPY runfiles/run /root/run
