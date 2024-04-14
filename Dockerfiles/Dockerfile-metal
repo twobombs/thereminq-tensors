@@ -23,6 +23,6 @@ RUN cd KQCircuits && python3 ./setup_within_klayout.py
 # gnome-terminal invocation fix (temp fix)
 RUN apt install -y locales && apt remove -y gnome-terminal && apt purge -y gnome-terminal && apt install -y gnome-terminal 
 
-COPY runfiles/run /root/run
-EXPOSE 6080
-ENTRYPOINT /root/run
+COPY runfiles/run /root/run-metal
+EXPOSE 6080 8888
+ENTRYPOINT /root/run-metal
