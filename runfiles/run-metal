@@ -11,7 +11,7 @@ export DISPLAY=:0&&xterm -e "xset s off" &
 export DISPLAY=:0&&xterm -e "neofetch && tail -f /dev/null" &
 
 # start qiskit-metal jupyter notebook server
-export DISPLAY=:0&&cd qiskit-metal&&jupyter-notebook --allow-root &
+export DISPLAY=:0&&jupyter notebook --notebook-dir=/qiskit-metal --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
 # start klayout
 export DISPLAY=:0&&klayout &
 
