@@ -20,6 +20,9 @@ RUN wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.0-1_amd64.deb
 RUN dpkg --force all -i klayout_0.29.0-1_amd64.deb && apt --fix-broken install
 RUN cd KQCircuits && python3 ./setup_within_klayout.py
 
+# gnome-terminal invocation fix (temp fix)
+RUN apt install -y locales && apt remove -y gnome-terminal && apt purge -y gnome-terminal && apt install -y gnome-terminal 
+
 COPY runfiles/run /root/run
 EXPOSE 6080
 ENTRYPOINT /root/run
