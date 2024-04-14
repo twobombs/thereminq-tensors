@@ -8,9 +8,9 @@ RUN add-apt-repository -y ppa:linuxuprising/libpng12 && apt update && apt instal
 RUN apt update && apt install libgtest-dev gnome-calculator mathomatic-primes mathomatic libssl-dev && apt clean all
 
 # 128+ qimcifa with loadbalancer
-RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa128 && cd /qimcifa128 && cmake -DBIG_INT_BITS=128 . && make
-RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa512 && cd /qimcifa512 && cmake -DBIG_INT_BITS=512 . && make
-RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa1024 && cd /qimcifa1024 && cmake -DBIG_INT_BITS=1024 . && make
+# RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa128 && cd /qimcifa128 && cmake -DBIG_INT_BITS=128 . && make
+# RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa512 && cd /qimcifa512 && cmake -DBIG_INT_BITS=512 . && make
+# RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa1024 && cd /qimcifa1024 && cmake -DBIG_INT_BITS=1024 . && make
 
 # 128+ qimcifa with RND dispatcher
 RUN git clone --depth=1 https://github.com/vm6502q/qimcifa.git && mv qimcifa qimcifa128rnd && cd /qimcifa128rnd && cmake -DBIG_INT_BITS=128 -DIS_RANDOM=ON . && make
