@@ -4,9 +4,10 @@
 
 ### CUDA-CLuster VDI
 
-PyQrack & Qiskit Jupyter Notebooks in :latest <br>
-Shors' Algorithm Analysis in :shors <br>
-Tensor Board, Tensor Flow in :boards [work in progress]<br>
+PyQrack & Qiskit Jupyter Notebooks in `:latest` <br>
+Shors' Algorithm Analysis with Qimcifa and Qrack in `:shors` <br>
+Tensor Board, Tensor Flow data analisys in `:boards` <br>
+Metal, Qiskit Metal and IQM KQCircuits design in `:metal` 
 
 Plugins / Connectors / Jupyter NoteBooks
 - SimulaQron            http://www.simulaqron.org/
@@ -16,6 +17,7 @@ Plugins / Connectors / Jupyter NoteBooks
 - IBMQuantumExperience  https://quantum-computing.ibm.com/
 - QUDA                  http://lattice.github.io/quda/
 - cuQuantum             https://developer.nvidia.com/cuquantum-sdk
+- IQM KQCircuits        https://github.com/iqm-finland/KQCircuits
 
 The following Python repos are included, converted to Jupyter when needed
 - https://github.com/vm6502q/pyqrack-jupyter.git 
