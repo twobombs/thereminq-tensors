@@ -51,7 +51,9 @@ docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/de
 ````
 ## QIMCIFA and RSA Certificate generation
 ![Screenshot from 2022-05-22 20-43-30](https://user-images.githubusercontent.com/12692227/169710747-32ef4926-0286-487a-b9ed-e8c676b2a43a.png)
-C-style Shors' with rsaConverter ( https://www.idrix.fr/Root/content/category/7/28/51/) and Qimcifa ( https://github.com/vm6502q/qimcifa )
+Shors' with 
+- rsaConverter https://www.idrix.fr/Root/content/category/7/28/51/
+- Qimcifa https://github.com/vm6502q/qimcifa
 
 ## CPU accelerated the same VDI:
 ```bash
