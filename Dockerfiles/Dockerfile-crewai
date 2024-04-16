@@ -1,8 +1,11 @@
 FROM twobombs/thereminq-tensors:metal
 
-# add the CrewAI 
+# add the CrewAI and Autogenstudio Agents
 RUN git clone https://github.com/joaomdmoura/crewAI.git
 RUN pip3 install crewai[tools] autogenstudio 
+
+# langchain and mlflow
+RUN python3 -m pip install --upgrade langchain mlflow
 
 COPY runfiles/run /root/run-metal
 EXPOSE 6080 8888
