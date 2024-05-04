@@ -60,7 +60,7 @@ Shors' with
 docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:qimcifa
 ````
 
-## Ollama Open Interpreter Agent stack for coding solutions
+## Ollama Open Interpreter AgentOPS stack for coding solutions
 ![Screenshot from 2024-05-04 12-54-37](https://github.com/twobombs/thereminq-tensors/assets/12692227/318b1e55-5fee-4c57-9642-4b13f43affc7)
 - Ollama https://ollama.com
 - Open Interpreter https://www.openinterpreter.com/
