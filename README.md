@@ -8,6 +8,7 @@ PyQrack & Qiskit Jupyter Notebooks in `:latest` <br>
 Shors' Algorithm Analysis with Qimcifa and pyQrack in `:shors` <br>
 Tensor Board, Tensor Flow data analisys in `:boards` <br>
 Metal, Qiskit Metal and IQM KQCircuits design in `:metal` 
+AgentOPS on Open Interpreter UI and Ollama in `:agent`
 
 Plugins / Connectors / Jupyter NoteBooks
 - SimulaQron            http://www.simulaqron.org/
@@ -55,7 +56,21 @@ Shors' with
 - rsaConverter https://www.idrix.fr/Root/content/category/7/28/51/
 - Qimcifa https://github.com/vm6502q/qimcifa
 
-## CPU accelerated the same VDI:
+```bash
+docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:qimcifa
+````
+
+## Ollama Open Interpreter Agent stack for coding solutions
+![Screenshot from 2024-05-04 12-54-37](https://github.com/twobombs/thereminq-tensors/assets/12692227/318b1e55-5fee-4c57-9642-4b13f43affc7)
+- Ollama https://ollama.com
+- Open Interpreter https://www.openinterpreter.com/
+- Open Interpreter UI https://github.com/blazzbyte/OpenInterpreterUI
+
+```bash
+docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:agent
+````
+
+## CPU only accelerated vanilla VDI:
 ```bash
 docker run -p 6080:6080 -d twobombs/thereminq-tensors
 ````
