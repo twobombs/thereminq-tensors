@@ -15,16 +15,6 @@ export DISPLAY=:0&&jupyter notebook --notebook-dir=/qiskit-metal --ip 127.0.0.1 
 # start klayout
 export DISPLAY=:0&&klayout &
 
-#start ollama pull llama 3
-OLLAMA_HOST=0.0.0.0 ollama serve &
-sleep 3
-ollama pull llama3 &
-
-# start open-interpreter with webui
-cd /OpenInterpreterUI && streamlit run app.py --server.port 8501 &
-
-sleep 30 && export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default-browser-check --no-first-run --no-sandbox --password-store=basic http://127.0.0.1:8501
-
 echo "done"
 
 # end run, do not stop container
