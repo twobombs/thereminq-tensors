@@ -1,0 +1,26 @@
+# X-run script
+rm /tmp/.X0-lock
+Xvfb :0 -screen 0 1920x1080x24+32 -ac &
+export DISPLAY=:0&&startxfce4 &
+sleep 10
+x0vncserver -display :0 -passwordfile ~/.vnc/passwd &
+/usr/share/novnc/utils/launch.sh --vnc localhost:5900 &
+service xrdp start && xrdp &
+
+export DISPLAY=:0&&xterm -e "xset s off" &
+export DISPLAY=:0&&xterm -e "neofetch && tail -f /dev/null" &
+
+#start ollama pull llama 3
+OLLAMA_HOST=0.0.0.0 ollama serve &
+sleep 3
+ollama pull llama3 &
+
+# start open-interpreter with webui
+cd /OpenInterpreterUI && streamlit run app.py --server.port 8501 &
+
+sleep 30 && export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default-browser-check --no-first-run --no-sandbox --password-store=basic http://127.0.0.1:8501
+
+echo "done"
+
+# end run, do not stop container
+tail -f /dev/null
