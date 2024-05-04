@@ -4,6 +4,9 @@ FROM twobombs/thereminq-tensors:metal
 RUN git clone https://github.com/joaomdmoura/crewAI.git
 RUN pip3 install crewai[tools] autogenstudio open-interpreter
 
+# fetch ollama
+RUN curl -fsSL https://ollama.com/install.sh | sh
+
 # install open-interpreter web UI
 RUN git clone --depth=1 https://github.com/blazzbyte/OpenInterpreterUI.git
 RUN cd OpenInterpreterUI && pip3 install -r requirements.txt && pip cache purge
