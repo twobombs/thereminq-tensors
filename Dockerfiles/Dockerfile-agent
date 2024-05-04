@@ -1,4 +1,4 @@
-FROM twobombs/thereminq-tensors:metal
+FROM twobombs/thereminq-tensors
 
 # add the CrewAI and Autogenstudio Agents
 RUN git clone https://github.com/joaomdmoura/crewAI.git
@@ -11,6 +11,6 @@ RUN curl -fsSL https://ollama.com/install.sh | sh
 RUN git clone --depth=1 https://github.com/blazzbyte/OpenInterpreterUI.git
 RUN cd OpenInterpreterUI && pip3 install -r requirements.txt && pip cache purge
 
-COPY runfiles/run /root/run-metal
+COPY runfiles/run /root/run-agent
 EXPOSE 6080 8888
-ENTRYPOINT /root/run-metal
+ENTRYPOINT /root/run-agent
