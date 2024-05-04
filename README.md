@@ -34,13 +34,6 @@ The following Python repos are included, converted to Jupyter when needed
 docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:tag
 ````
 
-## Shors' RSA SSH Keypair factorization and 2-primes test loop 
-![Screenshot from 2022-05-14 20-10-47](https://user-images.githubusercontent.com/12692227/168443646-35d34d39-b85b-4289-a8d7-a463c89ddc20.png)
-Python Jupyter PyQrack & Qiskit environment
-
-```bash
-docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:shors
-````
 ## Interactive Qiskit Metal and KQCircuits 
 ![Screenshot from 2024-04-14 17-03-08](https://github.com/twobombs/thereminq-tensors/assets/12692227/5c717466-459e-4bef-b739-c0e699069d82)
 
@@ -49,15 +42,6 @@ Metal, Qiskit Metal and IQM KQCircuits environment
 
 ```bash
 docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:metal
-````
-## QIMCIFA and RSA Certificate generation
-![Screenshot from 2022-05-22 20-43-30](https://user-images.githubusercontent.com/12692227/169710747-32ef4926-0286-487a-b9ed-e8c676b2a43a.png)
-Shors' with 
-- rsaConverter https://www.idrix.fr/Root/content/category/7/28/51/
-- Qimcifa https://github.com/vm6502q/qimcifa
-
-```bash
-docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:qimcifa
 ````
 
 ## Ollama Open Interpreter AgentOPS stack for coding solutions
@@ -68,6 +52,24 @@ docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/de
 
 ```bash
 docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:agent
+````
+
+## Shors' RSA SSH Keypair factorization and 2-primes test loop 
+![Screenshot from 2022-05-14 20-10-47](https://user-images.githubusercontent.com/12692227/168443646-35d34d39-b85b-4289-a8d7-a463c89ddc20.png)
+Python Jupyter PyQrack & Qiskit environment
+
+```bash
+docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:shors
+````
+
+## QIMCIFA and RSA Certificate generation
+![Screenshot from 2022-05-22 20-43-30](https://user-images.githubusercontent.com/12692227/169710747-32ef4926-0286-487a-b9ed-e8c676b2a43a.png)
+Shors' with 
+- rsaConverter https://www.idrix.fr/Root/content/category/7/28/51/
+- Qimcifa https://github.com/vm6502q/qimcifa
+
+```bash
+docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:qimcifa
 ````
 
 ## CPU only accelerated vanilla VDI:
