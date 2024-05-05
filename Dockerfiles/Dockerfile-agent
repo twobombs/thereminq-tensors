@@ -1,7 +1,7 @@
 FROM twobombs/thereminq-tensors
 
 # python-is-python3
-apt install -y python-is-python3 && apt clean all
+RUN apt install -y python-is-python3 && apt clean all
 
 # add the CrewAI and Autogenstudio Agents
 # RUN git clone https://github.com/joaomdmoura/crewAI.git
