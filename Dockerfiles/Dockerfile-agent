@@ -4,8 +4,11 @@ FROM twobombs/thereminq-tensors
 apt install -y python-is-python3 && apt clean all
 
 # add the CrewAI and Autogenstudio Agents
-RUN git clone https://github.com/joaomdmoura/crewAI.git
-RUN pip3 install crewai[tools] autogenstudio open-interpreter
+# RUN git clone https://github.com/joaomdmoura/crewAI.git
+# RUN pip3 install crewai[tools] autogenstudio 
+
+# install open-interpreter
+RUN pip3 install open-interpreter
 
 # fetch ollama
 RUN curl -fsSL https://ollama.com/install.sh | sh
