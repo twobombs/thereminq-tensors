@@ -4,24 +4,24 @@ RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator qtcre
 RUN git clone --recursive https://github.com/iqm-finland/KQCircuits.git & git clone --recursive https://github.com/iqm-finland/qiskit-on-iqm.git
 
 # Install pyqrack + couplings, runtime requirements
-RUN pip3 install --upgrade qiskit-metal pyqrack
+RUN pip3 install --upgrade qiskit-metal pyqrack && pip cache purge
 
 # Install IBM QC connector
-RUN pip3 install -U IBMQuantumExperience
+RUN pip3 install -U IBMQuantumExperience && pip cache purge
 
 # Install Qiskit
-RUN pip3 install qiskit[visualization] qiskit-qrack-provider
+RUN pip3 install qiskit[visualization] qiskit-qrack-provider && pip cache purge
 
 # install IQM connectors and libary
-RUN pip3 install qiskit-iqm 
+RUN pip3 install qiskit-iqm && pip cache purge
 
 # install IQM Klayout with dependancy fix
 RUN wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.0-1_amd64.deb
 RUN dpkg --force all -i klayout_0.29.0-1_amd64.deb && apt --fix-broken install
-RUN cd KQCircuits && python3 ./setup_within_klayout.py
+RUN cd KQCircuits && python3 setup_within_klayout.py
 
 # gnome-terminal invocation fix (temp fix)
-RUN apt install -y locales && apt remove -y gnome-terminal && apt purge -y gnome-terminal && apt install -y gnome-terminal 
+RUN apt install -y locales && apt remove -y gnome-terminal && apt purge -y gnome-terminal && apt install -y gnome-terminal && apt clean all
 
 COPY runfiles/run /root/run-metal
 EXPOSE 6080 8888
