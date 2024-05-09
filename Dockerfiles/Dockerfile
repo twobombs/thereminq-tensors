@@ -42,7 +42,7 @@ RUN git clone --depth=1 https://github.com/tensorflow/gnn.git tensorflow_gnn
 # isntall qiskit[metal/visualisation] requirements
 RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && apt clean all
 # Install pyqrack + couplings, runtime requirements
-RUN pip3 install --upgrade qiskit-metal pyqrack && pip cache purge
+RUN pip3 install --upgrade pyqrack && pip cache purge
 
 # Install IBM QC connector
 RUN pip3 install -U IBMQuantumExperience && pip cache purge
