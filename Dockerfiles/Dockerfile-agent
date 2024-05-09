@@ -43,5 +43,7 @@ RUN cd OpenInterpreterUI && pip3 install -r requirements.txt && pip cache purge
 RUN apt remove -y python3-matplotlib
 
 COPY runfiles/run-agent /root/run-agent
+RUN chown 744 /root/run-agent
+
 EXPOSE 6080 8888
 ENTRYPOINT /root/run-agent
