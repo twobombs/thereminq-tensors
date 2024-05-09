@@ -39,6 +39,8 @@ RUN curl -fsSL https://ollama.com/install.sh | sh
 # install open-interpreter web UI
 RUN git clone --depth=1 https://github.com/blazzbyte/OpenInterpreterUI.git
 RUN cd OpenInterpreterUI && pip3 install -r requirements.txt && pip cache purge
+# matplotlib fix
+RUN apt remove -y python3-matplotlib
 
 COPY runfiles/run /root/run-agent
 EXPOSE 6080 8888
