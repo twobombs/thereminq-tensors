@@ -34,6 +34,7 @@ RUN git clone --depth=1 https://github.com/NVIDIA/cuQuantum.git
 RUN git clone --depth=1 https://github.com/unitaryfund/research
 RUN git clone --depth=1 https://github.com/Qiskit/qiskit-metal.git
 RUN git clone --depth=1 https://github.com/tensorflow/gnn.git tensorflow_gnn
+RUN git clone --depth=1 https://github.com/tensorflow/quantum.git
 
 # Install SimulaQron 
 # RUN pip3 install simulaqron
