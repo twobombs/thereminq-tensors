@@ -1,4 +1,4 @@
-## ThereminQ Tensors - Jupyter notebooks, Shors' and TensorBoards
+## ThereminQ Tensors - Jupyter notebooks, Shors' and Tensorflow-Quantum
 <img width="1000" alt="ThereminQ" src="https://github.com/twobombs/thereminq-tensors/assets/12692227/a299e650-6513-43d1-afab-ba036aa5e12e">
 
 
@@ -28,6 +28,7 @@ The following Python repos are included, converted to Jupyter when needed
 - https://github.com/vm6502q/qiskit-qrack-provider.git
 - https://github.com/unitaryfund/mitiq.git
 - https://github.com/NVIDIA/cuQuantum.git
+- https://github.com/tensorflow/quantum.git
 
 ## Run with Nvidia-Docker and/or Intel GPU Full VDI:
 ```bash
