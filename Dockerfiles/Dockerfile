@@ -15,7 +15,7 @@ RUN npm install -g qps-client
 RUN apt install -y python3-pip && apt clean all
 RUN pip3 install --upgrade pip
 # RUN apt remove -y python3-blinker
-RUN pip3 install jupytext ipython tensorboard tensorflow tensorflow-quantum jupyter traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book && pip cache purge
+RUN pip3 install jupytext ipython tensorflow-quantum jupyter traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book && pip cache purge
 
 # qiskit examples
 RUN git clone --depth=1 https://github.com/Qiskit/qiskit-iqx-tutorials.git && mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
