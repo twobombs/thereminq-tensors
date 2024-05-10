@@ -1,4 +1,4 @@
-## ThereminQ Tensors - Jupyter notebooks, Shors' and Tensorflow-Quantum
+## ThereminQ Tensors - Agentic Jupyter notebooks and Tensorflow-Quantum AI
 <img width="1000" alt="ThereminQ" src="https://github.com/twobombs/thereminq-tensors/assets/12692227/a299e650-6513-43d1-afab-ba036aa5e12e">
 
 
