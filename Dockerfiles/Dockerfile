@@ -18,7 +18,7 @@ RUN pip3 install --upgrade pip
 RUN pip3 install jupytext ipython tensorboard tensorflow jupyter traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book && pip cache purge
 
 # tensorflow-quantum
-RUN git clone --depth=1 https://github.com/tensorflow/quantum.git && pip3 install -U tfq-nightly && pip cache purge
+RUN git clone --depth=1 https://github.com/tensorflow/quantum.git && cd quantum && pip install -r requirements.txt && pip cache purge
 
 # qiskit examples
 RUN git clone --depth=1 https://github.com/Qiskit/qiskit-iqx-tutorials.git && mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
