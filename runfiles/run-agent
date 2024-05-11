@@ -10,7 +10,7 @@ service xrdp start && xrdp &
 export DISPLAY=:0&&xterm -e "xset s off" &
 export DISPLAY=:0&&xterm -e "neofetch && tail -f /dev/null" &
 
-#start ollama pull llama 3
+#start ollama serve
 OLLAMA_HOST=0.0.0.0 ollama serve &
 
 # start open-interpreter with webui
@@ -18,7 +18,9 @@ cd /OpenInterpreterUI && streamlit run app.py --server.port 8501 &
 
 export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default-browser-check --no-first-run --no-sandbox --password-store=basic http://127.0.0.1:8501 &
 
-ollama pull llama3 && export DISPLAY=:0 && xfce4-terminal -e "interpreter -y --model ollama/llama3"
+ollama pull llama3 
+
+export DISPLAY=:0 && xfce4-terminal -e "interpreter -y --model llama3"
 
 echo "done"
 
