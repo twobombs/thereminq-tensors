@@ -1,7 +1,7 @@
 FROM twobombs/thereminq-tensors:tensorboards
 
 # hard install tensorflow-quantum
-RUN git clone --depth=1 https://github.com/tensorflow/quantum.git && cd quantum && pip install -r --ignore-installed requirements.txt && pip cache purge
+RUN git clone --depth=1 https://github.com/tensorflow/quantum.git && cd quantum && pip install --ignore-installed -r requirements.txt && pip cache purge
 
 EXPOSE 6080
 ENTRYPOINT /root/run-boards
