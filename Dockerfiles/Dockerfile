@@ -41,15 +41,6 @@ RUN pip3 install qiskit[all] qiskit-qrack-provider && pip cache purge
 # Install qc-client WebUI
 RUN apt install npm && npm install -g qps-client & apt clean all
 
-# convert all the ipynb files to python
-RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
-RUN cd qiskit-iqx-tutorials && jupyter nbconvert --to script *.ipynb
-RUN cd Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
-
-# convert some of the py files to ipynb for convenience
-RUN cd simulator-benchmarks && jupytext --to notebook *.py
-# RUN cd mitiq/benchmarks && jupytext --to notebook benchmarks.py
-
 # make log dir for measured results
 RUN mkdir /var/log/thereminq
 
