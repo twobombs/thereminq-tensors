@@ -48,4 +48,4 @@ RUN mkdir /root/.ssh
 COPY runfiles/run-boards /root/run-boards
 
 EXPOSE 6080
-ENTRYPOINT /root/run-boards
+ENTRYPOINT /root/run-nv
