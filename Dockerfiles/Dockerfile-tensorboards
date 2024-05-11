@@ -5,6 +5,15 @@ RUN pip3 install jupytext ipython tensorboard tensorflow tensorflow_gnn jupyter 
 # tensorflow-quantum
 # RUN git clone --depth=1 https://github.com/tensorflow/quantum.git && cd quantum && pip install -r requirements.txt && pip cache purge
 
+# convert all the ipynb files to python
+RUN cd pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
+RUN cd qiskit-iqx-tutorials && jupyter nbconvert --to script *.ipynb
+RUN cd Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
+
+# convert some of the py files to ipynb for convenience
+RUN cd simulator-benchmarks && jupytext --to notebook *.py
+# RUN cd mitiq/benchmarks && jupytext --to notebook benchmarks.py
+
 RUN mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
 
 EXPOSE 6080
