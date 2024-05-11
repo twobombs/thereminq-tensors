@@ -5,16 +5,18 @@
 
 ### CUDA-CLuster VDI
 
-PyQrack & Qiskit Jupyter Notebooks in `:latest` <br>
-Shors' Algorithm Analysis with Qimcifa and pyQrack in `:shors` <br>
-Tensor Board, Tensor Flow data analisys in `:boards` <br>
-Metal, Qiskit Metal and IQM KQCircuits design in `:metal` 
-AgentOPS on Open Interpreter UI and Ollama in `:agent`
+`:latest` PyQrack & Qiskit Jupyter Notebooks <br>
+`:quantum` Tensorflow Quantum <br>
+`:tensorboards` Tensor Board, Tensor Flow data analisys <br>
+`:metal` Metal, Qiskit Metal and IQM KQCircuits design <br>
+`:agent` AgentOPS on Open Interpreter UI and Ollama <br>
+`:shors` Shors' Algorithm Analysis with Qimcifa and pyQrack <br>
 
 Plugins / Connectors / Jupyter NoteBooks
-- SimulaQron            http://www.simulaqron.org/
+- pyQrack               https://github.com/unitaryfund/pyqrack
 - Mitiq                 https://mitiq.readthedocs.io/en/stable/
 - Cirq                  https://quantumai.google/cirq
+- Qiskit                https://www.ibm.com/quantum/qiskit
 - Qiskit-qrack-provider https://github.com/vm6502q/qiskit-qrack-provider
 - IBMQuantumExperience  https://quantum-computing.ibm.com/
 - QUDA                  http://lattice.github.io/quda/
