@@ -1,10 +1,11 @@
 FROM twobombs/thereminq-tensors:tensorboards
 
-# hard install tensorflow-quantum
-RUN apt update && apt install -y python3-grpcio && apt clean all
-RUN pip install --upgrade setuptools && pip cache purge
-RUN git clone --depth=1 https://github.com/tensorflow/quantum.git
-RUN cd quantum && pip install --ignore-installed -r requirements.txt && pip cache purge
+# inpsired by https://arxiv.org/pdf/2401.07049v1
+# qml diffusion notebook via https://arxiv.org/pdf/2310.05866 
+# qml research container via https://github.com/BoltzmannEntropy/QMLDocker
+
+RUN git clone --depth=1 https://github.com/francis-hsu/quantgenmdl
+RUN git clone --depth=1 https://github.com/BoltzmannEntropy/QMLDocker
 
 EXPOSE 6080
 ENTRYPOINT /root/run-boards
