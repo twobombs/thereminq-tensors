@@ -6,8 +6,8 @@
 ### CUDA-CLuster VDI
 
 `:latest` PyQrack & Qiskit Jupyter Notebooks <br>
-`:quantum` Tensorflow Quantum <br>
-`:tensorboards` Tensor Board, Tensor Flow data analisys <br>
+`:qml` QML Jupyter notebooks <br>
+`:tensorboards` Tensor Board, Tensor Flow data analysis <br>
 `:metal` Metal, Qiskit Metal and IQM KQCircuits design <br>
 `:agent` AgentOPS on Open Interpreter UI and Ollama <br>
 `:shors` Shors' Algorithm Analysis with Qimcifa and pyQrack <br>
