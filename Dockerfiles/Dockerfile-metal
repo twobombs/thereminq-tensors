@@ -18,7 +18,7 @@ RUN pip3 install qiskit-iqm && pip cache purge
 # install IQM Klayout with dependancy fix
 RUN wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.0-1_amd64.deb
 RUN dpkg --force all -i klayout_0.29.0-1_amd64.deb && apt --fix-broken install
-RUN cd KQCircuits && python3 ./setup_within_klayout.py
+# RUN cd KQCircuits && python3 setup_within_klayout.py
 
 # gnome-terminal invocation fix (temp fix)
 RUN apt install -y locales && apt remove -y gnome-terminal && apt purge -y gnome-terminal && apt install -y gnome-terminal && apt clean all
