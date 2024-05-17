@@ -7,7 +7,7 @@ RUN pip3 install jupytext ipython tensorboard tensorflow tensorflow_gnn jupyter 
 
 # convert all the ipynb files to python
 RUN cd /notebooks/pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
-RUN cd /notebooks/qiskit-iqx-tutorials && jupyter nbconvert --to script *.ipynb
+# RUN cd /notebooks/qiskit-iqx-tutorials && jupyter nbconvert --to script *.ipynb
 RUN cd /notebooks/Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
 
 # convert some of the py files to ipynb for convenience
