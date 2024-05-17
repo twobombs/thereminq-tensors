@@ -27,6 +27,7 @@ RUN cd notebooks && git clone --depth=1 https://github.com/NVIDIA/cuQuantum.git
 RUN cd notebooks && git clone --depth=1 https://github.com/unitaryfund/research
 RUN cd notebooks && git clone --depth=1 https://github.com/Qiskit/qiskit-metal.git
 RUN cd notebooks && git clone --depth=1 https://github.com/tensorflow/gnn.git tensorflow_gnn
+RUN cd notebooks && git clone --depth=1 https://github.com/twobombs/QRISE2024.git
 
 # install qiskit[metal/visualisation] tooling
 RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && apt clean all
