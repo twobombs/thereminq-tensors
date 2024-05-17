@@ -16,16 +16,17 @@ RUN git clone --depth=1 https://github.com/Qiskit/qiskit-iqx-tutorials.git
 RUN pip3 install --upgrade pyqrack cirq pyzx mitiq ipyparallel pennylane pennylane-qrack mistune cmake cirq qiskit && pip cache purge
 # qutechopenql
 
-RUN git clone --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git 
-RUN git clone --depth=1 https://github.com/twobombs/thereminq-tensors.git
-RUN git clone --depth=1 https://github.com/vm6502q/simulator-benchmarks.git
-RUN git clone --depth=1 https://github.com/quantumlib/Cirq.git
-RUN git clone --depth=1 https://github.com/vm6502q/qiskit-qrack-provider.git
-RUN git clone --depth=1 https://github.com/unitaryfund/mitiq.git
-RUN git clone --depth=1 https://github.com/NVIDIA/cuQuantum.git
-RUN git clone --depth=1 https://github.com/unitaryfund/research
-RUN git clone --depth=1 https://github.com/Qiskit/qiskit-metal.git
-RUN git clone --depth=1 https://github.com/tensorflow/gnn.git tensorflow_gnn
+RUN mkdir notebooks
+RUN cd notebooks && git clone --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git 
+RUN cd notebooks && git clone --depth=1 https://github.com/twobombs/thereminq-tensors.git
+RUN cd notebooks && git clone --depth=1 https://github.com/vm6502q/simulator-benchmarks.git
+RUN cd notebooks && git clone --depth=1 https://github.com/quantumlib/Cirq.git
+RUN cd notebooks && git clone --depth=1 https://github.com/vm6502q/qiskit-qrack-provider.git
+RUN cd notebooks && git clone --depth=1 https://github.com/unitaryfund/mitiq.git
+RUN cd notebooks && git clone --depth=1 https://github.com/NVIDIA/cuQuantum.git
+RUN cd notebooks && git clone --depth=1 https://github.com/unitaryfund/research
+RUN cd notebooks && git clone --depth=1 https://github.com/Qiskit/qiskit-metal.git
+RUN cd notebooks && git clone --depth=1 https://github.com/tensorflow/gnn.git tensorflow_gnn
 
 # install qiskit[metal/visualisation] tooling
 RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && apt clean all
