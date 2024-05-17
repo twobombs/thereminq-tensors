@@ -1,5 +1,5 @@
 FROM twobombs/thereminq-tensors
-#
+
 RUN pip3 install jupytext ipython tensorboard tensorflow tensorflow_gnn jupyter traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book && pip cache purge
 
 # tensorflow-quantum
@@ -14,7 +14,7 @@ RUN cd /notebooks/Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
 RUN cd simulator-benchmarks && jupytext --to notebook *.py
 # RUN cd mitiq/benchmarks && jupytext --to notebook benchmarks.py
 
-RUN mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
+RUN cd notebooks && mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
 
 EXPOSE 6080
 ENTRYPOINT /root/run-boards
