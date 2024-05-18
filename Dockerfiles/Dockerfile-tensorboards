@@ -11,7 +11,7 @@ RUN cd /notebooks/pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
 RUN cd /notebooks/Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
 
 # convert some of the py files to ipynb for convenience
-RUN cd simulator-benchmarks && jupytext --to notebook *.py
+RUN cd /notebooks/simulator-benchmarks && jupytext --to notebook *.py
 # RUN cd mitiq/benchmarks && jupytext --to notebook benchmarks.py
 
 RUN cd notebooks && mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
