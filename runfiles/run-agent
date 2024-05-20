@@ -12,6 +12,7 @@ export DISPLAY=:0&&xterm -e "neofetch && tail -f /dev/null" &
 
 #start ollama serve
 OLLAMA_HOST=0.0.0.0 ollama serve &
+sleep 5
 
 # start open-interpreter with webui
 cd /OpenInterpreterUI && streamlit run app.py --server.port 8501 &
