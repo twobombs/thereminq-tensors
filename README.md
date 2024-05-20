@@ -1,5 +1,5 @@
 ## ThereminQ-Tensors - run, control Quantum Compute
-## Agentic Jupyter notebooks and Tensorflow
+## with Agentic Jupyter Notebooks and Tensorflow
 <img width="1000" alt="ThereminQ" src="https://github.com/twobombs/thereminq-tensors/assets/12692227/a299e650-6513-43d1-afab-ba036aa5e12e">
 
 
