@@ -22,6 +22,7 @@ RUN cd notebooks && git clone --depth=1 https://github.com/twobombs/thereminq-te
 RUN cd notebooks && git clone --depth=1 https://github.com/vm6502q/simulator-benchmarks.git
 RUN cd notebooks && git clone --depth=1 https://github.com/quantumlib/Cirq.git
 RUN cd notebooks && git clone --depth=1 https://github.com/vm6502q/qiskit-qrack-provider.git
+RUN cd notebooks && git clone --depth=1 https://github.com/vm6502q/pyqrack-examples.git
 RUN cd notebooks && git clone --depth=1 https://github.com/unitaryfund/mitiq.git
 RUN cd notebooks && git clone --depth=1 https://github.com/NVIDIA/cuQuantum.git
 RUN cd notebooks && git clone --depth=1 https://github.com/unitaryfund/research
