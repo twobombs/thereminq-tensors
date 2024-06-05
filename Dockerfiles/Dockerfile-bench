@@ -1,8 +1,8 @@
 FROM twobombs/thereminq-tensors:tensorboards
 
 # RUN apt update && apt install julia
-RUN git clone --depth=1 https://github.com/zapatacomputing/benchq && pip install benchq && pip cache purge
-RUN pip install git+https://github.com/pyscf/pyscf@v2.2.1
+RUN git clone --depth=1 https://github.com/zapatacomputing/benchq && pip install --ignore-installed benchq && pip cache purge
+RUN pip install --ignore-installed git+https://github.com/pyscf/pyscf@v2.2.1
 
 RUN git clone --depth=1 https://github.com/yardstiq/quantum-benchmarks.git && ./quantum-benchmarks/bin/benchmark install
 
