@@ -11,6 +11,7 @@
 `:metal` Qiskit Metal and IQM KQCircuits design <br>
 `:agent` adds AgentOPS with Open Interpreter UI <br>
 `:shors` PoC Shors' Algorithm Analysis with Qimcifa and pyQrack <br>
+`:bench` bFor BenchQ and 
 
 Plugins / Connectors / Jupyter NoteBooks
 - pyQrack               https://github.com/unitaryfund/pyqrack
@@ -22,8 +23,10 @@ Plugins / Connectors / Jupyter NoteBooks
 - QUDA                  http://lattice.github.io/quda/
 - cuQuantum             https://developer.nvidia.com/cuquantum-sdk
 - IQM KQCircuits        https://github.com/iqm-finland/KQCircuits
+- BenchQ                https://github.com/zapatacomputing/benchq
+- Quantum-benchmark     https://github.com/yardstiq/quantum-benchmarks.git
 
-The following Python repos are included, converted to Jupyter when needed
+The following Python repos are included - converted to Jupyter Notebook or vv
 - https://github.com/vm6502q/pyqrack-jupyter.git 
 - https://github.com/twobombs/thereminq-tensors.git
 - https://github.com/vm6502q/simulator-benchmarks.git
