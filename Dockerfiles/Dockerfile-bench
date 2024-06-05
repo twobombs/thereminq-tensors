@@ -1,0 +1,8 @@
+FROM twobombs/thereminq-tensors:tensorboards
+
+# RUN apt update && apt install julia
+RUn git clone --depth=1 https://github.com/zapatacomputing/benchq && pip install benchq && pip cache purge
+RUN pip install git+https://github.com/pyscf/pyscf@v2.2.1
+
+EXPOSE 6080
+ENTRYPOINT /root/run-boards
