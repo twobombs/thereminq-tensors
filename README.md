@@ -11,7 +11,7 @@
 `:metal` Qiskit Metal and IQM KQCircuits design <br>
 `:agent` adds AgentOPS with Open Interpreter UI <br>
 `:shors` PoC Shors' Algorithm Analysis with Qimcifa and pyQrack <br>
-`:bench` bFor BenchQ and 
+`:bench` for Zapata BenchQ and yarkstiq Quantum-benchmark
 
 Plugins / Connectors / Jupyter NoteBooks
 - pyQrack               https://github.com/unitaryfund/pyqrack
