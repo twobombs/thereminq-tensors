@@ -13,7 +13,7 @@ RUN pip3 install --upgrade pip
 # qiskit and examples
 RUN git clone --depth=1 https://github.com/Qiskit/qiskit-iqx-tutorials.git 
 # Install pyqrack + couplings, runtime requirements
-RUN pip3 install --upgrade pyqrack cirq pyzx mitiq ipyparallel pennylane pennylane-qrack mistune cmake cirq qiskit && pip cache purge
+RUN pip3 install --upgrade scikit-build pyqrack cirq pyzx mitiq ipyparallel pennylane pennylane-qrack mistune cmake cirq qiskit && pip cache purge
 # qutechopenql
 
 RUN mkdir notebooks
