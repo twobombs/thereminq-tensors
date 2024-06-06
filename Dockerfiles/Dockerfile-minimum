@@ -9,7 +9,7 @@ RUN pip install pyzx
 RUN pip install ipyparallel
 RUN pip install mistune
 RUN pip install pennylane
-RUN pip install pennylane-qrack
+# RUN pip install pennylane-qrack
 # RUN pip install qutechopenql - similar fail
 
 # benchmarks
