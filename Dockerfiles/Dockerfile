@@ -14,10 +14,10 @@ RUN pip3 install --upgrade pip && pip cache purge
 RUN git clone --depth=1 https://github.com/Qiskit/qiskit-iqx-tutorials.git 
 # Install pyqrack + couplings, runtime requirements
 # RUN pip3 install --upgrade scikit-build && pip cache purge
-# RUN pip3 install --upgrade PennyLane catalyst pyqrack cirq pyzx mitiq ipyparallel pennylane mistune cmake cirq qiskit && pip cache purge
+RUN pip3 install --upgrade pennyLane catalyst pyqrack cirq pyzx mitiq ipyparallel pennylane mistune cmake cirq qiskit && pip cache purge
 # qutechopenql
 
-RUN git clone --depth=1 https://github.com/unitaryfund/pennylane-qrack.git && cd pennylane-qrack &&  mkdir _build && cd _build && cmake -DCPP_STD=14 .. && make all -j$(nproc --all) && make install
+# RUN git clone --depth=1 https://github.com/unitaryfund/pennylane-qrack.git && cd pennylane-qrack &&  mkdir _build && cd _build && cmake -DCPP_STD=14 .. && make all -j$(nproc --all) && make install
 
 RUN mkdir notebooks
 RUN cd notebooks && git clone --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git 
