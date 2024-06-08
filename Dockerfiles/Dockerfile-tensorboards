@@ -11,6 +11,7 @@ RUN cd /notebooks/pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
 RUN cd /notebooks/Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
 
 # convert some of the py files to ipynb for convenience
+RUN cd /notebooks/pyqrack-examples && jupytext --to notebook *.py
 RUN cd /notebooks/simulator-benchmarks && jupytext --to notebook *.py
 # RUN cd mitiq/benchmarks && jupytext --to notebook benchmarks.py
 
