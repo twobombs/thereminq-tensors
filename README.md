@@ -1,5 +1,5 @@
-## ThereminQ-Tensors - run, control Quantum Compute
-## with Agentic Jupyter Notebooks and Tensorflow
+## ThereminQ-Tensors 
+### Run & Control Quantum Circuits with Agentic Jupyter Notebooks
 <img width="1000" alt="ThereminQ" src="https://github.com/twobombs/thereminq-tensors/assets/12692227/a299e650-6513-43d1-afab-ba036aa5e12e">
 
 
@@ -7,7 +7,7 @@
 
 `:latest` Ollama powered PyQrack & Qiskit Jupyter Notebooks<br>
 `:qml` includes QML Jupyter notebooks <br>
-`:tensorboards` adds Tensor Board, Tensor Flow data analysis <br>
+`:jupyter` Jupyter notebook based data analysis <br>
 `:metal` Qiskit Metal and IQM KQCircuits design <br>
 `:agent` adds AgentOPS with Open Interpreter UI <br>
 `:shors` PoC Shors' Algorithm Analysis with Qimcifa and pyQrack <br>
@@ -37,22 +37,32 @@ The following Python repos are included - converted to Jupyter Notebook or vv
 - https://github.com/tensorflow/quantum.git
 
 ## Run with Nvidia-Docker and/or Intel GPU Full VDI:
+![Screenshot from 2024-06-15 10-23-15](https://github.com/twobombs/thereminq-tensors/assets/12692227/1b2da878-ba8b-4ded-a113-6495fac5c48b)
+
+
 ```bash
 docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:tag
 ````
+
 
 ## Interactive Qiskit Metal and KQCircuits 
 ![Screenshot from 2024-04-14 17-03-08](https://github.com/twobombs/thereminq-tensors/assets/12692227/5c717466-459e-4bef-b739-c0e699069d82)
 
 
-Metal, Qiskit Metal and IQM KQCircuits environment
-
 ```bash
 docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:metal
 ````
 
+## Jupyter Notebooks UI
+![Screenshot from 2024-06-15 10-15-29](https://github.com/twobombs/thereminq-tensors/assets/12692227/401fedd8-78f9-4773-ac68-85808abc97ad)
+
+```bash
+docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:jupyter[-pocl]
+````
+
 ## Ollama Open Interpreter AgentOPS stack for coding solutions
 ![Screenshot from 2024-05-04 12-54-37](https://github.com/twobombs/thereminq-tensors/assets/12692227/318b1e55-5fee-4c57-9642-4b13f43affc7)
+
 - Ollama https://ollama.com
 - Open Interpreter https://www.openinterpreter.com/
 - Open Interpreter UI https://github.com/blazzbyte/OpenInterpreterUI
