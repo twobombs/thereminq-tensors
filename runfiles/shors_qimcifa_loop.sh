@@ -1,6 +1,8 @@
 #!/bin/bash
 # qimcifa winloop 32 bits range with 16 bit steps
 #
+cd /qrackmin/deploy-scripts/qimcifa64
+
 for i in {65535..4294967295..65535}
     do
 	prime=$(matho-primes -c 1 -u $i)
