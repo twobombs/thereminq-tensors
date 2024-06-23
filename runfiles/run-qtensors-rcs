@@ -1,0 +1,14 @@
+#
+#!/bin/bash
+# created to run on dual K80 with 2x12GB and POCL memory
+
+export QRACK_QTENSORNETWORK_THRESHOLD_QB=29
+export QRACK_QPAGER_DEVICES_HOST_POINTER=12.0,1.1
+export QRACK_MAX_PAGE_QB=26
+
+cd /notebooks/pyqrack-examples 
+
+for run in {11..32}; do
+  echo $run
+  python3 rcs.py $run
+done
