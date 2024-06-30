@@ -10,28 +10,40 @@ RUN npm install -g qps-client
 RUN apt install -y python3-pip && apt clean all
 RUN pip3 install --upgrade pip && pip cache purge
 
-# Install pyqrack + couplings, runtime requirements
-# RUN pip3 install --upgrade scikit-build && pip cache purge
-RUN pip3 install --upgrade pennyLane catalyst pyqrack cirq pyzx mitiq ipyparallel pennylane mistune cmake cirq qiskit && pip cache purge
-# qutechopenql
+# install runtime requirements
+RUN pip3 install --upgrade pennyLane catalyst pyqrack qiskit-qrack-provider cirq pyzx mitiq ipyparallel pennylane mistune cmake cirq qiskit[all] qiskit-nature && pip cache purge
 
+# RUN pip3 install --upgrade scikit-build && pip cache purge
 # RUN git clone --depth=1 https://github.com/unitaryfund/pennylane-qrack.git && cd pennylane-qrack &&  mkdir _build && cd _build && cmake -DCPP_STD=14 .. && make all -j$(nproc --all) && make install
 
 RUN mkdir notebooks
-RUN cd notebooks && git clone --depth=1 https://github.com/Qiskit/qiskit-iqx-tutorials.git
+
+# Dan Strano's repo
 RUN cd notebooks && git clone --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git 
-RUN cd notebooks && git clone --depth=1 https://github.com/twobombs/thereminq-tensors.git
 RUN cd notebooks && git clone --depth=1 https://github.com/vm6502q/simulator-benchmarks.git
-RUN cd notebooks && git clone --depth=1 https://github.com/quantumlib/Cirq.git
 RUN cd notebooks && git clone --depth=1 https://github.com/vm6502q/qiskit-qrack-provider.git
 RUN cd notebooks && git clone --depth=1 https://github.com/vm6502q/pyqrack-examples.git
-RUN cd notebooks && git clone --depth=1 https://github.com/unitaryfund/mitiq.git
+
+# NVidia
 RUN cd notebooks && git clone --depth=1 https://github.com/NVIDIA/cuQuantum.git
+
+# unitary fund
 RUN cd notebooks && git clone --depth=1 https://github.com/unitaryfund/research
+RUN cd notebooks && git clone --depth=1 https://github.com/unitaryfund/mitiq.git
+
+# IBM Qiskit [deprecated] projects
+RUN cd notebooks && git clone --depth=1 https://github.com/Qiskit/qiskit-iqx-tutorials.git
 RUN cd notebooks && git clone --depth=1 https://github.com/Qiskit/qiskit-metal.git
+RUN cd notebooks && git clone --depth=1 https://github.com/qiskit-community/qiskit-nature
+
+# Google
+RUN cd notebooks && git clone --depth=1 https://github.com/quantumlib/Cirq.git
 RUN cd notebooks && git clone --depth=1 https://github.com/tensorflow/gnn.git tensorflow_gnn
-#
+
+# 2024 tests
 RUN cd notebooks && git clone --depth=1 https://github.com/twobombs/QRISE2024.git
+
+# integrate own repo
 RUN git clone --depth=1 https://github.com/twobombs/thereminq-tensors
 
 # install qiskit[metal/visualisation] tooling
@@ -39,8 +51,9 @@ RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && ap
 
 # Install IBM QC connector
 RUN pip3 install -U IBMQuantumExperience && pip cache purge
+
 # Install Qiskit viz + pyqrack provider
-RUN pip3 install qiskit[all] qiskit-qrack-provider && pip cache purge
+# RUN pip3 install qiskit[all] qiskit-qrack-provider && pip cache purge
 
 # install munich qc toolkit - will move to other tag when needed -
 # RUN pip3 install mqt.problemsolver mqt.bench mqt.ddsim mqt.qecc
