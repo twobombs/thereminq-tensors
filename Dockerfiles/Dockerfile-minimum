@@ -1,8 +1,8 @@
 FROM twobombs/deploy-nvidia-docker:minimum
 
 # Install pyqrack en reqs.
-RUN apt-get update && apt-get install -y --break-system-packages python3-pip
-RUN pip install --break-system-packages pyqrack pyzx ipyparallel mistune pennylane
+RUN apt-get update && apt-get install -y --break-system-packages python3-pip && apt clean all 
+RUN pip install --break-system-packages pyqrack pyzx ipyparallel mistune pennylane && pip cache purge
 
 # benchmarks
 RUN git clone --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git
@@ -12,11 +12,11 @@ RUN git clone --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git
 # RUN simulaqron set backend pyqrack
 
 # Install IBM QC connector
-RUN pip3 install --break-system-packages -U IBMQuantumExperience
+RUN pip3 install --break-system-packages -U IBMQuantumExperience && pip cache purge
 
 # Install Qiskit
-RUN pip3 install --break-system-packages qiskit[visualization]
-RUN pip3 install  --break-system-packages qiskit-qrack-provider
+RUN pip3 install --break-system-packages qiskit[visualization] && pip cache purge
+RUN pip3 install  --break-system-packages qiskit-qrack-provider && pip cache purge
 
 # Install qc-client WebUI
 RUN apt install -y npm && npm install -g qps-client & apt clean all
