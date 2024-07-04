@@ -35,6 +35,7 @@ RUN cd notebooks && git clone --depth=1 https://github.com/unitaryfund/mitiq.git
 RUN cd notebooks && git clone --depth=1 https://github.com/Qiskit/qiskit-iqx-tutorials.git
 RUN cd notebooks && git clone --depth=1 https://github.com/Qiskit/qiskit-metal.git
 RUN cd notebooks && git clone --depth=1 https://github.com/qiskit-community/qiskit-nature
+RUN cd notebooks && git clone --depth=1 https://github.com/twobombs/qiskit-qrack-nature
 
 # Google
 RUN cd notebooks && git clone --depth=1 https://github.com/quantumlib/Cirq.git
