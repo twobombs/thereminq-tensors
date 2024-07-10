@@ -31,6 +31,9 @@ RUN cd notebooks && git clone --depth=1 https://github.com/NVIDIA/cuQuantum.git
 RUN cd notebooks && git clone --depth=1 https://github.com/unitaryfund/research
 RUN cd notebooks && git clone --depth=1 https://github.com/unitaryfund/mitiq.git
 
+# quantum wednesday 10-7'24 mdopt tests
+RUN cd notebooks && git clone --depth=1 https://github.com/quicophy/mdopt.git
+
 # IBM Qiskit [deprecated] projects
 RUN cd notebooks && git clone --depth=1 https://github.com/Qiskit/qiskit-iqx-tutorials.git
 RUN cd notebooks && git clone --depth=1 https://github.com/Qiskit/qiskit-metal.git
