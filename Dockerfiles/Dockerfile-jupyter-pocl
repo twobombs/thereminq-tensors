@@ -1,26 +1,8 @@
-FROM twobombs/thereminq-tensors
-
-RUN pip3 install jupytext ipython tensorboard tensorflow tensorflow_gnn tensorflow-datasets jupyter traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book && pip cache purge
-
-# tensorflow-quantum
-# RUN git clone --depth=1 https://github.com/tensorflow/quantum.git && cd quantum && pip install -r requirements.txt && pip cache purge
-
-# convert all the ipynb files to python
-RUN cd /notebooks/pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
-# RUN cd /notebooks/qiskit-iqx-tutorials && jupyter nbconvert --to script *.ipynb
-RUN cd /notebooks/Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
-
-# convert some of the py files to ipynb for convenience
-RUN cd /notebooks/pyqrack-examples && jupytext --to notebook *.py
-RUN cd /notebooks/simulator-benchmarks && jupytext --to notebook *.py
-# RUN cd mitiq/benchmarks && jupytext --to notebook benchmarks.py
-
-RUN cd notebooks && mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
+FROM twobombs/thereminq-tensors:jupyter
 
 # pre-pocl 5
 RUN apt install -y python3-dev libpython3-dev build-essential ocl-icd-libopencl1 cmake git pkg-config libclang-dev clang llvm make ninja-build ocl-icd-libopencl1 ocl-icd-dev ocl-icd-opencl-dev libhwloc-dev zlib1g zlib1g-dev clinfo dialog apt-utils libxml2-dev libclang-cpp-dev llvm-dev && apt clean all
-RUN git clone https://github.com/pocl/pocl.git && cd pocl && mkdir build && cd build && cmake -G Ninja -DWITH_LLVM_CONFIG=/usr/bin/llvm-config-14 -DCMAKE_INSTALL_PREFIX=/usr .. && ninja install
-
+RUN git clone --depth=1 https://github.com/pocl/pocl.git && cd pocl && mkdir build && cd build && cmake -G Ninja -DWITH_LLVM_CONFIG=/usr/bin/llvm-config-14 -DCMAKE_INSTALL_PREFIX=/usr .. && ninja install
 
 EXPOSE 6080
 ENTRYPOINT /root/run-boards
