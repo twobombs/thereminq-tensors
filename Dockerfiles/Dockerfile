@@ -19,37 +19,37 @@ RUN pip3 install --upgrade pennyLane catalyst pyqrack qiskit-qrack-provider cirq
 RUN mkdir notebooks
 
 # Dan Strano's repo
-RUN cd notebooks && git clone --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git 
-RUN cd notebooks && git clone --depth=1 https://github.com/vm6502q/simulator-benchmarks.git
-RUN cd notebooks && git clone --depth=1 https://github.com/vm6502q/qiskit-qrack-provider.git
-RUN cd notebooks && git clone --depth=1 https://github.com/vm6502q/pyqrack-examples.git
+RUN cd notebooks && git clone --recursive --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git 
+RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/vm6502q/simulator-benchmarks.git
+RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/vm6502q/qiskit-qrack-provider.git
+RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/vm6502q/pyqrack-examples.git
 
 # NVidia
-RUN cd notebooks && git clone --depth=1 https://github.com/NVIDIA/cuQuantum.git
+RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/NVIDIA/cuQuantum.git
 
 # unitary fund
-RUN cd notebooks && git clone --depth=1 https://github.com/unitaryfund/research
-RUN cd notebooks && git clone --depth=1 https://github.com/unitaryfund/mitiq.git
+RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/unitaryfund/research
+RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/unitaryfund/mitiq.git
 
 # quantum wednesday 10-7'24 mdopt tests
-RUN cd notebooks && git clone --depth=1 https://github.com/twobombs/mdopt.git
+RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/twobombs/mdopt.git
 
 # IBM Qiskit [deprecated] projects
-RUN cd notebooks && git clone --depth=1 https://github.com/Qiskit/qiskit-iqx-tutorials.git
-RUN cd notebooks && git clone --depth=1 https://github.com/Qiskit/qiskit-metal.git
-RUN cd notebooks && git clone --depth=1 https://github.com/qiskit-community/qiskit-nature
-RUN cd notebooks && git clone --depth=1 https://github.com/twobombs/qiskit-qrack-nature
-RUN cd notebooks && git clone --depth=1 https://github.com/qiskit-community/qiskit-community-tutorials.git
+RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/Qiskit/qiskit-iqx-tutorials.git
+RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/Qiskit/qiskit-metal.git
+RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/qiskit-community/qiskit-nature
+RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/twobombs/qiskit-qrack-nature
+RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/qiskit-community/qiskit-community-tutorials.git
 
 # Google
-RUN cd notebooks && git clone --depth=1 https://github.com/quantumlib/Cirq.git
-RUN cd notebooks && git clone --depth=1 https://github.com/tensorflow/gnn.git tensorflow_gnn
+RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/quantumlib/Cirq.git
+RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/tensorflow/gnn.git tensorflow_gnn
 
 # 2024 tests
-RUN cd notebooks && git clone --depth=1 https://github.com/twobombs/QRISE2024.git
+RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/twobombs/QRISE2024.git
 
 # integrate own repo
-RUN git clone --depth=1 https://github.com/twobombs/thereminq-tensors
+RUN git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-tensors
 
 # install qiskit[metal/visualisation] tooling
 RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && apt clean all
