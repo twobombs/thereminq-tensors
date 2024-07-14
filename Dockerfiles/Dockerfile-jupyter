@@ -6,7 +6,8 @@ RUN pip3 install jupytext ipython tensorboard tensorflow tensorflow_gnn tensorfl
 # RUN git clone --depth=1 https://github.com/tensorflow/quantum.git && cd quantum && pip install -r requirements.txt && pip cache purge
 
 # mdopt install
-RUN pip3 install mdopt && pip cache purge
+# RUN pip3 install mdopt && pip cache purge
+RUN cd notebooks/mdopt && pip3 install -r requirements.txt && pip cache purge
 
 # convert all the ipynb files to python
 RUN cd /notebooks/pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
