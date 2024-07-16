@@ -48,6 +48,7 @@ docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/de
 ## Interactive Qiskit Metal and KQCircuits 
 ![Screenshot from 2024-04-14 17-03-08](https://github.com/twobombs/thereminq-tensors/assets/12692227/5c717466-459e-4bef-b739-c0e699069d82)
 
+https://youtu.be/NxArWX8WhPc 
 
 ```bash
 docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:metal
