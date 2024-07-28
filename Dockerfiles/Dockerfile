@@ -40,6 +40,7 @@ RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/Qiskit/q
 RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/qiskit-community/qiskit-nature
 RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/twobombs/qiskit-qrack-nature
 RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/qiskit-community/qiskit-community-tutorials.git
+RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/qiskit-community/qiskit-algorithms.git
 
 # Google
 RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/quantumlib/Cirq.git
