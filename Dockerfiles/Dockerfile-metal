@@ -1,7 +1,7 @@
 FROM twobombs/thereminq-tensors
 
 RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator qtcreator qtbase5-dev qt5-qmake && apt clean all
-RUN git clone --recursive https://github.com/iqm-finland/KQCircuits.git & git clone --recursive https://github.com/iqm-finland/qiskit-on-iqm.git
+RUN git clone --recursive https://github.com/iqm-finland/KQCircuits.git && git clone --recursive https://github.com/iqm-finland/qiskit-on-iqm.git
 RUN git clone --recursive https://github.com/KLayout/klayout
 
 # Install pyqrack + couplings, runtime requirements
