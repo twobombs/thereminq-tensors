@@ -1,13 +1,13 @@
 FROM twobombs/thereminq-tensors
 
-RUN pip3 install jupytext ipython tensorboard tensorflow tensorflow_gnn tensorflow-datasets jupyter traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book && pip cache purge
+RUN pip3 install --break-system-packages jupytext ipython tensorboard tensorflow tensorflow_gnn tensorflow-datasets jupyter traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book && pip cache purge
 
 # tensorflow-quantum
 # RUN git clone --depth=1 https://github.com/tensorflow/quantum.git && cd quantum && pip install -r requirements.txt && pip cache purge
 
 # mdopt install
 # RUN pip3 install mdopt && pip cache purge
-RUN cd notebooks/mdopt && pip3 install -r requirements.txt && pip cache purge
+RUN cd notebooks/mdopt && pip3 install --break-system-packages -r requirements.txt && pip cache purge
 
 # convert all the ipynb files to python
 RUN cd /notebooks/pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
@@ -22,7 +22,6 @@ RUN cd /notebooks/simulator-benchmarks && jupytext --to notebook *.py
 
 RUN cd /notebooks/qiskit-qrack-provider/test/benchmark && jupytext --to notebook *.py
 RUN cd /notebooks/qiskit-qrack-provider/qiskit/provider/qrack && jupytext --to notebook *.py
-
 
 RUN cd notebooks && mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
 
