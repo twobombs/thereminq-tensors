@@ -5,16 +5,16 @@ RUN git clone --recursive https://github.com/iqm-finland/KQCircuits.git & git cl
 RUN git clone --recursive https://github.com/KLayout/klayout
 
 # Install pyqrack + couplings, runtime requirements
-RUN pip3 install --upgrade qiskit-metal pyqrack && pip cache purge
+RUN pip3 install --break-system-packages --upgrade qiskit-metal pyqrack && pip cache purge
 
 # Install IBM QC connector
-RUN pip3 install -U IBMQuantumExperience && pip cache purge
+RUN pip3 install --break-system-packages -U IBMQuantumExperience && pip cache purge
 
 # Install Qiskit
-RUN pip3 install qiskit[visualization] qiskit-qrack-provider && pip cache purge
+RUN pip3 install --break-system-packages qiskit[visualization] qiskit-qrack-provider && pip cache purge
 
 # install IQM connectors and libary
-RUN pip3 install qiskit-iqm && pip cache purge
+RUN pip3 install --break-system-packages qiskit-iqm && pip cache purge
 
 # install IQM Klayout with dependancy fix
 RUN wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.0-1_amd64.deb
