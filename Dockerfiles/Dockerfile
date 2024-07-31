@@ -8,7 +8,7 @@ RUN npm install -g qps-client
 
 # install and upgrade pip
 RUN apt install -y python3-pip && apt clean all
-RUN pip3 install --upgrade pip && pip cache purge
+# RUN pip3 install --break-system-packages --upgrade pip && pip cache purge
 
 # install runtime requirements
 RUN pip3 install --break-system-packages --upgrade pennyLane catalyst pyqrack qiskit-qrack-provider cirq pyzx mitiq ipyparallel pennylane mistune cmake cirq qiskit[all] qiskit-nature pyscf sparse && pip cache purge
