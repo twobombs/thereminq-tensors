@@ -1,4 +1,4 @@
-FROM twobombs/cudacluster:dev
+FROM twobombs/cudacluster:2204dev
 #
 # install apt packages because 
 RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && apt clean all
