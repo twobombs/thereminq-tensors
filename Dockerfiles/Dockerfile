@@ -16,39 +16,37 @@ RUN pip3 install --break-system-packages --upgrade pennyLane catalyst pyqrack qi
 # RUN pip3 install --upgrade scikit-build && pip cache purge
 # RUN git clone --depth=1 https://github.com/unitaryfund/pennylane-qrack.git && cd pennylane-qrack &&  mkdir _build && cd _build && cmake -DCPP_STD=14 .. && make all -j$(nproc --all) && make install
 
-RUN mkdir notebooks
+RUN mkdir notebooks && mkdir qrack && mkdir nvidia && mkdir uf && mkdir qiskit && mkdir google
 
 # Dan Strano's repo
-RUN cd notebooks && git clone --recursive --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git 
-RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/vm6502q/simulator-benchmarks.git
-RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/vm6502q/qiskit-qrack-provider.git
-RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/vm6502q/pyqrack-examples.git
+RUN cd notebooks/qrack && git clone --recursive --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git 
+RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/simulator-benchmarks.git
+RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/qiskit-qrack-provider.git
+RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/pyqrack-examples.git
 
 # NVidia
 RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/NVIDIA/cuQuantum.git
 
 # unitary fund
-RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/unitaryfund/research
-RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/unitaryfund/mitiq.git
-
+RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/unitaryfund/research
+RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/unitaryfund/mitiq.git
 # quantum wednesday 10-7'24 mdopt tests
-RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/twobombs/mdopt.git
+RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/twobombs/mdopt.git
 
 # IBM Qiskit [deprecated] projects
-RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/Qiskit/qiskit-iqx-tutorials.git
-RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/Qiskit/qiskit-metal.git
-RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/qiskit-community/qiskit-nature
-RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/twobombs/qiskit-qrack-nature
-RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/qiskit-community/qiskit-community-tutorials.git
-RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/qiskit-community/qiskit-algorithms.git
+RUN cd notebooks/qiskit && git clone --recursive  --depth=1 https://github.com/Qiskit/qiskit-iqx-tutorials.git
+RUN cd notebooks/qiskit && git clone --recursive  --depth=1 https://github.com/Qiskit/qiskit-metal.git
+RUN cd notebooks/qiskit && git clone --recursive  --depth=1 https://github.com/qiskit-community/qiskit-nature
+RUN cd notebooks/qiskit && git clone --recursive  --depth=1 https://github.com/twobombs/qiskit-qrack-nature
+RUN cd notebooks/qiskit && git clone --recursive  --depth=1 https://github.com/qiskit-community/qiskit-community-tutorials.git
+RUN cd notebooks/qiskit && git clone --recursive  --depth=1 https://github.com/qiskit-community/qiskit-algorithms.git
 
 # Google
-RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/quantumlib/Cirq.git
-RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/tensorflow/gnn.git tensorflow_gnn
+RUN cd notebooks/google && git clone --recursive  --depth=1 https://github.com/quantumlib/Cirq.git
+RUN cd notebooks/google && git clone --recursive  --depth=1 https://github.com/tensorflow/gnn.git tensorflow_gnn
 
 # 2024 tests
 RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/twobombs/QRISE2024.git
-
 # integrate own repo
 RUN git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-tensors
 
