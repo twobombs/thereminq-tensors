@@ -29,7 +29,7 @@ RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/NVIDIA/c
 
 # unitary fund
 RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/unitaryfund/research
-RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/unitaryfund/mitiq.git
+# RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/unitaryfund/mitiq.git
 # quantum wednesday 10-7'24 mdopt tests
 RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/twobombs/mdopt.git
 
