@@ -2,8 +2,8 @@ FROM twobombs/cudacluster:2204dev
 
 RUN pip3 install --ignore-installed jupytext ipython tensorboard tensorflow tensorflow_gnn tensorflow-datasets jupyter traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book && pip cache purge
 
-RUN mkdir notebook && cd notebook && git clone https://github.com/unitaryfund/mitiq.git 
-RUN cd /notebook/mitiq/docs/source/examples/ && jupytext --to notebook *.md
+RUN mkdir notebooks && cd notebooks && git clone https://github.com/unitaryfund/mitiq.git 
+RUN cd /notebooks/mitiq/docs/source/examples/ && jupytext --to notebook *.md
 
 EXPOSE 6080
 ENTRYPOINT /root/run-boards
