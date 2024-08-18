@@ -1,8 +1,10 @@
 FROM twobombs/cudacluster:2204dev
 
 # install dependancies
-RUN apt install msttcorefonts -qq
-RUN pip3 install --ignore-installed jupytext ipython tensorboard tensorflow tensorflow_gnn tensorflow-datasets jupyter traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book && pip cache purge
+RUN apt install msttcorefonts -qq && apt clean all
+RUN pip3 install --ignore-installed jupyter jupytext ipython tensorboard tensorflow tensorflow_gnn tensorflow-datasets && pip cache purge
+RUN pip3 install --ignore-installed traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book && pip cache purge
+RUN pip3 install --ignore-installed union cirq qiskit && pip cache purge
 
 # prep notebooks for repos and convert files to notebooks
 RUN mkdir notebooks && cd notebooks && git clone https://github.com/unitaryfund/mitiq.git 
