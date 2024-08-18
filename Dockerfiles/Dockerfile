@@ -20,7 +20,7 @@ RUN pip3 install --ignore-installed pyqrack qiskit-qrack-provider && pip cache p
 # RUN pip3 install --upgrade scikit-build && pip cache purge
 # RUN git clone --depth=1 https://github.com/unitaryfund/pennylane-qrack.git && cd pennylane-qrack &&  mkdir _build && cd _build && cmake -DCPP_STD=14 .. && make all -j$(nproc --all) && make install
 
-RUN mkdir notebooks && mkdir qrack && mkdir nvidia && mkdir uf && mkdir qiskit && mkdir google
+RUN mkdir notebooks && cd notebooks && mkdir qrack && mkdir nvidia && mkdir uf && mkdir qiskit && mkdir google
 
 # Dan Strano's repo
 RUN cd notebooks/qrack && git clone --recursive --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git 
