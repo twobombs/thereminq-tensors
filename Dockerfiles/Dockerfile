@@ -11,7 +11,11 @@ RUN apt install -y python3-pip && apt clean all
 # RUN pip3 install --break-system-packages --upgrade pip && pip cache purge
 
 # install runtime requirements
-RUN pip3 install --ignore-installed --upgrade pennyLane catalyst pyqrack qiskit-qrack-provider cirq pyzx mitiq ipyparallel pennylane mistune cmake cirq qiskit[all] qiskit-nature pyscf sparse && pip cache purge
+RUN pip3 install --ignore-installed pyqrack qiskit-qrack-provider && pip cache purge
+
+# RUN pip3 install --ignore-installed pennyLane catalyst 
+# RUN pip3 install --ignore-installed pyzx mitiq ipyparallel mistune cmake 
+# RUN pip3 install --ignore-installed qiskit[all] qiskit-nature pyscf sparse
 
 # RUN pip3 install --upgrade scikit-build && pip cache purge
 # RUN git clone --depth=1 https://github.com/unitaryfund/pennylane-qrack.git && cd pennylane-qrack &&  mkdir _build && cd _build && cmake -DCPP_STD=14 .. && make all -j$(nproc --all) && make install
