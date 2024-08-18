@@ -67,7 +67,7 @@ RUN pip3 install -U IBMQuantumExperience && pip cache purge
 # RUN pip3 install mqt.problemsolver mqt.bench mqt.ddsim mqt.qecc
 
 # Install qc-client WebUI
-RUN apt install npm && npm install -g qps-client & apt clean all
+RUN apt install npm && npm install -g qps-client && apt clean all
 
 # make log dir for measured results
 RUN mkdir /var/log/thereminq
