@@ -1,11 +1,12 @@
-FROM twobombs/thereminq-tensors:tensorboards
+FROM twobombs/thereminq-tensors:jupyter
 
 # inpsired by https://arxiv.org/pdf/2401.07049v1
 # qml diffusion notebook via https://arxiv.org/pdf/2310.05866 
 # qml research container via https://github.com/BoltzmannEntropy/QMLDocker
 
-RUN git clone --depth=1 https://github.com/francis-hsu/quantgenmdl
-RUN git clone --depth=1 https://github.com/BoltzmannEntropy/QMLDocker
+RUN cd notebooks && mkdir qml
+RUN cd notebooks/qml && git clone --depth=1 https://github.com/francis-hsu/quantgenmdl
+RUN cd notebooks/qml && git clone --depth=1 https://github.com/BoltzmannEntropy/QMLDocker
 
 EXPOSE 6080
 ENTRYPOINT /root/run-boards
