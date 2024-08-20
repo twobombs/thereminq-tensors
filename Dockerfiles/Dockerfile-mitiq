@@ -1,7 +1,7 @@
 FROM twobombs/cudacluster:2204dev
 
 # install dependancies
-RUN apt install msttcorefonts -qq && apt clean all
+RUN echo | apt install msttcorefonts -qq && apt clean all
 RUN pip3 install --ignore-installed jupyter jupytext ipython tensorboard tensorflow tensorflow_gnn tensorflow-datasets && pip cache purge
 RUN pip3 install --ignore-installed traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book && pip cache purge
 RUN pip3 install --ignore-installed union cirq qiskit && pip cache purge
