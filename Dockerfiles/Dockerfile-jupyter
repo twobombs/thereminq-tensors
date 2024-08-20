@@ -7,7 +7,7 @@ RUN pip3 install jupytext ipython tensorboard tensorflow tensorflow_gnn tensorfl
 
 # mdopt install
 # RUN pip3 install mdopt && pip cache purge
-RUN cd notebooks/uf/mdopt && pip3 install -r requirements.txt && pip cache purge
+RUN cd notebooks/uf/mdopt && pip3 install --ignore-installed -r requirements.txt && pip cache purge
 
 # convert md / py / ipynb files
 RUN cd notebooks/qrack/pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
@@ -17,11 +17,8 @@ RUN cd /notebooks/google/Cirq/docs/simulate && jupyter nbconvert --to script *.i
 RUN cd /notebooks/uf/qrack/pyqrack-examples && jupytext --to notebook *.py
 RUN cd /notebooks/uf/qrack/simulator-benchmarks && jupytext --to notebook *.py
 
-# mitiq md conversion
-# RUN cd /notebooks/uf/mitiq/docs/source/examples/ && jupytext --to notebook *.md
-
-RUN cd /notebooks/qrack/qiskit-qrack-provider/test/benchmark && jupytext --to notebook *.py
-RUN cd /notebooks/qrack/qiskit-qrack-provider/qiskit/providers/qrack && jupytext --to notebook *.py
+RUN cd /notebooks/uf/qrack/qiskit-qrack-provider/test/benchmark && jupytext --to notebook *.py
+RUN cd /notebooks/uf/qrack/qiskit-qrack-provider/qiskit/providers/qrack && jupytext --to notebook *.py
 
 RUN cd notebooks && mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
 
