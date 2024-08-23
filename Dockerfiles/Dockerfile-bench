@@ -1,4 +1,4 @@
-FROM twobombs/thereminq-tensors:tensorboards
+FROM twobombs/thereminq-tensors:jupyter
 
 RUN apt update && apt install libblas-dev liblapack-dev && apt clean all
 
