@@ -10,5 +10,8 @@ RUN pip3 install --ignore-installed union cirq qiskit && pip cache purge
 RUN mkdir notebooks && cd notebooks && git clone https://github.com/unitaryfund/mitiq.git 
 RUN cd /notebooks/mitiq/docs/source/examples/ && jupytext --to notebook *.md
 
+COPY /runfiles/run-boards /root
+RUN chmod 755 /root/run*
+
 EXPOSE 6080
 ENTRYPOINT /root/run-boards
