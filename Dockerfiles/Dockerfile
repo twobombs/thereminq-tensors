@@ -14,7 +14,7 @@ RUN apt install -y python3-pip && apt clean all
 RUN pip3 install --ignore-installed pyqrack qiskit-qrack-provider && pip cache purge
 
 # RUN pip3 install --ignore-installed pennyLane catalyst 
-# RUN pip3 install --ignore-installed pyzx mitiq ipyparallel mistune cmake 
+# RUN pip3 install --ignore-installed pyzx ipyparallel mistune cmake 
 RUN pip3 install --ignore-installed qiskit[all] qiskit-nature pyscf sparse
 
 # RUN pip3 install --upgrade scikit-build && pip cache purge
