@@ -15,7 +15,7 @@ RUN pip3 install --ignore-installed pyqrack qiskit-qrack-provider && pip cache p
 
 # RUN pip3 install --ignore-installed pennyLane catalyst 
 # RUN pip3 install --ignore-installed pyzx mitiq ipyparallel mistune cmake 
-# RUN pip3 install --ignore-installed qiskit[all] qiskit-nature pyscf sparse
+RUN pip3 install --ignore-installed qiskit[all] qiskit-nature pyscf sparse
 
 # RUN pip3 install --upgrade scikit-build && pip cache purge
 # RUN git clone --depth=1 https://github.com/unitaryfund/pennylane-qrack.git && cd pennylane-qrack &&  mkdir _build && cd _build && cmake -DCPP_STD=14 .. && make all -j$(nproc --all) && make install
