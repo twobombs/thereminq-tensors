@@ -15,6 +15,9 @@ RUN cd /notebooks/google/Cirq/docs/simulate && jupyter nbconvert --to script *.i
 
 # convert some of the py files to ipynb for convenience
 RUN cd /notebooks/qrack/pyqrack-examples && jupytext --to notebook *.py
+RUN cd /notebooks/qrack/pyqrack-examples/rcs && jupytext --to notebook *.py
+RUN cd /notebooks/qrack/pyqrack-examples/qbdd && jupytext --to notebook *.py
+
 RUN cd /notebooks/qrack/simulator-benchmarks && jupytext --to notebook *.py
 
 RUN cd /notebooks/qrack/qiskit-qrack-provider/test/benchmark && jupytext --to notebook *.py
