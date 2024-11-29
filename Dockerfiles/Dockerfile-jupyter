@@ -5,6 +5,9 @@ RUN pip3 install jupytext ipython tensorboard tensorflow tensorflow_gnn tensorfl
 # tensorflow-quantum
 # RUN git clone --depth=1 https://github.com/tensorflow/quantum.git && cd quantum && pip install -r requirements.txt && pip cache purge
 
+# install dask
+RUN apt install -y python3-pip && apt clean all && pip3 install dask-cuda cupy joblib matplotlib && pip3 cache purge
+
 # mdopt install
 # RUN pip3 install mdopt && pip cache purge
 RUN cd notebooks/uf/mdopt && pip3 install --ignore-installed -r requirements.txt && pip cache purge
