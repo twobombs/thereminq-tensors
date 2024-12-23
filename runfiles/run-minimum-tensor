@@ -20,6 +20,7 @@ export DISPLAY=:0 && google-chrome-stable --no-sandbox --password-store=basic ht
 
 export DISPLAY=:0&&xterm -e "xset s off" &
 export DISPLAY=:0&&xterm -e "neofetch && tail -f /dev/null" &
+export DISPLAY=:0&&exo-open --launch TerminalEmulator &
 export DISPLAY=:0 && xterm -e "xset s off" && export HOME=/home/user && export DISPLAY=:0 && xterm -e "sudo su -c '/bin/bash' -s /bin/bash user"
 
 echo "done"
