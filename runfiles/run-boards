@@ -15,7 +15,7 @@ covalent start &
 tensorboard --logdir --db sqlite:~/.tensorboard.db --host=127.0.0.1 &
 python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
 
-# start firefox session with jupyter notebooks
+# start session with jupyter notebooks
 jupyter notebook --notebook-dir=/notebooks --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
 sleep 5
 
@@ -25,6 +25,7 @@ sleep 15 && export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default
 # clean desktop & info
 export DISPLAY=:0&&xterm -e "xset s off" &
 export DISPLAY=:0&&xterm -e "neofetch && tail -f /dev/null" &
+export DISPLAY=:0&&exo-open --launch TerminalEmulator
 
 echo "done"
 # end run, do not stop container
