@@ -16,6 +16,10 @@ export DISPLAY=:0&&jupyter notebook --notebook-dir=/notebooks/qiskit-metal --ip 
 # start klayout
 export DISPLAY=:0&&klayout &
 
+# start apps
+export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default-browser-check --no-first-run --no-sandbox --password-store=basic https://algassert.com/quirk &
+export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default-browser-check --no-first-run --no-sandbox --password-store=basic http://127.0.0.1:8888 &
+
 echo "done"
 
 # end run, do not stop container
