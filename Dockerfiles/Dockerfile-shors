@@ -29,7 +29,7 @@ RUN git clone https://github.com/vm6502q/FindAFactor.git && cd FindAFactor && pi
 RUN git clone --depth=1 https://github.com/google/googletest.git && cd googletest && cmake . && make && make install 
 RUN git clone --depth=1 https://github.com/NVlabs/CGBN.git && cd CGBN && mv /googletest/googletest gtest && make
 
-COPY runfiles/run-shors /root/run-shors
+COPY runfiles/* /root
 COPY runfiles/shors_winloop.sh /pyqrack-jupyter/shors_winloop.sh
 COPY runfiles/shors_modulus.sh /pyqrack-jupyter/shors_modulus.sh
 #
