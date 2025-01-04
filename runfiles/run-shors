@@ -16,7 +16,7 @@ qps-client -p 8443 &
 #
 export DISPLAY=:0 && ./thereminq-tensors/runfiles/rsaConverter &
 export DISPLAY=:0 && gnome-calculator &
-export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default-browser-check --no-first-run --no-sandbox --password-store=basic https://www.mobilefish.com/services/rsa_key_generation/rsa_key_generation.php &
+export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default-browser-check --no-first-run --no-sandbox --password-store=basic https://www.mobilefish.com/services/rsa_key_generation/rsa_key_generation.php https://bigprimes.org/ &
 export DISPLAY=:0 && xterm -e "/root/shors_winloop.sh > /var/log/thereminq/shors-winloop_'$(date +%F_%R_%S).log'" &
 export DISPLAY=:0 && xterm -e "/root/run-findafactor.sh > /var/log/thereminq/findafactor-'$(date +%F_%R_%S).log'" &
 export DISPLAY=:0 && xterm -e "/root/shors_qimcifa_loop.sh > /var/log/thereminq/shors-qimcifa_loop_'$(date +%F_%R_%S).log'" &
