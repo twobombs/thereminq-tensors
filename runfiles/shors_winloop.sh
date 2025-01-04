@@ -7,7 +7,7 @@ for i in {65535..4294967295..255}
 		echo $(($prime * $prime2)) > fact
 		fact=$(<fact)
 		sed -i "s/toFactor=.*/toFactor=$fact/g" /notebook/qrack/pyqrack-jupyter/shor.py
-		ipython3 /notebooks/qrack/pyqrack-jupyter/shor.py > factoring
+		ipython3 /notebooks/qrack/pyqrack-jupyter/shors.py > factoring
 		cat factoring | grep 'Factors found'
 		echo 'Prime #1:   ' $prime 'Prime #2:   ' $prime2 'Multiplied: ' $fact
 		echo ' '
