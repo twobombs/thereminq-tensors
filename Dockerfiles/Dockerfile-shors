@@ -25,6 +25,9 @@ RUN git clone --depth=1 --branch opencl_bigint https://github.com/vm6502q/qimcif
 # find a factor pip install
 RUN git clone https://github.com/vm6502q/FindAFactor.git && cd FindAFactor && pip3 install . && pip cache purge
 
+#ipython install
+RUN pip3 install ipython && pip cache purge
+
 # NV's BigINT implementation + reqs
 RUN git clone --depth=1 https://github.com/google/googletest.git && cd googletest && cmake . && make && make install 
 RUN git clone --depth=1 https://github.com/NVlabs/CGBN.git && cd CGBN && mv /googletest/googletest gtest && make
