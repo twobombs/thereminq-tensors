@@ -3,6 +3,20 @@ FROM twobombs/thereminq-tensors
 # install apt packages because 
 RUN apt update && apt install -y pybind11-dev cmake nodejs npm libssl-dev xxd libgmp3-dev && apt clean all
 
+# convert md / py / ipynb files
+RUN cd notebooks/qrack/pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
+RUN cd /notebooks/google/Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
+
+# convert some of the py files to ipynb for convenience
+RUN cd /notebooks/qrack/pyqrack-examples && jupytext --to notebook *.py
+RUN cd /notebooks/qrack/pyqrack-examples/rcs && jupytext --to notebook *.py
+RUN cd /notebooks/qrack/pyqrack-examples/qbdd && jupytext --to notebook *.py
+
+RUN cd /notebooks/qrack/simulator-benchmarks && jupytext --to notebook *.py
+
+RUN cd /notebooks/qrack/qiskit-qrack-provider/test/benchmark && jupytext --to notebook *.py
+RUN cd /notebooks/qrack/qiskit-qrack-provider/qiskit/providers/qrack && jupytext --to notebook *.py
+
 # install rsa primes UI & Shors' input requirement. 
 RUN add-apt-repository -y ppa:linuxuprising/libpng12 && apt update && apt install libboost-all-dev opencl-headers xxd libpng12-0 libcanberra-gtk-module gtk2-engines-pixbuf libcanberra-gtk3-module && apt clean all
 RUN apt update && apt install libgtest-dev gnome-calculator mathomatic-primes mathomatic libssl-dev && apt clean all
