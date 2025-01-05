@@ -70,7 +70,7 @@ def predict_time_2d_polynomial_regression(target_width, target_depth, data, degr
 
 # Target widths (qubits) for prediction
 target_widths = np.arange(106, 151)
-target_depth = 50  # You can change this
+target_depth = 100  # You can change this
 
 # Store predictions for each method
 linear_predictions = []
