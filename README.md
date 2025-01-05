@@ -44,18 +44,11 @@ The following Python repos are included - converted to Jupyter Notebook or vv
 docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:tag
 ````
 
-
-## Interactive Qiskit Metal and KQCircuits 
-![Screenshot from 2024-04-14 17-03-08](https://github.com/twobombs/thereminq-tensors/assets/12692227/5c717466-459e-4bef-b739-c0e699069d82)
-
-https://youtu.be/NxArWX8WhPc 
-
-```bash
-docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:metal
-````
-
 ## Jupyter Notebooks UI
 ![Screenshot from 2024-06-15 10-15-29](https://github.com/twobombs/thereminq-tensors/assets/12692227/401fedd8-78f9-4773-ac68-85808abc97ad)
+
+## Create and/or run Python Quantum-inspired Graphs
+![Screenshot from 2025-01-05 14-27-02](https://github.com/user-attachments/assets/dab8a43b-c974-4fd5-b4a3-7dbf3d61960e)
 
 ```bash
 docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:jupyter[-pocl]
@@ -82,9 +75,21 @@ Shors' with
 - Qimcifa https://github.com/vm6502q/qimcifa
 - Find-A-Factor https://github.com/vm6502q/findafactor
 
+
 ```bash
 docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:shors
 ````
+
+
+## Interactive Qiskit Metal and KQCircuits 
+![Screenshot from 2024-04-14 17-03-08](https://github.com/twobombs/thereminq-tensors/assets/12692227/5c717466-459e-4bef-b739-c0e699069d82)
+
+https://youtu.be/NxArWX8WhPc 
+
+```bash
+docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:metal
+````
+
 
 ## CPU only accelerated vanilla VDI:
 ```bash
