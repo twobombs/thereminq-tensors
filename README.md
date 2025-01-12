@@ -50,6 +50,10 @@ docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/de
 ## Create and/or run Python Quantum-inspired Graphs
 ![Screenshot from 2025-01-05 14-27-02](https://github.com/user-attachments/assets/dab8a43b-c974-4fd5-b4a3-7dbf3d61960e)
 
+## Simulate and visualize Sycamore/Willow circuits up to and beyond 105 qubits
+![Screenshot_from_2025-01-06_19-47-23](https://github.com/user-attachments/assets/a887d0c6-be0b-4c94-abd0-8ee185d26e76)
+
+
 ```bash
 docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:jupyter[-pocl]
 ````
