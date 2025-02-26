@@ -1,0 +1,6 @@
+FROM twobombs/thereminq-tensors
+
+RUN git clone https://github.com/quantumlib/Qualtran.git && cd Qualtran/ && pip install -e . && python -m qualtran.surface_code.ui
+
+EXPOSE 6080
+ENTRYPOINT /root/run-nv
