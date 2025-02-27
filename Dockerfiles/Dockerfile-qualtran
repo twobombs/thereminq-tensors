@@ -6,4 +6,4 @@ RUN apt update && apt install postgresql && apt clean all
 RUN https://github.com/ioanamoflic/pandora.git
 
 EXPOSE 6080
-ENTRYPOINT /root/run-nv
+ENTRYPOINT  cd  /Qualtran && python3 -m qualtran.surface_code.ui && /root/run-nv
