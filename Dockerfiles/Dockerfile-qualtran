@@ -3,7 +3,7 @@ FROM twobombs/thereminq-tensors
 RUN git clone https://github.com/quantumlib/Qualtran.git && cd Qualtran/ && pip install -e . 
 
 RUN apt update && apt install postgresql && apt clean all
-RUN https://github.com/ioanamoflic/pandora.git
+RUN git clone https://github.com/ioanamoflic/pandora.git
 
 EXPOSE 6080
 ENTRYPOINT  cd  /Qualtran && python3 -m qualtran.surface_code.ui && /root/run-nv
