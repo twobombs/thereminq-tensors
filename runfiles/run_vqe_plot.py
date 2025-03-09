@@ -1,6 +1,7 @@
 # original created by Dan Strano of the Unitary fund 
 # https://github.com/vm6502q/pyqrack-examples/blob/main/vqe.py
 # plot was added by Qwen2.5-Coder-32B-Instruct-Q5_K_S.gguf
+# experimental code - code can change without notice
 
 import pennylane as qml
 from pennylane import numpy as np
