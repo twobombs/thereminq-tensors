@@ -1,3 +1,6 @@
+# original created by Dan Strano of the Unitary fund 
+# https://github.com/vm6502q/pyqrack-examples/blob/main/vqe.py
+
 import pennylane as qml
 from pennylane import numpy as np
 import openfermion as of
