@@ -14,7 +14,7 @@ import multiprocessing
 import time
 import os
 
-# Step 1: Define the molecule
+# Step 1: Define the molecule - H2 in example
 geometry = [('H', (0.0, 0.0, 0.0)), ('H', (0.0, 0.0, 0.74))]
 
 basis = 'sto-3g'
