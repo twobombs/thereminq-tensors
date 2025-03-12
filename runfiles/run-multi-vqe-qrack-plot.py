@@ -14,12 +14,26 @@ import multiprocessing
 import time
 import os
 
+# Step 0: Set environment variables (before running script)
+
+# On command line or by .env file, you can set the following variables
+# QRACK_DISABLE_QUNIT_FIDELITY_GUARD=1: For large circuits, automatically "elide," for approximation
+# QRACK_NONCLIFFORD_ROUNDING_THRESHOLD=[0 to 1]: Sacrifices near-Clifford accuracy to reduce overhead
+# QRACK_QUNIT_SEPARABILITY_THRESHOLD=[0 to 1]: Rounds to separable states more aggressively
+# QRACK_QBDT_SEPARABILITY_THRESHOLD=[0 to 0.5]: Rounding for QBDD, if actually used
+
+# Step 1: Define the molecule (Hydrogen, Helium, Lithium, Carbon, Nitrogen, Oxygen)
+
+basis = 'sto-3g'  # Minimal Basis Set
+# basis = '6-31g'  # Larger basis set
+# basis = 'cc-pVDZ' # Even larger basis set!
+multiplicity = 1  # singlet, closed shell, all electrons are paired (neutral molecules with full valence)
+# multiplicity = 2  # doublet, one unpaired electron (ex.: OH- radical)
+# multiplicity = 3  # triplet, two unpaired electrons (ex.: O2)
+charge = 0  # Excess +/- elementary charge, beyond multiplicity
+
 # Step 1: Define the molecule - H2 in example
 geometry = [('H', (0.0, 0.0, 0.0)), ('H', (0.0, 0.0, 0.74))]
-
-basis = 'sto-3g'
-multiplicity = 1
-charge = 0
 
 # Step 2: Compute the Molecular Hamiltonian
 molecule = of.MolecularData(geometry, basis, multiplicity, charge)
