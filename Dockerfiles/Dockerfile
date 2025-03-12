@@ -62,7 +62,7 @@ RUN cd notebooks/google && git clone --recursive  --depth=1 https://github.com/t
 # 2024 tests
 RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/twobombs/QRISE2024.git
 # integrate own repo
-RUN git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-tensors
+RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-tensors
 
 # install qiskit[metal/visualisation] tooling
 RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && apt clean all
