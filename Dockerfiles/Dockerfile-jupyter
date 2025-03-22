@@ -10,7 +10,7 @@ RUN pip3 install jupytext ipython tensorboard tensorflow tensorflow_gnn tensorfl
 
 # mdopt install
 # RUN pip3 install mdopt && pip cache purge
-RUN cd notebooks/uf/mdopt && pip3 install --ignore-installed -r requirements.txt && pip cache purge
+$ RUN cd notebooks/uf/mdopt && pip3 install --ignore-installed -r requirements.txt && pip cache purge
 
 # install pennylane and openfermion dependancies for pyqrack vqe 
 RUN pip install pennylane pennylane-qrack openfermion openfermionpyscf
