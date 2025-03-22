@@ -23,7 +23,7 @@ export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default-browser-che
 
 ollama pull llama3 
 
-export DISPLAY=:0 && xfce4-terminal -e "export OPENAI_API_BASE=http://localhost:11434/v1 && export OPENAI_API_KEY=ollama && interpreter -y --model llama3.2:14b"
+export DISPLAY=:0 && xfce4-terminal -e "interpreter -y --local --model llama3.2:14b"
 
 echo "done"
 
