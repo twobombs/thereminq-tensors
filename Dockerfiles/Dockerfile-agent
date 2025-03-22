@@ -38,7 +38,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt update && apt install -y python
 RUN pip3 install huggingface_hub[hf_transfer] && pip cache purge
 
 # install open-interpreter
-RUN pip3 install open-interpreter && pip cache purge
+RUN pip3 install --upgrade open-interpreter && pip cache purge
 
 # fetch localai
 # RUN curl https://localai.io/install.sh | sh && apt clean all
