@@ -26,6 +26,10 @@ RUN pip3 install mitiq[all] && pip cache purge
 # install pennylane and openfermion dependancies for pyqrack vqe 
 RUN pip install pennylane pennylane-qrack openfermion openfermionpyscf
 
+# clone repos
+RUN git clone --recursive --depth=1 --recursive https://github.com/unitaryfund/qrack.git
+RUN git clone --recursive --depth=1 --recursive https://github.com/unitaryfund/pyqrack.git
+
 # Qrack install & dependancies 
 RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=5 -DUINTPOW=6 -DQBCAPPOW=6 -DENABLE_COMPLEX_X2=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all  && make install
 
