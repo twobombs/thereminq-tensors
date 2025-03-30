@@ -13,7 +13,8 @@ RUN pip3 install jupytext ipython tensorboard tensorflow tensorflow_gnn tensorfl
 $ RUN cd notebooks/uf/mdopt && pip3 install --ignore-installed -r requirements.txt && pip cache purge
 
 # install pennylane and openfermion dependancies for pyqrack vqe 
-RUN pip install pennylane pennylane-qrack openfermion openfermionpyscf
+RUN pip install pennylane pennylane-qrack openfermion openfermionpyscf && pip cache purge
+RUN pip install pyscf pennylane-qchem pennylane-cirq cirq matplotlib autograd && pip cache purge
 
 # convert md / py / ipynb files
 RUN cd notebooks/qrack/pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
@@ -23,14 +24,12 @@ RUN cd /notebooks/google/Cirq/docs/simulate && jupyter nbconvert --to script *.i
 RUN cd /notebooks/qrack/pyqrack-examples && jupytext --to notebook *.py
 RUN cd /notebooks/qrack/pyqrack-examples/rcs && jupytext --to notebook *.py
 RUN cd /notebooks/qrack/pyqrack-examples/qbdd && jupytext --to notebook *.py
-
 RUN cd /notebooks/qrack/simulator-benchmarks && jupytext --to notebook *.py
-
 RUN cd /notebooks/qrack/qiskit-qrack-provider/test/benchmark && jupytext --to notebook *.py
 RUN cd /notebooks/qrack/qiskit-qrack-provider/qiskit/providers/qrack && jupytext --to notebook *.py
-
 RUN cd /notebooks/thereminq-tensors/runfiles && jupytext --to notebook *.py
 
+# legacy: place tensorboard projector project 
 RUN cd notebooks && mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
 
 EXPOSE 6080
