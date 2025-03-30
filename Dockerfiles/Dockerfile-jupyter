@@ -10,7 +10,7 @@ RUN pip3 install jupytext ipython tensorboard tensorflow tensorflow_gnn tensorfl
 
 # mdopt install
 # RUN pip3 install mdopt && pip cache purge
-$ RUN cd notebooks/uf/mdopt && pip3 install --ignore-installed -r requirements.txt && pip cache purge
+# RUN cd notebooks/uf/mdopt && pip3 install --ignore-installed -r requirements.txt && pip cache purge
 
 # install pennylane, openfermion and other dependancies for pyqrack vqe benchmark scripts
 RUN apt install -y libopenblas-dev && apt clean all
