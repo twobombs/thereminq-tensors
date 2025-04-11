@@ -23,6 +23,9 @@ RUN pip3 install qiskit-iqm && pip cache purge
 # install cirq and mitiq
 RUN pip3 install mitiq[all] && pip cache purge
 
+# install google agent development kit
+RUN pip3 install google-adk && pip cache purg
+
 # install pennylane and openfermion dependancies for pyqrack vqe 
 RUN pip install pennylane pennylane-qrack openfermion openfermionpyscf
 
