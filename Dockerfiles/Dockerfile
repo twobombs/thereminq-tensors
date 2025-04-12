@@ -10,7 +10,7 @@ RUN npm install -g qps-client
 RUN apt install -y python3-pip && apt clean all
 # RUN pip3 install --break-system-packages --upgrade pip && pip cache purge
 
-# GVirtuS
+# GVirtuS < broken >
 #RUN apt-get install -y build-essential cmake librdmacm-dev libibverbs-dev libxmu-dev libxi-dev libgl-dev libosmesa-dev git liblog4cplus-dev cudnn && apt clean all
 #RUN git clone -b qrack_update https://github.com/vm6502q/GVirtuS.git && cd /GVirtuS && mkdir build && cd build && cmake .. && make -j $(grep -c ^processor /proc/cpuinfo) all && make -j $(grep -c ^processor /proc/cpuinfo) all install
 #RUN export GVIRTUS_HOME=/root/GVirtuS
@@ -46,6 +46,7 @@ RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/unita
 # RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/unitaryfund/mitiq.git
 # quantum wednesday 10-7'24 mdopt tests
 RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/twobombs/mdopt.git
+RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/twobombs/QRISE2024.git
 
 # IBM Qiskit [deprecated] projects
 RUN cd notebooks/qiskit && git clone --recursive  --depth=1 https://github.com/Qiskit/qiskit-iqx-tutorials.git
@@ -59,11 +60,12 @@ RUN cd notebooks/qiskit && git clone --recursive  --depth=1 https://github.com/q
 RUN cd notebooks/google && git clone --recursive  --depth=1 https://github.com/quantumlib/Cirq.git
 RUN cd notebooks/google && git clone --recursive  --depth=1 https://github.com/tensorflow/gnn.git tensorflow_gnn
 
-# 2024 tests
-RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/twobombs/QRISE2024.git
 # integrate own repo
 RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-tensors
 RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-examples
+
+# IBM QC benchmarks
+RUN cd notebooks && git clone https://git.zib.de/qopt/qoblib-quantum-optimization-benchmarking-library.git
 
 # install qiskit[metal/visualisation] tooling
 RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && apt clean all
