@@ -30,7 +30,7 @@ RUN pip3 install --ignore-installed qiskit[all] qiskit-nature qiskit_aer pyscf s
 # RUN pip3 install --upgrade scikit-build && pip cache purge
 # RUN git clone --depth=1 https://github.com/unitaryfund/pennylane-qrack.git && cd pennylane-qrack &&  mkdir _build && cd _build && cmake -DCPP_STD=14 .. && make all -j$(nproc --all) && make install
 
-RUN mkdir notebooks && cd notebooks && mkdir qrack && mkdir nvidia && mkdir uf && mkdir qiskit && mkdir google
+RUN mkdir notebooks && cd notebooks && mkdir qrack && mkdir nvidia && mkdir uf && mkdir qiskit && mkdir google && mkdir thereminq
 
 # Dan Strano's repo
 RUN cd notebooks/qrack && git clone --recursive --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git 
@@ -60,9 +60,10 @@ RUN cd notebooks/qiskit && git clone --recursive  --depth=1 https://github.com/q
 RUN cd notebooks/google && git clone --recursive  --depth=1 https://github.com/quantumlib/Cirq.git
 RUN cd notebooks/google && git clone --recursive  --depth=1 https://github.com/tensorflow/gnn.git tensorflow_gnn
 
-# integrate own repo
-RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-tensors
-RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-examples
+# integrate thereminq repos
+RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-tensors
+RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-examples
+RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/qrackmin
 
 # IBM QC benchmarks
 RUN cd notebooks && git clone https://git.zib.de/qopt/qoblib-quantum-optimization-benchmarking-library.git
