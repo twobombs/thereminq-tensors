@@ -30,6 +30,14 @@ RUN pip3 install --ignore-installed qiskit[all] qiskit-nature qiskit_aer pyscf s
 # RUN pip3 install --upgrade scikit-build && pip cache purge
 # RUN git clone --depth=1 https://github.com/unitaryfund/pennylane-qrack.git && cd pennylane-qrack &&  mkdir _build && cd _build && cmake -DCPP_STD=14 .. && make all -j$(nproc --all) && make install
 
+# clone qrack repo for specia high-qubit edition
+RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
+# install qrack compile features
+RUN apt-get update && apt-get -y install build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
+# Qrack install with high qubit dependancies 
+RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all 
+
+# Create notebook repos
 RUN mkdir notebooks && cd notebooks && mkdir qrack && mkdir nvidia && mkdir uf && mkdir qiskit && mkdir google && mkdir thereminq
 
 # Dan Strano's repo
