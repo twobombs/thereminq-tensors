@@ -95,7 +95,7 @@ RUN pip3 install -U IBMQuantumExperience && pip cache purge
 RUN mkdir /var/log/thereminq
 
 RUN mkdir /root/.ssh
-COPY runfiles/run-boards /root/run-boards
+COPY runfiles/run-* /root/run-*
 
 EXPOSE 6080
 ENTRYPOINT /root/run-nv
