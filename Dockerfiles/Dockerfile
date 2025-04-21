@@ -74,7 +74,10 @@ RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.co
 RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/qrackmin
 
 # IBM QC benchmarks
-RUN cd notebooks && git clone https://git.zib.de/qopt/qoblib-quantum-optimization-benchmarking-library.git
+RUN cd notebooks && git clone --recursive  --depth=1 https://git.zib.de/qopt/qoblib-quantum-optimization-benchmarking-library.git
+
+# highly experimental quantum energy teleportation algo
+RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/IKEDAKAZUKI/Quantum-Energy-Teleportation.git
 
 # install qiskit[metal/visualisation] tooling
 RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && apt clean all
