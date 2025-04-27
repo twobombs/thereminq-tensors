@@ -9,7 +9,7 @@ service xrdp start && xrdp &
 export DISPLAY=:0&&xterm -e "xset s off"&&
 
 # precompile cl kernels for Qrack	
-# cd /qrack/_build/ && ./qrack_cl_precompile
+cd /qrack/_build/ && ./qrack_cl_precompile &
 
 # placeholder for tensorflow/board/projector start, test GPUs
 tensorboard --logdir --db sqlite:~/.tensorboard.db --host=127.0.0.1 &
