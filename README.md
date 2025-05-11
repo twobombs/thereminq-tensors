@@ -3,6 +3,8 @@
 <img width="1000" alt="ThereminQ" src="https://github.com/twobombs/thereminq-tensors/assets/12692227/a299e650-6513-43d1-afab-ba036aa5e12e">
 
 
+until all dependancies have been resolved due to the Qiskit 2.0 migration this stack is -once again- in development
+
 ### CUDA-CLuster VDI
 
 `:latest` Ollama powered PyQrack & Qiskit Jupyter Notebooks<br>
