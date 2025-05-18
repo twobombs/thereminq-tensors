@@ -73,6 +73,9 @@ RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.co
 RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-examples
 RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/qrackmin
 
+# QAOA ADAPT
+RUN cd notebooks/ && git clone --recursive --depth=1 https://github.com/Hitachi-Cambridge/PaperDynamicADAPT-QAOA-Data.git
+
 # IBM QC benchmarks
 RUN cd notebooks && git clone --recursive  --depth=1 https://git.zib.de/qopt/qoblib-quantum-optimization-benchmarking-library.git
 
