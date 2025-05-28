@@ -20,7 +20,7 @@ jupyter notebook --notebook-dir=/notebooks --ip 127.0.0.1 --no-browser --allow-r
 sleep 5
 
 # start apps
-sleep 15 && export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default-browser-check --no-first-run --no-sandbox --password-store=basic http://127.0.0.1:8888 https://gemini.google.com &
+sleep 15 && export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default-browser-check --no-first-run --no-sandbox --password-store=basic http://127.0.0.1:8888 https://gemini.google.com https://chat.openai.com &
 
 # clean desktop & info
 export DISPLAY=:0&&xterm -e "xset s off" &
