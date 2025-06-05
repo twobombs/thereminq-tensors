@@ -35,7 +35,7 @@ RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
 # install qrack compile features
 RUN apt-get update && apt-get -y install build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
 # Qrack install with high qubit dependancies 
-RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all 
+RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
 
 # Create notebook repos
 RUN mkdir notebooks && cd notebooks && mkdir qrack && mkdir nvidia && mkdir uf && mkdir qiskit && mkdir google && mkdir thereminq
