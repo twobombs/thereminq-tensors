@@ -88,7 +88,7 @@ RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && ap
 # Install IBM QC connector
 RUN pip3 install -U IBMQuantumExperience && pip cache purge
 
-# Install Qiskit viz + pyqrack provider
+# Install Qiskit viz + pyqrack provider > moved to jupyter stack
 # RUN pip3 install qiskit[all] qiskit-qrack-provider && pip cache purge
 
 # install munich qc toolkit - will move to other tag when needed -
