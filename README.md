@@ -43,7 +43,7 @@ The following Python repos are included - converted to Jupyter Notebook or vv
 
 
 ```bash
-docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:tag
+docker run --gpus all --device=/dev/kfd --device=/dev/dri:/dev/dri --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:tag
 ````
 
 ## Jupyter Notebooks UI
