@@ -82,6 +82,9 @@ RUN cd notebooks && git clone --recursive  --depth=1 https://git.zib.de/qopt/qob
 # highly experimental quantum energy teleportation algo
 RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/IKEDAKAZUKI/Quantum-Energy-Teleportation.git
 
+# agentic CLI integration
+RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/google-gemini/gemini-cli
+
 # install qiskit[metal/visualisation] tooling
 RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && apt clean all
 
