@@ -3,7 +3,10 @@
 <img width="1000" alt="ThereminQ" src="https://github.com/twobombs/thereminq-tensors/assets/12692227/a299e650-6513-43d1-afab-ba036aa5e12e">
 
 
-until all dependancies have been resolved due to the Qiskit 2.0 migration this stack is -once again- in development
+Until all dependancies have been resolved as the Qiskit 2.x migration makes progress this stack will be -once again- in development
+
+
+Agency has been installed and enabled in the jupyter en agentic container images to help users during this migration process that according to the IBM roadmap should be concluded at the end of 2025, early 2026 
 
 ### CUDA-CLuster VDI
 
