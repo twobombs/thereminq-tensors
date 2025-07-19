@@ -4,7 +4,7 @@
 <img width="1969" height="1435" alt="thereminq-resize" src="https://github.com/user-attachments/assets/2f50cca5-3c46-4445-a4da-a0d750375240" />
 
 
-As the Qiskit 2.x migration makes progress this stack will be in development mode
+As the Qiskit 2.x migration makes progress this stack will remain in development mode
 
 - Agency is now by default installed and enabled in both the jupyter and agent container images
 - Gemini CLI and Open Interpreter now assist development during and after the migration process
