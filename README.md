@@ -1,6 +1,7 @@
 ## ThereminQ-Tensors 
 ### Run & Control Quantum Circuits with Agentic Jupyter Notebooks
-<img width="1000" alt="ThereminQ" src="https://github.com/twobombs/thereminq-tensors/assets/12692227/a299e650-6513-43d1-afab-ba036aa5e12e">
+
+<img width="1969" height="1435" alt="thereminq-resize" src="https://github.com/user-attachments/assets/2f50cca5-3c46-4445-a4da-a0d750375240" />
 
 
 Until all dependancies have been resolved as the Qiskit 2.x migration makes progress this stack will be -once again- in development
