@@ -4,10 +4,13 @@
 <img width="1969" height="1435" alt="thereminq-resize" src="https://github.com/user-attachments/assets/2f50cca5-3c46-4445-a4da-a0d750375240" />
 
 
-Until all dependancies have been resolved as the Qiskit 2.x migration makes progress this stack will be -once again- in development
+As the Qiskit 2.x migration makes progress this stack will be in development mode
 
+- Agency is now by default installed and enabled in both the jupyter and agent container images
+- Gemini CLI and Open Interpreter now assist development during and after the migration process
+- according to the IBM roadmap the qiskit 2.x move should be concluded at the end of 2025, early 2026 
 
-Agency has been installed and enabled in the jupyter en agentic container images to help users during this migration process that according to the IBM roadmap should be concluded at the end of 2025, early 2026 
+Agency will remain integrated from now on and is no longer considered beta after 1.5 years of evaluation
 
 ### CUDA-CLuster VDI
 
