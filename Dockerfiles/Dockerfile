@@ -10,13 +10,6 @@ RUN npm install -g qps-client
 RUN apt install -y python3-pip && apt clean all
 # RUN pip3 install --break-system-packages --upgrade pip && pip cache purge
 
-# GVirtuS < broken >
-#RUN apt-get install -y build-essential cmake librdmacm-dev libibverbs-dev libxmu-dev libxi-dev libgl-dev libosmesa-dev git liblog4cplus-dev cudnn && apt clean all
-#RUN git clone -b qrack_update https://github.com/vm6502q/GVirtuS.git && cd /GVirtuS && mkdir build && cd build && cmake .. && make -j $(grep -c ^processor /proc/cpuinfo) all && make -j $(grep -c ^processor /proc/cpuinfo) all install
-#RUN export GVIRTUS_HOME=/root/GVirtuS
-#RUN export LD_LIBRARY_PATH=${GVIRTUS_HOME}/lib:${GVIRTUS_HOME}/lib/frontend:${LD_LIBRARY_PATH}
-# $GVIRTUS_HOME/bin/gvirtus-backend ${GVIRTUS_HOME}/etc/properties.json
-
 # fetch alloy
 RUN apt install -y portaudio19-dev alsa-oss pulseaudio && apt clean all && git clone https://github.com/svpino/alloy-voice-assistant.git && cd alloy-voice-assistant && pip install -r requirements.txt && pip cache purge
 
@@ -82,21 +75,18 @@ RUN cd notebooks && git clone --recursive  --depth=1 https://git.zib.de/qopt/qob
 # highly experimental quantum energy teleportation algo
 RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/IKEDAKAZUKI/Quantum-Energy-Teleportation.git
 
-# agentic CLI integration and prerequisites
+# agentic CLI integration and prerequisites - could move further up the stack to mitigate removal of already included packages
 RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/google-gemini/gemini-cli && npm install -g @google/gemini-cli
-RUN apt -y remove nodejs && curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && apt install nodejs && apt clean
+RUN apt -y remove nodejs libnode-dev npm && curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && apt install nodejs && apt clean
 
 # install qiskit[metal/visualisation] tooling
-RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator && apt clean all
+RUN apt update && apt install cmake libssl-dev gnome-calculator && apt clean all
 
 # Install IBM QC connector
 RUN pip3 install -U IBMQuantumExperience && pip cache purge
 
-# Install Qiskit viz + pyqrack provider > moved to jupyter stack
-# RUN pip3 install qiskit[all] qiskit-qrack-provider && pip cache purge
-
 # install munich qc toolkit - will move to other tag when needed -
-RUN pip3 install mqt.problemsolver mqt.bench mqt.ddsim mqt.qecc
+# RUN pip3 install mqt.problemsolver mqt.bench mqt.ddsim mqt.qecc
 
 # Install qc-client WebUI
 # RUN apt install npm && npm install -g qps-client && apt clean all
