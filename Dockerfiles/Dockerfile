@@ -78,7 +78,8 @@ RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/IKEDAKAZ
 # agentic CLI integration and prerequisites - could move further up the stack to mitigate removal of already included packages
 RUN apt -y remove nodejs libnode-dev npm && curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && apt install nodejs && apt clean
 RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/google-gemini/gemini-cli && npm install -g @google/gemini-cli
-RUN pip install google-generativeai voice-mode && pip cache purge
+RUN pip install google-generativeai voice-mode && pip cache purge 
+COPY runfiles/settings.json /root/.gemini/
 
 # install qiskit[metal/visualisation] tooling
 RUN apt update && apt install cmake libssl-dev gnome-calculator && apt clean all
