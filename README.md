@@ -49,15 +49,15 @@ The following Python repos are included - converted to Jupyter Notebook or vv
 - https://github.com/NVIDIA/cuQuantum.git
 - https://github.com/tensorflow/quantum.git
 
-## Run with Nvidia-Docker and/or Intel GPU Full VDI:
-![Screenshot from 2024-06-15 10-23-15](https://github.com/twobombs/thereminq-tensors/assets/12692227/1b2da878-ba8b-4ded-a113-6495fac5c48b)
-
+## Run with Nvidia-Docker and/or Intel GPU Full VDI
 
 ```bash
 docker run --gpus all --device=/dev/kfd --device=/dev/dri:/dev/dri  [--ipc=host]  [--privileged] -p 6080:6080 -d twobombs/thereminq-tensors:tag
 ````
 
 ## Jupyter Notebooks UI
+<img width="1697" height="963" alt="Screenshot from 2025-07-19 17-01-18" src="https://github.com/user-attachments/assets/33b6f5f5-32de-47f2-ae96-75b1dd68ffb5" />
+
 ![Screenshot from 2024-06-15 10-15-29](https://github.com/twobombs/thereminq-tensors/assets/12692227/401fedd8-78f9-4773-ac68-85808abc97ad)
 
 ## Create and/or run Python Quantum-inspired Graphs
