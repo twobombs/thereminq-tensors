@@ -15,7 +15,8 @@ RUN pip3 install jupytext ipython tensorboard cirq tensorflow tensorflow_gnn ten
 # install pennylane, openfermion and other dependancies for pyqrack vqe benchmark scripts
 RUN apt install -y libopenblas-dev && apt clean all
 RUN pip install --prefer-binary --upgrade pyscf && pip cache purge
-RUN pip install --prefer-binary --upgrade --force pennylane pennylane-qrack openfermion openfermionpyscf pennylane-qchem pennylane-cirq cirq matplotlib ply autograd plotly && pip cache purge
+RUN pip install --prefer-binary --upgrade --force pennylane pennylane-qrack openfermion cirq matplotlib ply autograd plotly && pip cache purge
+# openfermionpyscf pennylane-qchem pennylane-cirq
 
 # convert md / py / ipynb files
 RUN cd notebooks/qrack/pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
