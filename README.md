@@ -12,7 +12,7 @@ As the Qiskit 2.x migration makes progress this stack will remain in development
 
  disclaimer:
 * even though I've taken steps above and beyond what is currently known to be best practices for AI Agency
-* any liabilities and/or damage resulting from the use of Agentic Techn in this container image is solely for the user
+* any liabilities and/or damages resulting from the use of Agentic Tech in this container image is solely for the user
 
 Agency will remain integrated from now on and is no longer considered beta after 1.5 years of evaluation
 
