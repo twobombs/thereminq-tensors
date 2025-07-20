@@ -8,7 +8,11 @@ As the Qiskit 2.x migration makes progress this stack will remain in development
 
 - Agency is now by default installed and enabled in both the jupyter and agent container images
 - Gemini CLI and Open Interpreter now assist development during and after the migration process
-- According to the IBM roadmap the Qiskit 2.x move should be concluded at the end of 2025, early 2026 
+- According to the IBM roadmap the Qiskit 2.x move should be concluded at the end of 2025, early 2026
+
+ disclaimer:
+* even though I've taken steps above and beyond what is currently known to be best practices for AI Agency
+* any liabilities and/or damage resulting from the use of Agentic Techn in this container image is solely for the user
 
 Agency will remain integrated from now on and is no longer considered beta after 1.5 years of evaluation
 
