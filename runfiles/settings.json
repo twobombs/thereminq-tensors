@@ -1,0 +1,12 @@
+{
+  "theme": "Dracula",
+  "selectedAuthType": "oauth-personal",
+  "mcpServers": {
+    "voice-mode": {
+      "command": "uvx",
+      "args": [
+        "voice-mode"
+      ]
+    }
+  }
+}
