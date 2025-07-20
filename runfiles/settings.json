@@ -1,6 +1,6 @@
 {
   "theme": "Dracula",
-  "selectedAuthType": "oauth-personal",
+  "selectedAuthType": "gemini-api-key",
   "mcpServers": {
     "voice-mode": {
       "command": "uvx",
