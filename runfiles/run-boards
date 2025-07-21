@@ -27,7 +27,7 @@ sleep 15 && export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default
 export DISPLAY=:0&&xterm -e "xset s off" &
 export DISPLAY=:0&&xterm -e "neofetch && tail -f /dev/null" &
 export DISPLAY=:0&&exo-open --launch TerminalEmulator &
-export DISPLAY=:0&&tilix -e "gemini --yolo && tail -f /dev/null" &
+export DISPLAY=:0&&tilix -e "gemini --yolo" &
 
 echo "done"
 # end run, do not stop container
