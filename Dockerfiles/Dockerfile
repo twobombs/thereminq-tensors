@@ -14,7 +14,7 @@ RUN apt install -y python3-pip && apt clean all
 RUN apt install -y portaudio19-dev alsa-oss pulseaudio && apt clean all && git clone https://github.com/svpino/alloy-voice-assistant.git && cd alloy-voice-assistant && pip install -r requirements.txt && pip cache purge
 
 # install runtime requirements
-RUN pip3 install --ignore-installed pyqrack qiskit-qrack-provider && pip cache purge
+RUN pip3 install --ignore-installed pyqrack qiskit-qrack-provider PyQrackIsing && pip cache purge
 
 # RUN pip3 install --ignore-installed pennyLane catalyst 
 # RUN pip3 install --ignore-installed pyzx ipyparallel mistune cmake 
@@ -38,6 +38,7 @@ RUN cd notebooks/qrack && git clone --recursive --depth=1 https://github.com/vm6
 RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/simulator-benchmarks.git
 RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/qiskit-qrack-provider.git
 RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/pyqrack-examples.git
+RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/PyQrackIsing.git
 
 # NVidia
 RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/NVIDIA/cuQuantum.git
