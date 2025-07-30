@@ -66,6 +66,9 @@ RUN cd notebooks/google && git clone --recursive  --depth=1 https://github.com/t
 RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-tensors
 RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-examples
 RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/qrackmin
+RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/sebwouters/chemps2
+# RUN cd notebooks/thereminq/chemps2 && mkdir _build && cd _build && CXX=option1 cmake .. -DMKL=option2 -DCMAKE_INSTALL_PREFIX=/option3 -DWITH_MPI=option4 && make && make install
+# https://sebwouters.github.io/CheMPS2/sourcecode.html#dependencies
 
 # QAOA ADAPT
 RUN cd notebooks/ && git clone --recursive --depth=1 https://github.com/Hitachi-Cambridge/PaperDynamicADAPT-QAOA-Data.git
