@@ -39,7 +39,7 @@ RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm
 RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/qiskit-qrack-provider.git
 RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/pyqrack-examples.git
 RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/PyQrackIsing.git
-
+RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/unitaryfoundation/qrack.git
 # NVidia
 RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/NVIDIA/cuQuantum.git
 
