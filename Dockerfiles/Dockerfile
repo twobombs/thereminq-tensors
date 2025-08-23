@@ -40,15 +40,17 @@ RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm
 RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/pyqrack-examples.git
 RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/PyQrackIsing.git
 RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/unitaryfoundation/qrack.git
+
 # NVidia
 RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/NVIDIA/cuQuantum.git
 
 # unitary fund
 RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/unitaryfund/research
 RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/unitaryfund/mitiq.git
-# quantum wednesday 10-7'24 mdopt tests
+# quantum wednesdays
 RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/twobombs/mdopt.git
 RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/twobombs/QRISE2024.git
+RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/csenrui/PauliGST.git
 
 # IBM Qiskit [deprecated] projects
 RUN cd notebooks/qiskit && git clone --recursive  --depth=1 https://github.com/Qiskit/qiskit-iqx-tutorials.git
