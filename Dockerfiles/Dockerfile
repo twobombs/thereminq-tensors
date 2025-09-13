@@ -34,7 +34,7 @@ RUN apt-get update && apt-get -y install build-essential cmake openssh-server wg
 RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
 
 # Create notebook repos
-RUN mkdir notebooks && cd notebooks && mkdir qrack && mkdir nvidia && mkdir uf && mkdir qiskit && mkdir google && mkdir thereminq
+RUN mkdir notebooks && cd notebooks && mkdir qrack && mkdir nvidia && mkdir misc && mkdir uf && mkdir qiskit && mkdir google && mkdir thereminq
 
 # Dan Strano's repo
 RUN cd notebooks/qrack && git clone --recursive --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git 
@@ -45,7 +45,7 @@ RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm
 RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/unitaryfoundation/qrack.git
 
 # NVidia
-RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/NVIDIA/cuQuantum.git
+RUN cd notebooks/nvidia && git clone --recursive  --depth=1 https://github.com/NVIDIA/cuQuantum.git
 
 # unitary fund
 RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/unitaryfund/research
@@ -72,18 +72,17 @@ RUN cd notebooks/google && git clone --recursive  --depth=1 https://github.com/t
 RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-tensors
 RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-examples
 RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/qrackmin
-RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/sebwouters/chemps2
-# RUN cd notebooks/thereminq/chemps2 && mkdir _build && cd _build && CXX=option1 cmake .. -DMKL=option2 -DCMAKE_INSTALL_PREFIX=/option3 -DWITH_MPI=option4 && make && make install
+
+# misc
+RUN cd notebooks/misc && git clone --recursive  --depth=1 https://github.com/sebwouters/chemps2
+# RUN cd notebooks/misc/chemps2 && mkdir _build && cd _build && CXX=option1 cmake .. -DMKL=option2 -DCMAKE_INSTALL_PREFIX=/option3 -DWITH_MPI=option4 && make && make install
 # https://sebwouters.github.io/CheMPS2/sourcecode.html#dependencies
-
 # QAOA ADAPT
-RUN cd notebooks/ && git clone --recursive --depth=1 https://github.com/Hitachi-Cambridge/PaperDynamicADAPT-QAOA-Data.git
-
+RUN cd notebooks/misc && git clone --recursive --depth=1 https://github.com/Hitachi-Cambridge/PaperDynamicADAPT-QAOA-Data.git
 # IBM QC benchmarks
-RUN cd notebooks && git clone --recursive  --depth=1 https://git.zib.de/qopt/qoblib-quantum-optimization-benchmarking-library.git
-
+RUN cd notebooks/misc && git clone --recursive  --depth=1 https://git.zib.de/qopt/qoblib-quantum-optimization-benchmarking-library.git
 # highly experimental quantum energy teleportation algo
-RUN cd notebooks && git clone --recursive  --depth=1 https://github.com/IKEDAKAZUKI/Quantum-Energy-Teleportation.git
+RUN cd notebooks/misc && git clone --recursive  --depth=1 https://github.com/IKEDAKAZUKI/Quantum-Energy-Teleportation.git
 
 # agentic CLI integration and prerequisites - could move further up the stack to mitigate removal of already included packages
 RUN apt -y remove nodejs libnode-dev npm && curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && apt install nodejs && apt clean
@@ -96,12 +95,6 @@ RUN apt update && apt install cmake libssl-dev gnome-calculator && apt clean all
 
 # Install IBM QC connector
 RUN pip3 install -U IBMQuantumExperience && pip cache purge
-
-# install munich qc toolkit - will move to other tag when needed -
-# RUN pip3 install mqt.problemsolver mqt.bench mqt.ddsim mqt.qecc
-
-# Install qc-client WebUI
-# RUN apt install npm && npm install -g qps-client && apt clean all
 
 # make log dir for measured results
 RUN mkdir /var/log/thereminq
