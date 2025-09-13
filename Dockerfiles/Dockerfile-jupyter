@@ -32,7 +32,7 @@ RUN cd /notebooks/qrack/qiskit-qrack-provider/qiskit/providers/qrack && jupytext
 RUN cd /notebooks/thereminq/thereminq-tensors/runfiles && jupytext --to notebook *.py
 
 # legacy: place tensorboard projector project 
-RUN cd notebooks && mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
+RUN cd notebooks/misc && mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
 
 EXPOSE 6080 8080 443 2022 7880
 ENTRYPOINT /root/run-boards
