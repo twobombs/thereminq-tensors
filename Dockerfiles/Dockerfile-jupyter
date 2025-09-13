@@ -1,7 +1,7 @@
 FROM twobombs/thereminq-tensors
 
 # prerequisites for functionality offered in this container
-RUN pip3 install jupytext ipython tensorboard cirq tensorflow tensorflow_gnn tensorflow-datasets jupyter traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book vedo numba-cuda && pip cache purge
+RUN pip3 install jupytext ipython tensorboard cirq tensorflow tensorflow_gnn tensorflow-datasets jupyter pyvista pyqt5 traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book vedo numba-cuda && pip cache purge
 RUN pip3 install cuda-python==12.8.0 && pip cache purge && apt install pybind11-dev cvxpy
 
 # tensorflow-quantum
@@ -9,10 +9,6 @@ RUN pip3 install cuda-python==12.8.0 && pip cache purge && apt install pybind11-
 
 # install dask
 # RUN apt install -y python3-pip && apt clean all && pip3 install dask-cuda cupy joblib matplotlib && pip3 cache purge
-
-# mdopt install
-# RUN pip3 install mdopt && pip cache purge
-# RUN cd notebooks/uf/mdopt && pip3 install --ignore-installed -r requirements.txt && pip cache purge
 
 # install pennylane, openfermion and other dependancies for pyqrack vqe benchmark scripts
 RUN apt install -y libopenblas-dev && apt clean all
