@@ -1,8 +1,8 @@
 FROM twobombs/thereminq-tensors
 
 # prerequisites for functionality offered in this container
-RUN pip3 install jupytext ipython tensorboard cirq tensorflow jupyter pyvista pyqt5 bc traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book vedo numba-cuda && pip cache purge
-RUN pip3 install cuda-python==12.8.0 && pip cache purge && apt install pybind11-dev cvxpy
+RUN pip3 install jupytext ipython tensorboard cirq tensorflow jupyter pyvista pyqt5 bc cvxpy traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book vedo numba-cuda && pip cache purge
+RUN pip3 install cuda-python==12.8.0 && pip cache purge && apt install pybind11-dev
 
 # tensorflow-quantum
 # RUN git clone --depth=1 https://github.com/tensorflow/quantum.git && cd quantum && pip install -r requirements.txt && pip cache purge
