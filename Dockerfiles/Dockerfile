@@ -1,7 +1,7 @@
 FROM twobombs/cudacluster:2204dev
 #
 # install apt packages because 
-RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator python3-tk && apt clean all
+RUN apt update && apt install cmake nodejs npm libssl-dev gnome-calculator bc python3-tk && apt clean all
 
 # pip upgrade
 RUN pip install --upgrade pip && pip cache purge
