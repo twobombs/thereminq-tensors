@@ -8,7 +8,8 @@ RUN pip3 install cuda-python==12.8.0 && pip cache purge && apt install pybind11-
 # RUN git clone --depth=1 https://github.com/tensorflow/quantum.git && cd quantum && pip install -r requirements.txt && pip cache purge
 
 # install dask
-# RUN apt install -y python3-pip && apt clean all && pip3 install dask-cuda cupy joblib matplotlib mathomatic-primes mathomatic && pip3 cache purge
+RUN apt update && apt install -y python3-pip mathomatic-primes mathomatic && apt clean all 
+RUN pip3 install dask-cuda cupy-cuda12x joblib matplotlib && pip3 cache purge
 
 # install pennylane, openfermion and other dependancies for pyqrack vqe benchmark scripts
 RUN apt install -y libopenblas-dev && apt clean all
