@@ -40,7 +40,7 @@ ENV PYTHON_VERSION=3.14.0
 ENV PYTHON_HOME=/opt/python/${PYTHON_VERSION}
 
 # Download, compile, and install Python using 'altinstall'
-RUN wget https://www.python.org/ftp/python/3.14/Python-${PYTHON_VERSION}.tar.xz -O /tmp/python.tar.xz \
+RUN wget https://www.python.org/ftp/python/3.14.0/Python-${PYTHON_VERSION}.tar.xz -O /tmp/python.tar.xz \
     && tar -xJf /tmp/python.tar.xz -C /tmp \
     && cd /tmp/Python-${PYTHON_VERSION} \
     # The --prefix flag is crucial for isolating this installation
