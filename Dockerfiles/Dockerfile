@@ -46,7 +46,7 @@ RUN wget https://www.python.org/ftp/python/3.14.0/Python-${PYTHON_VERSION}.tar.x
     # The --prefix flag is crucial for isolating this installation
     && ./configure --prefix=${PYTHON_HOME} --enable-optimizations \
     # 'altinstall' is critical to prevent overwriting the default 'python3' symlink
-    && make altinstall \
+    && make -j $(nproc) altinstall \
     && rm -rf /tmp/python.tar.xz /tmp/Python-${PYTHON_VERSION}
 
 
