@@ -25,7 +25,7 @@ RUN apt install -y python3-pip && apt clean all
 # RUN pip3 install --break-system-packages --upgrade pip && pip cache purge
 
 # fetch alloy
-RUN apt install -y portaudio19-dev alsa-oss pulseaudio && apt clean all && git clone https://github.com/svpino/alloy-voice-assistant.git && cd alloy-voice-assistant && pip install -r requirements.txt && pip cache purge
+# RUN apt install -y portaudio19-dev alsa-oss pulseaudio && apt clean all && git clone https://github.com/svpino/alloy-voice-assistant.git && cd alloy-voice-assistant && pip install -r requirements.txt && pip cache purge
 
 # install runtime requirements
 RUN pip3 install --ignore-installed pyqrack qiskit-qrack-provider PyQrackIsing pyopencl && pip cache purge
