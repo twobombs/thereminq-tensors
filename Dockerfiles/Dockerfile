@@ -13,42 +13,12 @@ RUN npm install -g qps-client
 # 1. INSTALL SYSTEM DEPENDENCIES
 # Install build tools for compiling Python and git for other tools.
 # Also, install python2.7, which is not included by default in modern Ubuntu.
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    # For compiling Python
-    build-essential \
-    libssl-dev \
-    zlib1g-dev \
-    libbz2-dev \
-    libreadline-dev \
-    libsqlite3-dev \
-    wget \
-    curl \
-    libncurses5-dev \
-    libncursesw5-dev \
-    xz-utils \
-    tk-dev \
-    libffi-dev \
-    liblzma-dev \
-    # For installing Python 2.7
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev && rm -rf /var/lib/apt/lists/*
 
-# 2. COMPILE AND INSTALL PYTHON 3.14
-# This section downloads the source, compiles it, and installs it into /opt/
-# This keeps it completely separate from the system's Python versions.
-# --- IMPORTANT: Update this version when Python 3.14 is released ---
 ENV PYTHON_VERSION=3.14.0
 ENV PYTHON_HOME=/opt/python/${PYTHON_VERSION}
-
 # Download, compile, and install Python using 'altinstall'
-RUN wget https://www.python.org/ftp/python/3.14.0/Python-${PYTHON_VERSION}.tar.xz -O /tmp/python.tar.xz \
-    && tar -xJf /tmp/python.tar.xz -C /tmp \
-    && cd /tmp/Python-${PYTHON_VERSION} \
-    # The --prefix flag is crucial for isolating this installation
-    && ./configure --prefix=${PYTHON_HOME} --enable-optimizations \
-    # 'altinstall' is critical to prevent overwriting the default 'python3' symlink
-    && make -j $(nproc) altinstall \
-    && rm -rf /tmp/python.tar.xz /tmp/Python-${PYTHON_VERSION}
-
+RUN wget https://www.python.org/ftp/python/3.14.0/Python-${PYTHON_VERSION}.tar.xz -O /tmp/python.tar.xz && tar -xJf /tmp/python.tar.xz -C /tmp && cd /tmp/Python-${PYTHON_VERSION} && ./configure --prefix=${PYTHON_HOME} && make -j $(nproc) altinstall && rm -rf /tmp/python.tar.xz /tmp/Python-${PYTHON_VERSION}
 
 # install and upgrade pip
 RUN apt install -y python3-pip && apt clean all
