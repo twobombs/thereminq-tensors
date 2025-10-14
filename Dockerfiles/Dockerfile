@@ -52,7 +52,7 @@ RUN cd notebooks/qrack && git clone --recursive --depth=1 https://github.com/vm6
 RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/simulator-benchmarks.git
 RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/qiskit-qrack-provider.git
 RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/pyqrack-examples.git
-RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/PyQrackIsing.git && cp /notebooks/qrack/PyQrackIsing/pyqrackising/kernels.cl /usr/local/python3.10/dist-packages/pyqrackising/kernels.cl
+RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/PyQrackIsing.git && cp /notebooks/qrack/PyQrackIsing/pyqrackising/kernels.cl /usr/local/lib/python3.10/dist-packages/pyqrackising/kernels.cl
 # ^ with fix for python 3.10 with cl kernel copy
 RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/unitaryfoundation/qrack.git
 
