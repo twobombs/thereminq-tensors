@@ -28,6 +28,7 @@ export DISPLAY=:0&&xterm -e "xset s off" &
 export DISPLAY=:0&&xterm -e "neofetch && tail -f /dev/null" &
 export DISPLAY=:0&&exo-open --launch TerminalEmulator &
 export DISPLAY=:0&&tilix -e "gemini --yolo" &
+export DISPLAY=:0&& ./koboldcpp
 
 echo "done"
 # end run, do not stop container
