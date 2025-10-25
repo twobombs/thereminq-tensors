@@ -1,134 +1,120 @@
-## ThereminQ-Tensors 
-### Run & Control Quantum Circuits with Agentic Jupyter Notebooks
+# ThereminQ-Tensors
 
-<img width="1969" height="1435" alt="thereminq-resize" src="https://github.com/user-attachments/assets/2f50cca5-3c46-4445-a4da-a0d750375240" />
+## About
 
+ThereminQ-Tensors is a comprehensive suite of Docker images designed for quantum computing research and development. It provides a VDI (Virtual Desktop Infrastructure) environment with a wide range of pre-installed tools and libraries, including pyQrack, Qiskit, Cirq, and Mitiq. The project aims to provide a reproducible and easy-to-use environment for running and controlling quantum circuits.
 
-As the Qiskit 2.x migration makes progress this stack will remain in development mode
+This project is especially useful for researchers and developers who need a consistent and portable environment for their quantum computing experiments. It eliminates the need to manually install and configure a complex toolchain, allowing you to focus on your research.
 
-- Agency is now by default installed and enabled in both the jupyter and agent container images
-- Gemini CLI and Open Interpreter now assist development during and after the migration process
-- According to the IBM roadmap the Qiskit 2.x move should be concluded at the end of 2025, early 2026
+## Features
 
- disclaimer:
-* even though I've taken steps above and beyond what is currently known to be best practices for AI Agency
-* any liabilities and/or damages resulting from the use of Agentic Tech in this container image is solely for the user
+* **Comprehensive Tooling:** Includes a wide range of popular quantum computing libraries and tools, such as:
+    * **pyQrack:** A Python wrapper for the Qrack quantum computing simulator.
+    * **Qiskit:** An open-source quantum computing software development framework.
+    * **Cirq:** A Python library for writing, manipulating, and optimizing quantum circuits.
+    * **Mitiq:** A Python toolkit for implementing error mitigation on quantum computers.
+    * **And many more!**
+* **GPU Acceleration:** Supports both NVIDIA and Intel GPUs for accelerated quantum circuit simulation.
+* **VDI Environment:** Provides a full VDI environment with a graphical user interface, accessible via VNC or RDP.
+* **Jupyter Notebooks:** Includes a variety of Jupyter Notebooks for data analysis, quantum circuit design, and machine learning.
+* **Agentic Development:** Integrates with Gemini CLI and Open Interpreter to assist with development and migration to Qiskit 2.x.
+* **Specialized Images:** Offers a variety of specialized Docker images for different use cases, such as:
+    * **`:qml`:** Includes QML Jupyter notebooks.
+    * **`:jupyter`:** Jupyter notebook-based data analysis.
+    * **`:metal`:** Qiskit Metal and IQM KQCircuits design.
+    * **`:agent`:** Adds AgentOPS with Open Interpreter UI.
+    * **`:shors`:** PoC Shor's Algorithm Analysis with Qimcifa and pyQrack.
+    * **`:bench`:** For Zapata BenchQ and yarkstiq Quantum-benchmark.
 
-Agency will remain integrated from now on and is no longer considered beta after 1.5 years of evaluation
+## Getting Started
 
-### CUDA-CLuster VDI
+### Prerequisites
 
-`:latest` Ollama powered PyQrack & Qiskit Jupyter Notebooks<br>
-`:qml` includes QML Jupyter notebooks <br>
-`:jupyter` Jupyter notebook based data analysis <br>
-`:metal` Qiskit Metal and IQM KQCircuits design <br>
-`:agent` adds AgentOPS with Open Interpreter UI <br>
-`:shors` PoC Shors' Algorithm Analysis with Qimcifa and pyQrack <br>
-`:bench` for Zapata BenchQ and yarkstiq Quantum-benchmark
+* Docker
+* NVIDIA Docker (for GPU acceleration)
 
-Plugins / Connectors / Jupyter NoteBooks
-- pyQrack               https://github.com/unitaryfund/pyqrack
-- Mitiq                 https://mitiq.readthedocs.io/en/stable/
-- Cirq                  https://quantumai.google/cirq
-- Qiskit                https://www.ibm.com/quantum/qiskit
-- Qiskit-qrack-provider https://github.com/vm6502q/qiskit-qrack-provider
-- IBMQuantumExperience  https://quantum-computing.ibm.com/
-- QUDA                  http://lattice.github.io/quda/
-- cuQuantum             https://developer.nvidia.com/cuquantum-sdk
-- IQM KQCircuits        https://github.com/iqm-finland/KQCircuits
-- BenchQ                https://github.com/zapatacomputing/benchq
-- Quantum-benchmark     https://github.com/yardstiq/quantum-benchmarks.git
+### Installation
 
-The following Python repos are included - converted to Jupyter Notebook or vv
-- https://github.com/vm6502q/pyqrack-jupyter.git 
-- https://github.com/twobombs/thereminq-tensors.git
-- https://github.com/vm6502q/simulator-benchmarks.git
-- https://github.com/quantumlib/Cirq.git
-- https://github.com/vm6502q/qiskit-qrack-provider.git
-- https://github.com/unitaryfund/mitiq.git
-- https://github.com/NVIDIA/cuQuantum.git
-- https://github.com/tensorflow/quantum.git
-
-## Run with Nvidia-Docker and/or Intel GPU Full VDI
+To get started with ThereminQ-Tensors, you can pull the latest Docker image from Docker Hub:
 
 ```bash
-docker run --gpus all --device=/dev/kfd --device=/dev/dri:/dev/dri  [--ipc=host]  [--privileged] -p 6080:6080 -d twobombs/thereminq-tensors:tag
-````
+docker pull twobombs/thereminq-tensors:latest
+```
 
-## Jupyter Notebooks UI
-<img width="1697" height="963" alt="Screenshot from 2025-07-19 17-01-18" src="https://github.com/user-attachments/assets/33b6f5f5-32de-47f2-ae96-75b1dd68ffb5" />
-
-![Screenshot from 2024-06-15 10-15-29](https://github.com/twobombs/thereminq-tensors/assets/12692227/401fedd8-78f9-4773-ac68-85808abc97ad)
-
-## Create and/or run Python Quantum-inspired Graphs
-![Screenshot from 2025-01-05 14-27-02](https://github.com/user-attachments/assets/dab8a43b-c974-4fd5-b4a3-7dbf3d61960e)
-
-## Simulate and visualize Sycamore/Willow circuits up to and beyond 105 qubits
-![Screenshot_from_2025-01-06_19-47-23](https://github.com/user-attachments/assets/a887d0c6-be0b-4c94-abd0-8ee185d26e76)
-
+You can also pull a specific image by specifying the tag:
 
 ```bash
-docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:jupyter[-pocl]
-````
+docker pull twobombs/thereminq-tensors:<tag>
+```
 
-## Ollama Open Interpreter AgentOPS stack for coding solutions
-![Screenshot from 2024-05-04 12-54-37](https://github.com/twobombs/thereminq-tensors/assets/12692227/318b1e55-5fee-4c57-9642-4b13f43affc7)
+## Usage
 
-- Ollama https://ollama.com
-- Open Interpreter https://www.openinterpreter.com/
-- Open Interpreter UI https://github.com/blazzbyte/OpenInterpreterUI
+### Running the VDI Environment
 
-```bash
-docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:agent
-````
-
-## Shors' RSA SSH Keypair factorization and 2-primes test loop 
-![Screenshot from 2022-05-14 20-10-47](https://user-images.githubusercontent.com/12692227/168443646-35d34d39-b85b-4289-a8d7-a463c89ddc20.png)
-
-## QIMCIFA, Find-A-Factor and RSA Certificate generation
-![Screenshot from 2022-05-22 20-43-30](https://user-images.githubusercontent.com/12692227/169710747-32ef4926-0286-487a-b9ed-e8c676b2a43a.png)
-Shors' with 
-- rsaConverter https://www.idrix.fr/Root/content/category/7/28/51/
-- Qimcifa https://github.com/vm6502q/qimcifa
-- Find-A-Factor https://github.com/vm6502q/findafactor
-
+To run the VDI environment, you can use the following command:
 
 ```bash
-docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:shors
-````
+docker run --gpus all --device=/dev/kfd --device=/dev/dri:/dev/dri -p 6080:6080 -d twobombs/thereminq-tensors:latest
+```
 
+This will start the VDI environment and make it accessible at `http://localhost:6080`. The default VNC password is `00000000`.
 
-## Interactive Qiskit Metal and KQCircuits 
-![Screenshot from 2024-04-14 17-03-08](https://github.com/twobombs/thereminq-tensors/assets/12692227/5c717466-459e-4bef-b739-c0e699069d82)
+### Accessing the VDI Environment
 
-https://youtu.be/NxArWX8WhPc 
+You can access the VDI environment in two ways:
+
+* **noVNC:** Open your web browser and navigate to `http://localhost:6080`.
+* **xRDP:** Connect to the VDI environment using an RDP client at `localhost:3389`.
+
+### Specialized Images
+
+ThereminQ-Tensors provides a variety of specialized Docker images for different use cases. Here is a list of the available images and their corresponding tags:
+
+| Tag | Description |
+|---|---|
+| `:latest` | Ollama powered PyQrack & Qiskit Jupyter Notebooks |
+| `:qml` | Includes QML Jupyter notebooks |
+| `:jupyter` | Jupyter notebook based data analysis |
+| `:metal` | Qiskit Metal and IQM KQCircuits design |
+| `:agent` | Adds AgentOPS with Open Interpreter UI |
+| `:shors` | PoC Shors' Algorithm Analysis with Qimcifa and pyQrack |
+| `:bench` | For Zapata BenchQ and yarkstiq Quantum-benchmark |
+
+To run a specialized image, simply replace the `:latest` tag with the desired tag in the `docker run` command. For example, to run the QML image, you would use the following command:
 
 ```bash
-docker run --gpus all --privileged -p 6080:6080 --ipc=host --device=/dev/dri:/dev/dri -d twobombs/thereminq-tensors:metal
-````
+docker run --gpus all --device=/dev/kfd --device=/dev/dri:/dev/dri -p 6080:6080 -d twobombs/thereminq-tensors:qml
+```
 
+## Contributing
 
-## CPU only accelerated vanilla VDI:
-```bash
-docker run -p 6080:6080 -d twobombs/thereminq-tensors
-````
+Contributions to ThereminQ-Tensors are welcome! We value a friendly and welcoming community. Please read our [Code of Conduct](CODE_OF_CONDUCT.md) to understand our community standards.
 
-## Minimalistic CPU-only Jupyter notebook kiosk VDI:
-```bash
-docker run -p 6080:6080 -d twobombs/thereminq-tensors:minimum
-````
+If you would like to contribute, please fork the repository and submit a pull request.
 
-Initial vnc password is `00000000`
-- VNC port avaliable on `5900`
-- noVNC website is avaliable at port `6080` 
-- xRDP running at port `3389` proxy to vnc `127.0.0.1:5900`
+## License
 
-## Code from the following awesome companies and initiatives are in this container
+ThereminQ-Tensors is licensed under the GNU General Public License v3.0 or later. See the [LICENSE](LICENSE) file for more information.
 
-![](https://user-images.githubusercontent.com/12692227/57654809-61c07f00-75d5-11e9-9005-38d60d8d4db4.png)
+## Acknowledgments
 
-All rights and kudos belong to their respective owners. <br>
-If (your) code resides in this container image and you don't want that please let me know. <br>
+This project was created by Aryan Jacques Blaauw. If you use this software in your research, please cite it using the following information:
 
-Code of conduct : Contributor Covenant 
-https://github.com/EthicalSource/contributor_covenant
+```
+@software{Blaauw_ThereminQ_2023,
+author = {Blaauw, Aryan Jacques},
+doi = {10.48550/ARXIV.2304.14969},
+month = {5},
+title = {{ThereminQ}},
+url = {https://github.com/twobombs/thereminq},
+year = {2023}
+}
+```
+
+This project would not be possible without the contributions of the open-source community. We would like to thank the developers of the following projects for their hard work and dedication:
+
+* [pyQrack](https://github.com/unitaryfund/pyqrack)
+* [Mitiq](https://mitiq.readthedocs.io/en/stable/)
+* [Cirq](https://quantumai.google/cirq)
+* [Qiskit](https://www.ibm.com/quantum/qiskit)
+* [And many more!](https://github.com/twobombs/thereminq-tensors/blob/main/Dockerfiles/Dockerfile)
