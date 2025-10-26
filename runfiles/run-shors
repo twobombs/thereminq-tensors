@@ -22,7 +22,7 @@ export DISPLAY=:0 && xterm -e "/root/run-findafactor.sh > /var/log/thereminq/fin
 export DISPLAY=:0 && xterm -e "/root/shors_qimcifa_loop.sh > /var/log/thereminq/shors-qimcifa_loop_'$(date +%F_%R_%S).log'" &
 #
 export DISPLAY=:0&&xterm -e "xset s off" &
-export DISPLAY=:0&&xterm -e "neofetch && tail -f /dev/null" &
+export DISPLAY=:0&&xterm -bg black -fg white -e "neofetch && tail -f /dev/null" &
 export DISPLAY=:0&&exo-open --launch TerminalEmulator &
 
 echo "done"
