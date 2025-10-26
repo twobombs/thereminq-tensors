@@ -27,7 +27,7 @@ sleep 15 && export DISPLAY=:0 && google-chrome-stable --disable-fre --no-default
 export DISPLAY=:0&&xterm -e "xset s off" &
 export DISPLAY=:0&&xterm -bg black -fg white -e "neofetch && tail -f /dev/null" &
 export DISPLAY=:0&&exo-open --launch TerminalEmulator &
-export DISPLAY=:0&&tilix -e "gemini --yolo" &
+export DISPLAY=:0&&xfce4-terminal --command='gemini --yolo' &
 export DISPLAY=:0&& ./koboldcpp
 
 echo "done"
