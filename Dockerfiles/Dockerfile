@@ -92,7 +92,7 @@ RUN cd notebooks/misc && git clone --recursive  --depth=1 https://github.com/seb
 # QAOA ADAPT
 RUN cd notebooks/misc && git clone --recursive --depth=1 https://github.com/Hitachi-Cambridge/PaperDynamicADAPT-QAOA-Data.git
 # IBM QC benchmarks
-RUN cd notebooks/misc && git clone --recursive  --depth=1 https://git.zib.de/qopt/qoblib-quantum-optimization-benchmarking-library.git
+# RUN cd notebooks/misc && git clone --recursive  --depth=1 https://git.zib.de/qopt/qoblib-quantum-optimization-benchmarking-library.git
 # highly experimental quantum energy teleportation algo
 RUN cd notebooks/misc && git clone --recursive  --depth=1 https://github.com/IKEDAKAZUKI/Quantum-Energy-Teleportation.git
 
