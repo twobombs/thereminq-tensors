@@ -1,3 +1,5 @@
+<img width="5978" height="1578" alt="468390747-272a9fdc-d924-4771-850c-d100f23562f6 (1)" src="https://github.com/user-attachments/assets/201ecb42-bb5b-4703-9d3b-2ec1cf877dd5" />
+
 # ThereminQ-Tensors
 
 ## About
