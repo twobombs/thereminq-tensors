@@ -16,7 +16,7 @@ This project is especially useful for researchers and developers who need a cons
     * **Cirq:** A Python library for writing, manipulating, and optimizing quantum circuits.
     * **Mitiq:** A Python toolkit for implementing error mitigation on quantum computers.
     * **And many more!**
-* **GPU Acceleration:** Supports both NVIDIA and Intel GPUs for accelerated quantum circuit simulation.
+* **GPU Acceleration:** Supports AMD, NVIDIA and Intel GPUs for accelerated quantum circuit simulation.
 * **VDI Environment:** Provides a full VDI environment with a graphical user interface, accessible via VNC or RDP.
 * **Jupyter Notebooks:** Includes a variety of Jupyter Notebooks for data analysis, quantum circuit design, and machine learning.
 * **Agentic Development:** Integrates with Gemini CLI and Open Interpreter to assist with development and migration to Qiskit 2.x.
