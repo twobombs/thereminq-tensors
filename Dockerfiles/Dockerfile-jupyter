@@ -17,9 +17,11 @@ RUN pip install --prefer-binary --upgrade pyscf && pip cache purge
 RUN pip install --prefer-binary --upgrade --force pennylane pennylane-qrack pennylane-lightning[gpu] openfermion cirq matplotlib ply autograd plotly && pip cache purge
 # openfermionpyscf pennylane-qchem pennylane-cirq
 
+
 # convert md / py / ipynb files
-RUN cd notebooks/qrack/pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
+RUN cd /notebooks/qrack/pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
 RUN cd /notebooks/google/Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
+RUN cd /notebooks/agentics/all-agentic-architectures && jupyter nbconvert --to html *.ipynb
 
 # convert some of the py files to ipynb for convenience
 RUN cd /notebooks/qrack/pyqrack-examples && jupytext --to notebook *.py

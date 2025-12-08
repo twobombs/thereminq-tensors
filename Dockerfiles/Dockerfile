@@ -45,7 +45,10 @@ RUN apt-get update && apt-get -y install build-essential cmake openssh-server wg
 RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
 
 # Create notebook repos
-RUN mkdir notebooks && cd notebooks && mkdir qrack && mkdir nvidia && mkdir misc && mkdir uf && mkdir qiskit && mkdir google && mkdir thereminq
+RUN mkdir notebooks && cd notebooks && mkdir agentics && mkdir qrack && mkdir nvidia && mkdir misc && mkdir uf && mkdir qiskit && mkdir google && mkdir thereminq
+
+# agentics
+RUN cd notebooks/agentics && git clone https://github.com/FareedKhan-dev/all-agentic-architectures.git
 
 # Dan Strano's repo
 RUN cd notebooks/qrack && git clone --recursive --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git 
