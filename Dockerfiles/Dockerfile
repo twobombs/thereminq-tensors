@@ -39,10 +39,14 @@ RUN pip3 install --ignore-installed qiskit[all] qiskit-nature qiskit_aer qiskit_
 
 # clone qrack repo for specia high-qubit edition
 RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
+RUN cp -r /qrack /qrack64
+
 # install qrack compile features
 RUN apt-get update && apt-get -y install build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
 # Qrack install with high qubit dependancies 
 RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
+# 64Qrack install & dependancies
+RUN cd /qrack64/include && mkdir CL && cd /qrack64 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=7 -DENABLE_COMPLEX_X2=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all 
 
 # Create notebook repos
 RUN mkdir notebooks && cd notebooks && mkdir agentics && mkdir qrack && mkdir nvidia && mkdir misc && mkdir uf && mkdir qiskit && mkdir google && mkdir thereminq
