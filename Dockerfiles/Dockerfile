@@ -54,7 +54,8 @@ RUN mkdir notebooks && cd notebooks && mkdir agentics && mkdir qrack && mkdir nv
 # agentics
 RUN cd notebooks/agentics && git clone https://github.com/FareedKhan-dev/all-agentic-architectures.git
 
-# Dan Strano's repo
+# Dan Strano's repos/forks
+RUN cd notebooks/qrack && git clone --recursive --depth=1 https://github.com/twobombs/weed
 RUN cd notebooks/qrack && git clone --recursive --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git 
 RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/simulator-benchmarks.git
 RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/qiskit-qrack-provider.git
