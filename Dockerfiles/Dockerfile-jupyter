@@ -1,20 +1,20 @@
 FROM twobombs/thereminq-tensors
 
 # prerequisites for functionality offered in this container
-RUN pip3 install jupytext ipython tensorboard cirq tensorflow jupyter pyvista pyqt5 bc cvxpy traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book vedo numba-cuda && pip cache purge
-RUN pip3 install cuda-python==12.8.0 dimod torch torchvision torchaudio matplotlib quimb && pip cache purge && apt install pybind11-dev && apt clean all
+RUN pip3 install --break-system-packages jupytext ipython tensorboard cirq tensorflow jupyter pyvista pyqt5 bc cvxpy traitlets nbconvert matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book vedo numba-cuda && pip cache purge
+RUN pip3 install --break-system-packages dimod torch torchvision torchaudio matplotlib quimb && pip cache purge && apt install -y pybind11-dev && apt clean all
 
 # tensorflow-quantum
 # RUN git clone --depth=1 https://github.com/tensorflow/quantum.git && cd quantum && pip install -r requirements.txt && pip cache purge
 
 # install dask
 RUN apt update && apt install -y python3-pip mathomatic-primes mathomatic && apt clean all 
-RUN pip3 install dask-cuda cupy-cuda12x joblib matplotlib && pip3 cache purge
+RUN pip3 install --break-system-packages matplotlib && pip3 cache purge
 
 # install pennylane, openfermion and other dependancies for pyqrack vqe benchmark scripts
 RUN apt install -y libopenblas-dev && apt clean all
-RUN pip install --prefer-binary --upgrade pyscf && pip cache purge
-RUN pip install --prefer-binary --upgrade --force pennylane pennylane-qrack pennylane-lightning[gpu] openfermion cirq matplotlib ply autograd plotly && pip cache purge
+RUN pip install --break-system-packages --prefer-binary --upgrade pyscf && pip cache purge
+RUN pip install --break-system-packages --prefer-binary --upgrade pennylane pennylane-qrack pennylane-lightning[gpu] openfermion cirq matplotlib ply autograd plotly && pip cache purge
 # openfermionpyscf pennylane-qchem pennylane-cirq
 
 
