@@ -33,7 +33,8 @@ This project is especially useful for researchers and developers who need a cons
 ### Prerequisites
 
 * Docker
-* NVIDIA Docker (for GPU acceleration)
+* AMD/NVidia//Intel GPU
+* NVIDIA Docker (optional for NVidia GPU passthrough)
 
 ### Installation
 
