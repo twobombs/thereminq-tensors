@@ -29,7 +29,19 @@ RUN pip3 install --break-system-packages --ignore-installed pyqrack qiskit-qrack
 
 # RUN pip3 install --break-system-packages --ignore-installed pennyLane catalyst 
 # RUN pip3 install --break-system-packages --ignore-installed pyzx ipyparallel mistune cmake 
-RUN pip3 install --break-system-packages --ignore-installed qiskit[all] qiskit-nature qiskit_aer qiskit_quimb qiskit_algorithms pyscf sparse && pip cache purge
+# workaround for 3.14
+RUN apt-get update && apt-get install -y wget build-essential libgmp-dev python3-dev && \
+    pip3 install --break-system-packages "cmake<3.30" cython && \
+    wget https://github.com/symengine/symengine/archive/refs/tags/v0.13.0.tar.gz -O symengine-0.13.0.tar.gz && \
+    tar -xzf symengine-0.13.0.tar.gz && \
+    cd symengine-0.13.0 && \
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTS=OFF -DBUILD_BENCHMARKS=OFF . && \
+    make -j$(nproc) && \
+    make install && \
+    cd .. && \
+    rm -rf symengine-0.13.0* && \
+    pip3 install --break-system-packages qiskit[all] qiskit-nature qiskit_aer qiskit_quimb qiskit_algorithms pyscf sparse && \
+    pip cache purge
 
 # RUN pip3 install --break-system-packages --upgrade scikit-build && pip cache purge
 # RUN git clone --depth=1 https://github.com/unitaryfund/pennylane-qrack.git && cd pennylane-qrack &&  mkdir _build && cd _build && cmake -DCPP_STD=14 .. && make all -j$(nproc --all) && make install
