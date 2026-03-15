@@ -29,6 +29,7 @@ RUN pip3 install --break-system-packages --ignore-installed pyqrack qiskit-qrack
 
 # RUN pip3 install --break-system-packages --ignore-installed pennyLane catalyst 
 # RUN pip3 install --break-system-packages --ignore-installed pyzx ipyparallel mistune cmake 
+
 # workaround for 3.14
 RUN apt-get update && apt-get install -y wget build-essential libgmp-dev python3-dev && \
     pip3 install --break-system-packages "cmake<3.30" cython && \
@@ -41,6 +42,11 @@ RUN apt-get update && apt-get install -y wget build-essential libgmp-dev python3
     cd .. && \
     rm -rf symengine-0.13.0* && \
     pip3 install --break-system-packages qiskit[all] qiskit-nature qiskit_aer qiskit_quimb qiskit_algorithms pyscf sparse && \
+    pip3 uninstall --break-system-packages -y cmake cython && \
+    apt-get remove -y wget build-essential libgmp-dev python3-dev && \
+    apt-get autoremove -y && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
     pip cache purge
 
 # RUN pip3 install --break-system-packages --upgrade scikit-build && pip cache purge
