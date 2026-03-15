@@ -111,6 +111,7 @@ RUN cd notebooks/google && git clone --recursive  --depth=1 https://github.com/t
 # integrate thereminq repos
 RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-tensors
 RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-examples
+RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-holoqubed
 RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/qrackmin
 
 # misc
