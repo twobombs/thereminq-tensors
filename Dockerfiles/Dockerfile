@@ -41,7 +41,7 @@ RUN apt-get update && apt-get install -y wget build-essential libgmp-dev python3
     make install && \
     cd .. && \
     rm -rf symengine-0.13.0* && \
-    pip3 install --break-system-packages qiskit[all] qiskit-nature qiskit_aer qiskit_quimb qiskit_algorithms pyscf sparse && \
+    CMAKE_BUILD_PARALLEL_LEVEL=$(nproc) MAKEFLAGS="-j$(nproc)" pip3 install --break-system-packages qiskit[all] qiskit-nature qiskit_aer qiskit_quimb qiskit_algorithms pyscf sparse && \
     pip3 uninstall --break-system-packages -y cmake cython && \
     apt-get remove -y wget build-essential libgmp-dev python3-dev && \
     apt-get autoremove -y && \
