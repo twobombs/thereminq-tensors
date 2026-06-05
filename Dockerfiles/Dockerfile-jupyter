@@ -21,7 +21,7 @@ RUN pip install --break-system-packages --prefer-binary --upgrade pennylane penn
 # convert md / py / ipynb files
 RUN cd /notebooks/qrack/pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
 RUN cd /notebooks/google/Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
-RUN cd /notebooks/agentics/all-agentic-architectures && jupyter nbconvert --to html *.ipynb
+# RUN cd /notebooks/agentics/all-agentic-architectures && jupyter nbconvert --to html *.ipynb
 
 # convert some of the py files to ipynb for convenience
 RUN cd /notebooks/qrack/pyqrack-examples && jupytext --to notebook *.py
