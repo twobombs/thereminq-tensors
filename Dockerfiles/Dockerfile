@@ -133,7 +133,7 @@ RUN pip install --break-system-packages google-generativeai voice-mode gguf && p
 COPY runfiles/settings.json /root/.gemini/
 
 # install qiskit[metal/visualisation] tooling
-RUN apt update && apt install cmake libssl-dev gnome-calculator && apt clean all
+RUN apt update && apt install -y cmake libssl-dev gnome-calculator && apt clean all
 
 # Install IBM QC connector
 RUN pip3 install --break-system-packages -U IBMQuantumExperience && pip cache purge
