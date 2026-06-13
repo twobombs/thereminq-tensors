@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends build-essential
 #RUN wget https://www.python.org/ftp/python/3.14.0/Python-${PYTHON_VERSION}.tar.xz -O /tmp/python.tar.xz && tar -xJf /tmp/python.tar.xz -C /tmp && cd /tmp/Python-${PYTHON_VERSION} && ./configure --prefix=${PYTHON_HOME} && make -j $(nproc) altinstall && rm -rf /tmp/python.tar.xz /tmp/Python-${PYTHON_VERSION}
 
 # install and upgrade pip
-RUN apt install -y python3-pip && apt clean all
+RUN apt install -y python3-pip python-is-python3 && apt clean all
 # RUN pip3 install --break-system-packages --upgrade pip && pip cache purge
 
 # fetch alloy
