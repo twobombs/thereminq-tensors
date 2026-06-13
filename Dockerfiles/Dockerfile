@@ -12,11 +12,6 @@ RUN apt update && apt install -y cmake nodejs npm libssl-dev gnome-calculator bc
 # Also, install python2.7, which is not included by default in modern Ubuntu.
 RUN apt-get update && apt-get install -y --no-install-recommends build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev && rm -rf /var/lib/apt/lists/*
 
-#ENV PYTHON_VERSION=3.14.0
-#ENV PYTHON_HOME=/opt/python/${PYTHON_VERSION}
-# Download, compile, and install Python using 'altinstall'
-#RUN wget https://www.python.org/ftp/python/3.14.0/Python-${PYTHON_VERSION}.tar.xz -O /tmp/python.tar.xz && tar -xJf /tmp/python.tar.xz -C /tmp && cd /tmp/Python-${PYTHON_VERSION} && ./configure --prefix=${PYTHON_HOME} && make -j $(nproc) altinstall && rm -rf /tmp/python.tar.xz /tmp/Python-${PYTHON_VERSION}
-
 # install and upgrade pip
 RUN apt install -y python3-pip python-is-python3 python3-pytest && apt clean all
 # RUN pip3 install --break-system-packages --upgrade pip && pip cache purge
