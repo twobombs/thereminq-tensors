@@ -113,6 +113,7 @@ RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.co
 RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-examples
 RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-holoqubed
 RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/qrack
+RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-autoresearch.git
 
 # misc
 RUN cd notebooks/misc && git clone --recursive  --depth=1 https://github.com/sebwouters/chemps2
