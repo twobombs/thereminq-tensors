@@ -52,7 +52,7 @@ docker pull twobombs/thereminq-tensors:<tag>
 
 ## Usage
 
-### Running the VDI Environment
+### Running VDI Environment
 
 To run the VDI environment, you can use the following command:
 
