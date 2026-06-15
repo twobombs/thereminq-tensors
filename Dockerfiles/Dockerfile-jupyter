@@ -24,7 +24,7 @@ RUN cd /notebooks/google/Cirq/docs/simulate && jupyter nbconvert --to script *.i
 # RUN cd /notebooks/agentics/all-agentic-architectures && jupyter nbconvert --to html *.ipynb
 
 # convert some of the py files to ipynb for convenience
-RUN cd /notebooks && find . -type f -name "*.py" | while read -r f; do jupytext --to notebook "$f" || echo "Skipping $f"; done
+RUN cd /notebooks && RUN cd /notebooks && find . -type f -name "*.py" -print0 | xargs -0 -n 1 -P $(nproc) sh -c 'jupytext --to notebook "$1" || echo "WARNING: Failed to convert $1"' _
 
 # legacy: place tensorboard projector project 
 RUN cd notebooks/misc && mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
