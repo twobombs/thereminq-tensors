@@ -13,7 +13,7 @@ RUN apt update && apt install -y cmake nodejs npm libssl-dev gnome-calculator bc
 RUN apt-get update && apt-get install -y --no-install-recommends build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev && rm -rf /var/lib/apt/lists/*
 
 # install and upgrade pip
-RUN apt install -y python3-pip python-is-python3 python3-pytest && apt clean all
+RUN apt-get update && apt-get install -y python3-pip python-is-python3 python3-pytest && apt clean all
 # RUN pip3 install --break-system-packages --upgrade pip && pip cache purge
 
 # fetch alloy
