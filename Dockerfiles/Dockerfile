@@ -21,6 +21,11 @@ RUN apt-get update && apt-get install -y python3-pip python-is-python3 python3-p
 
 # install qrack compile features
 RUN apt-get update && apt-get -y install build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
+
+# clone qrack repo for specia high-qubit edition
+RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
+RUN cp -r /qrack /qrack64
+
 # Qrack install with high qubit dependancies 
 RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DCMAKE_CXX_FLAGS="-Wno-error=array-bounds" -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
 # 64Qrack install & dependancies
@@ -56,10 +61,6 @@ RUN apt-get update && apt-get install -y wget build-essential libgmp-dev python3
 
 # RUN pip3 install --break-system-packages --upgrade scikit-build && pip cache purge
 # RUN git clone --depth=1 https://github.com/unitaryfund/pennylane-qrack.git && cd pennylane-qrack &&  mkdir _build && cd _build && cmake -DCPP_STD=14 .. && make all -j$(nproc --all) && make install
-
-# clone qrack repo for specia high-qubit edition
-RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
-RUN cp -r /qrack /qrack64
 
 # Create notebook repos
 RUN mkdir notebooks && cd notebooks && mkdir agentics && mkdir qrack && mkdir nvidia && mkdir misc && mkdir uf && mkdir qiskit && mkdir google && mkdir thereminq
