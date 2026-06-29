@@ -19,8 +19,18 @@ RUN apt-get update && apt-get install -y python3-pip python-is-python3 python3-p
 # fetch alloy
 # RUN apt install -y portaudio19-dev alsa-oss pulseaudio && apt clean all && git clone https://github.com/svpino/alloy-voice-assistant.git && cd alloy-voice-assistant && pip install -r requirements.txt && pip cache purge
 
+# install qrack compile features
+RUN apt-get update && apt-get -y install build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
+# Qrack install with high qubit dependancies 
+RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DCMAKE_CXX_FLAGS="-Wno-error=array-bounds" -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
+# 64Qrack install & dependancies
+RUN cd /qrack64/include && mkdir CL && cd /qrack64 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=7 -DENABLE_COMPLEX_X2=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all 
+
+# install pyqrack for runtime system
+RUN pip3 install --break-system-packages --ignore-installed --no-binary :all: pyqrack
+
 # install runtime requirements
-RUN pip3 install --break-system-packages --ignore-installed pyqrack qiskit-qrack-provider pyqrackising pyopencl && pip cache purge
+RUN pip3 install --break-system-packages --ignore-installed qiskit-qrack-provider pyqrackising pyopencl && pip cache purge
 
 # RUN pip3 install --break-system-packages --ignore-installed pennyLane catalyst 
 # RUN pip3 install --break-system-packages --ignore-installed pyzx ipyparallel mistune cmake 
@@ -50,13 +60,6 @@ RUN apt-get update && apt-get install -y wget build-essential libgmp-dev python3
 # clone qrack repo for specia high-qubit edition
 RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
 RUN cp -r /qrack /qrack64
-
-# install qrack compile features
-RUN apt-get update && apt-get -y install build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
-# Qrack install with high qubit dependancies 
-RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DCMAKE_CXX_FLAGS="-Wno-error=array-bounds" -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
-# 64Qrack install & dependancies
-RUN cd /qrack64/include && mkdir CL && cd /qrack64 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=7 -DENABLE_COMPLEX_X2=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all 
 
 # Create notebook repos
 RUN mkdir notebooks && cd notebooks && mkdir agentics && mkdir qrack && mkdir nvidia && mkdir misc && mkdir uf && mkdir qiskit && mkdir google && mkdir thereminq
