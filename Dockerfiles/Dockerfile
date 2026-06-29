@@ -141,4 +141,3 @@ COPY runfiles/run* /root/
 RUN chmod 744 /root/run*
 
 EXPOSE 6080
-ENTRYPOINT /root/run-nv
