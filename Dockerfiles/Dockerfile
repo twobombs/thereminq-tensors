@@ -27,7 +27,7 @@ RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && c
 RUN cd /qrack64/include && mkdir CL && cd /qrack64 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=7 -DENABLE_COMPLEX_X2=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all 
 
 # install pyqrack for runtime system
-RUN pip3 install --break-system-packages --ignore-installed --no-binary :all: pyqrack
+RUN CMAKE_BUILD_PARALLEL_LEVEL=$(nproc) pip install --break-system-packages --no-binary :all: --force-reinstall pyqrack
 
 # install runtime requirements
 RUN pip3 install --break-system-packages --ignore-installed qiskit-qrack-provider pyqrackising pyopencl && pip cache purge
