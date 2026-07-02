@@ -41,23 +41,16 @@ RUN pip3 install --break-system-packages --ignore-installed qiskit-qrack-provide
 # RUN pip3 install --break-system-packages --ignore-installed pyzx ipyparallel mistune cmake 
 
 # workaround for 3.14
-RUN apt-get update && apt-get install -y wget build-essential libgmp-dev python3-dev && \
-    pip3 install --break-system-packages "cmake<3.30" cython && \
-    wget https://github.com/symengine/symengine/archive/refs/tags/v0.13.0.tar.gz -O symengine-0.13.0.tar.gz && \
-    tar -xzf symengine-0.13.0.tar.gz && \
-    cd symengine-0.13.0 && \
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTS=OFF -DBUILD_BENCHMARKS=OFF . && \
-    make -j$(nproc) && \
-    make install && \
-    cd .. && \
-    rm -rf symengine-0.13.0* && \
-    CMAKE_BUILD_PARALLEL_LEVEL=$(nproc) MAKEFLAGS="-j$(nproc)" pip3 install --break-system-packages qiskit[all] qiskit-nature qiskit_aer qiskit_quimb qiskit_algorithms pyscf sparse && \
-    pip3 uninstall --break-system-packages -y cmake cython && \
-    apt-get remove -y wget build-essential libgmp-dev python3-dev && \
-    apt-get autoremove -y && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    pip cache purge
+     RUN apt-get update && apt-get install -y wget build-essential libgmp-dev python3-dev git && \
+         pip3 install --break-system-packages "cmake<4.0.0" cython && \
+         git clone --branch v0.13.0 https://github.com/symengine/symengine.git /tmp/symengine && \
+         cd /tmp/symengine && cmake -DCMAKE_INSTALL_PREFIX=/usr/local . && make -j$(nproc) install && \
+         cd / && rm -rf /tmp/symengine && \
+         CMAKE_BUILD_PARALLEL_LEVEL=$(nproc) MAKEFLAGS="-j$(nproc)" pip3 install --break-system-packages qiskit[all] qiskit-nature qiskit_aer qiskit_quimb qiskit_algorithms pyscf sparse && \
+         apt-get autoremove -y && \
+         apt-get clean && \
+         rm -rf /var/lib/apt/lists/* && \
+         pip cache purge
 
 # RUN pip3 install --break-system-packages --upgrade scikit-build && pip cache purge
 # RUN git clone --depth=1 https://github.com/unitaryfund/pennylane-qrack.git && cd pennylane-qrack &&  mkdir _build && cd _build && cmake -DCPP_STD=14 .. && make all -j$(nproc --all) && make install
