@@ -27,7 +27,7 @@ RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
 RUN cp -r /qrack /qrack64
 
 # Qrack install with high qubit dependancies 
-RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DCMAKE_CXX_FLAGS="-Wno-error=array-bounds" -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
+RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DCMAKE_CXX_FLAGS="-Wno-error=array-bounds -march=native" -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
 # 64Qrack install & dependancies
 RUN cd /qrack64/include && mkdir CL && cd /qrack64 && mkdir _build && cd _build && cmake -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=7 -DENABLE_COMPLEX_X2=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all 
 
