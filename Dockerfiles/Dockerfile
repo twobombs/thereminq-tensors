@@ -25,6 +25,7 @@ RUN apt-get update && apt-get -y install build-essential cmake openssh-server wg
 # clone qrack repo for specia high-qubit edition
 RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
 RUN cp -r /qrack /qrack64
+RUN cp -r /qrack /qracknoavx
 
 # Qrack install with high qubit dependancies 
 RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DCMAKE_CXX_FLAGS="-Wno-error=array-bounds -march=native" -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
