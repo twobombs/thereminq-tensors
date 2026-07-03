@@ -34,6 +34,7 @@ RUN cd /qrack64/include && mkdir CL && cd /qrack64 && mkdir _build && cd _build 
 
 # install pyqrack for runtime system
 RUN CMAKE_ARGS="-DCMAKE_CXX_FLAGS='-Wno-error=array-bounds -march=native' -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5" CMAKE_BUILD_PARALLEL_LEVEL=$(nproc) pip install --break-system-packages --no-binary :all: --force-reinstall pyqrack
+ENV PYQRACK_SHARED_LIB_PATH="/usr/local/lib/libqrack_pinvoke.so"
 
 # install runtime requirements
 RUN pip3 install --break-system-packages --ignore-installed qiskit-qrack-provider pyqrackising pyopencl && pip cache purge
