@@ -36,14 +36,12 @@ RUN cd /qracknoavx3/include && mkdir -p CL && \
     cd /qracknoavx3 && mkdir -p _build && cd _build && \
     cmake -DCMAKE_CXX_FLAGS="-Wno-error=array-bounds" -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DENABLE_COMPLEX_X2=ON -DENABLE_FMA=OFF -DENABLE_SSE3=ON -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5 .. && make -j $(nproc) all && make install && ldconfig
     
-
-
-# install pyqrack for runtime system
-RUN CMAKE_ARGS="-DCMAKE_CXX_FLAGS='-Wno-error=array-bounds -march=native' -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5" CMAKE_BUILD_PARALLEL_LEVEL=$(nproc) pip install --break-system-packages --no-binary :all: --force-reinstall pyqrack
-ENV PYQRACK_SHARED_LIB_PATH="/usr/local/lib/qrack/libqrack_pinvoke.so"
+# install pyqrack for runtime system with other then default requirements
+# RUN CMAKE_ARGS="-DCMAKE_CXX_FLAGS='-Wno-error=array-bounds -march=native' -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5" CMAKE_BUILD_PARALLEL_LEVEL=$(nproc) pip install --break-system-packages --no-binary :all: --force-reinstall pyqrack
+#E NV PYQRACK_SHARED_LIB_PATH="/usr/local/lib/qrack/libqrack_pinvoke.so"
 
 # install runtime requirements
-RUN pip3 install --break-system-packages --ignore-installed qiskit-qrack-provider pyqrackising pyopencl && pip cache purge
+RUN pip3 install --break-system-packages --ignore-installed pyqrack qiskit-qrack-provider pyqrackising pyopencl && pip cache purge
 
 # RUN pip3 install --break-system-packages --ignore-installed pennyLane catalyst 
 # RUN pip3 install --break-system-packages --ignore-installed pyzx ipyparallel mistune cmake 
