@@ -92,7 +92,7 @@ RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/twobo
 RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/csenrui/PauliGST.git
 RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/QSAR-UBC/shortalyst.git
 RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/Classiq/classiq-library.git
-RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/AdrianHarkness/FTCircuitBench
+RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/twobombs/FTCircuitBench
 
 # IBM Qiskit [deprecated] projects
 RUN cd notebooks/qiskit && git clone --recursive  --depth=1 https://github.com/Qiskit/qiskit-iqx-tutorials.git
