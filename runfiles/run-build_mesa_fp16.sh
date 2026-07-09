@@ -92,23 +92,17 @@ verify_fp16() {
     else
         warn "cl_khr_fp16 not found in clinfo output."
         warn "Ensure you have the right driver environment and DRI_PRIME variables set."
-        # Returning 0 to prevent set -e from killing the execution before env hint prints
     fi
     return 0
 }
 
 # -- Phase 1: Dependencies -----------------------------------------------------
 detect_llvm_version() {
-    # Find the highest installed LLVM major version, falling back to whatever
-    # llvm-config reports, then to a hardcoded preference list.
     local ver=""
-
-    # Try llvm-config first (may already be installed from Qrack build)
     if command -v llvm-config &>/dev/null; then
         ver=$(llvm-config --version 2>/dev/null | grep -oP '^\d+' || true)
     fi
 
-    # If not found via llvm-config, probe apt for the highest available version
     if [ -z "$ver" ]; then
         for v in 22 21 20 19 18 17 16 15; do
             if apt-cache show "llvm-${v}-dev" &>/dev/null 2>&1; then
@@ -138,11 +132,10 @@ install_deps() {
 
     # -- Core build tools ------------------------------------------------------
     apt-get install -y --no-install-recommends \
-        curl ca-certificates xz-utils \
+        curl ca-certificates xz-utils git cmake \
         meson ninja-build pkg-config \
         python3 python3-mako python3-yaml \
-        gcc g++ \
-        bison flex libelf-dev
+        gcc g++ bison flex libelf-dev
 
     # -- LLVM / Clang ---------------------------------------------------------
     apt-get install -y --no-install-recommends \
@@ -150,62 +143,40 @@ install_deps() {
         "libclang-${VER}-dev" \
         "clang-${VER}"
 
-    # libclang-cppXX-dev: no hyphen before version (libclang-cpp21-dev, not libclang-cpp-21-dev)
     if pkg_exists "libclang-cpp${VER}-dev"; then
         apt-get install -y --no-install-recommends "libclang-cpp${VER}-dev"
-        ok "Installed libclang-cpp${VER}-dev"
     elif pkg_exists "libclang-cpp-${VER}-dev"; then
         apt-get install -y --no-install-recommends "libclang-cpp-${VER}-dev"
-        ok "Installed libclang-cpp-${VER}-dev (hyphenated form)"
-    else
-        warn "libclang-cpp${VER}-dev not found - Mesa may still configure if libclang-${VER}-dev is sufficient."
     fi
 
     # -- SPIRV-LLVM-Translator -------------------------------------------------
     if pkg_exists "llvm-spirv-${VER}"; then
         apt-get install -y --no-install-recommends "llvm-spirv-${VER}"
-        # Make it available on PATH without version suffix for meson detection
         if [ ! -f /usr/bin/llvm-spirv ] && [ -f "/usr/bin/llvm-spirv-${VER}" ]; then
             ln -sf "/usr/bin/llvm-spirv-${VER}" /usr/bin/llvm-spirv
         fi
-        ok "Installed llvm-spirv-${VER}"
     fi
 
     if pkg_exists "libllvmspirvlib-${VER}-dev"; then
         apt-get install -y --no-install-recommends "libllvmspirvlib-${VER}-dev"
-        ok "Installed libllvmspirvlib-${VER}-dev"
     elif pkg_exists "libllvmspirvlib-dev"; then
         apt-get install -y --no-install-recommends "libllvmspirvlib-dev"
-        ok "Installed generic libllvmspirvlib-dev"
-    else
-        warn "No libllvmspirvlib-${VER}-dev found. Mesa configuration may fail."
     fi
 
-    # -- libclc - OpenCL C builtins --------------------------------------------
+    # -- libclc (kept to satisfy package trees, overridden by build_libclc) ---
     if pkg_exists "libclc-${VER}-dev"; then
-        apt-get install -y --no-install-recommends \
-            "libclc-${VER}" \
-            "libclc-${VER}-dev"
-        ok "Installed libclc-${VER} / libclc-${VER}-dev"
+        apt-get install -y --no-install-recommends "libclc-${VER}" "libclc-${VER}-dev"
     elif pkg_exists "libclc-dev"; then
         apt-get install -y --no-install-recommends libclc-dev
-        if pkg_exists "libclc-amdgcn"; then
-            apt-get install -y --no-install-recommends libclc-amdgcn
-        fi
-        ok "Installed legacy libclc-dev"
-    else
-        die "No libclc package found for LLVM ${VER}. Try: apt-cache search libclc"
     fi
 
-    # -- Rust (rusticl is written in Rust) -------------------------------------
+    # -- Rust ------------------------------------------------------------------
     apt-get install -y --no-install-recommends rustc cargo rustfmt
 
     if pkg_exists "bindgen"; then
         apt-get install -y --no-install-recommends bindgen
     elif pkg_exists "rust-bindgen"; then
         apt-get install -y --no-install-recommends rust-bindgen
-    else
-        warn "bindgen package not found via apt - rusticl may still build if cargo can supply it."
     fi
 
     # -- SPIR-V tools ----------------------------------------------------------
@@ -213,18 +184,14 @@ install_deps() {
 
     if pkg_exists "spirv-tools-dev"; then
         apt-get install -y --no-install-recommends spirv-tools-dev
-        ok "Installed spirv-tools-dev"
     fi
 
     if pkg_exists "spirv-headers"; then
         apt-get install -y --no-install-recommends spirv-headers
-        ok "Installed spirv-headers"
     fi
 
     if pkg_exists "libspirv-cross-c-shared-dev"; then
         apt-get install -y --no-install-recommends libspirv-cross-c-shared-dev
-    else
-        warn "libspirv-cross-c-shared-dev not found - may not be required on this distro version."
     fi
 
     # -- DRM + misc ------------------------------------------------------------
@@ -236,17 +203,8 @@ install_deps() {
 
     rm -rf /var/lib/apt/lists/*
     ok "All dependencies installed."
-
-    log "Tool versions:"
-    meson --version                              | sed 's/^/  meson      /'
-    ninja --version                              | sed 's/^/  ninja      /'
-    rustc --version 2>/dev/null | head -n 1      | sed 's/^/  rustc      /' || true
-    "llvm-config-${VER}" --version 2>/dev/null   | sed 's/^/  llvm       /' || \
-        llvm-config --version 2>/dev/null        | sed 's/^/  llvm       /' || true
-    llvm-spirv --version 2>/dev/null | head -n 1 | sed 's/^/  llvm-spirv /' || true
 }
 
-# -- LLVM / spirv-translator version alignment check --------------------------
 check_llvm_spirv_alignment() {
     local llvm_ver spirv_ver
     llvm_ver=$(llvm-config --version 2>/dev/null | grep -oP '^\d+' || echo "?")
@@ -257,10 +215,79 @@ check_llvm_spirv_alignment() {
         return
     fi
     if [ "$llvm_ver" != "$spirv_ver" ]; then
-        die "LLVM major (${llvm_ver}) != llvm-spirv major (${spirv_ver}). \
-Install matching llvm-spirv-${llvm_ver} and retry."
+        die "LLVM major (${llvm_ver}) != llvm-spirv major (${spirv_ver}). Install matching llvm-spirv-${llvm_ver} and retry."
     fi
     ok "LLVM ${llvm_ver} and llvm-spirv ${spirv_ver} major versions match."
+}
+
+# -- Phase 1.5: Build Custom libclc --------------------------------------------
+build_libclc() {
+    hr
+    log "Phase 1.5/5 - Building libclc from source (Fixing Ubuntu's missing FP16 builtins)..."
+
+    # Verify idempotency
+    if [ -f "${MESA_PREFIX}/share/clc/spirv64-mesa3d-.spv" ]; then
+        ok "Custom libclc already installed. Skipping."
+        return 0
+    fi
+
+    local VER
+    VER=$(detect_llvm_version)
+    local LIBCLC_SRC="/tmp/libclc-src"
+    
+    rm -rf "${LIBCLC_SRC}"
+    mkdir -p "${LIBCLC_SRC}"
+    cd "${LIBCLC_SRC}"
+
+    log "Cloning libclc from llvm-project via sparse-checkout..."
+    git init -q
+    git remote add origin https://github.com/llvm/llvm-project.git
+    git config core.sparseCheckout true
+    echo "libclc/" >> .git/info/sparse-checkout
+    
+    if ! git pull -q --depth=1 origin "release/${VER}.x" 2>/dev/null; then
+        log "Branch release/${VER}.x not found, falling back to main..."
+        git pull -q --depth=1 origin main
+    fi
+
+    cd libclc
+    mkdir build
+    cd build
+
+    local LLVM_CFG="/usr/bin/llvm-config-${VER}"
+    if [ ! -f "$LLVM_CFG" ]; then
+        LLVM_CFG=$(command -v llvm-config || true)
+    fi
+
+    local CLANG_C="/usr/bin/clang-${VER}"
+    if [ ! -f "$CLANG_C" ]; then
+        CLANG_C=$(command -v clang || true)
+    fi
+
+    local CLANG_CXX="/usr/bin/clang++-${VER}"
+    if [ ! -f "$CLANG_CXX" ]; then
+        CLANG_CXX=$(command -v clang++ || true)
+    fi
+
+    # Dynamically find the exact GCC directory to bypass Clang's Ubuntu 26.04 transition confusion
+    local gcc_dir
+    gcc_dir=$(dirname "$(gcc -print-libgcc-file-name)")
+
+    # Compile with spirv-mesa3d targets to ensure cl_khr_fp16 support is generated
+    cmake -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX="${MESA_PREFIX}" \
+        -DCMAKE_CXX_COMPILER="${CLANG_CXX}" \
+        -DCMAKE_C_COMPILER="${CLANG_C}" \
+        -DCMAKE_CXX_FLAGS="--gcc-install-dir=${gcc_dir}" \
+        -DCMAKE_C_FLAGS="--gcc-install-dir=${gcc_dir}" \
+        -DLLVM_CONFIG="${LLVM_CFG}" \
+        -DLIBCLC_TARGETS_TO_BUILD="spirv-mesa3d-;spirv64-mesa3d-" \
+        ..
+
+    ninja -j"$(nproc)"
+    ninja install
+    ok "Custom libclc installed to ${MESA_PREFIX}"
 }
 
 # -- Phase 2: Fetch + verify ---------------------------------------------------
@@ -320,15 +347,15 @@ configure_mesa() {
         log "Native CPU optimization enabled (-march=native)"
     fi
 
-    # Dynamically find the exact GCC directory so Clang/bindgen stops getting confused
-    # between GCC 15 and 16, allowing us to keep libstdc++ and preserve the ABI match.
+    # Force Meson to load our custom FP16-enabled libclc instead of Ubuntu's broken one
+    export PKG_CONFIG_PATH="${MESA_PREFIX}/share/pkgconfig:${MESA_PREFIX}/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
+
+    # Dynamically find the exact GCC directory to bypass the Ubuntu 26.04 bindgen ABI mismatch
     local gcc_dir
     gcc_dir=$(dirname "$(gcc -print-libgcc-file-name)")
     export BINDGEN_EXTRA_CLANG_ARGS="--gcc-install-dir=${gcc_dir}"
-    log "Setting bindgen GCC install dir to: ${gcc_dir}"
 
     meson setup builddir "${meson_opts[@]}"
-
     ok "Configuration complete."
 }
 
@@ -365,17 +392,14 @@ register_icd() {
     local old_icd="${ICD_VENDORS}/rusticl.icd"
     local old_disabled="${ICD_VENDORS}/rusticl.icd.disabled"
 
-    # Verify the install produced the expected files
     [ -f "${new_icd}" ] || die "Expected ICD file not found: ${new_icd}"
     [ -f "${new_so}"  ] || die "Expected shared lib not found: ${new_so}"
 
     mkdir -p "${ICD_VENDORS}"
 
-    # Symlink new ICD
     ln -sf "${new_icd}" "${link}"
     ok "Linked: ${link} -> ${new_icd}"
 
-    # Disable the Ubuntu generic rusticl ICD if present (regular file)
     if [ -f "${old_icd}" ] && [ ! -L "${old_icd}" ]; then
         mv "${old_icd}" "${old_disabled}"
         ok "Disabled old ICD: ${old_icd} -> ${old_disabled}"
@@ -386,7 +410,6 @@ register_icd() {
         log "No existing ${old_icd} to disable."
     fi
 
-    # Tell ldconfig about the custom mesa lib path so it can find libRusticlOpenCL.so.1
     log "Registering ${MESA_PREFIX}/lib/${LIB_ARCH} with ldconfig..."
     echo "${MESA_PREFIX}/lib/${LIB_ARCH}" > /etc/ld.so.conf.d/mesa-rusticl.conf
     ldconfig
@@ -436,6 +459,7 @@ main() {
         full)
             install_deps
             check_llvm_spirv_alignment
+            build_libclc
             fetch_mesa
             configure_mesa
             build_mesa
