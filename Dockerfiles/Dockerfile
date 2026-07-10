@@ -40,7 +40,7 @@ RUN cd /qracknoavx/include && mkdir -p CL && \
 # noavxfp16
 RUN cd /qracknoavxfp16/include && mkdir -p CL && \
     cd /qracknoavxfp16 && mkdir -p _build && cd _build && \
-    cmake -DCMAKE_CXX_FLAGS="-Wno-error=array-bounds" -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DENABLE_COMPLEX_X2=ON -DENABLE_FMA=OFF -DENABLE_SSE3=ON -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=4 .. && make -j $(nproc) all && make install && ldconfig
+    cmake -DCMAKE_CXX_FLAGS="-Wno-error=array-bounds" -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DENABLE_COMPLEX_X2=ON -DENABLE_FMA=OFF -DENABLE_SSE3=ON -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=4 .. && make -j $(nproc) all
 
 # install pyqrack for runtime system with other then default requirements
 # RUN CMAKE_ARGS="-DCMAKE_CXX_FLAGS='-Wno-error=array-bounds -march=native' -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5" CMAKE_BUILD_PARALLEL_LEVEL=$(nproc) pip install --break-system-packages --no-binary :all: --force-reinstall pyqrack
