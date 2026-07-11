@@ -52,8 +52,8 @@ RUN pip3 install --break-system-packages --ignore-installed pyqrack qiskit-qrack
 # RUN pip3 install --break-system-packages --ignore-installed pennyLane catalyst 
 # RUN pip3 install --break-system-packages --ignore-installed pyzx ipyparallel mistune cmake 
 
-# graph helpers qt6
-RUN apt-get install -y libxcb-xinerama0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-render0 libxcb-shape0 libxcb-shm0 libxcb-sync1 libxcb-util1 libxcb-xfixes0 libx11-xcb1 libqt5gui5 qt6-qpa-plugins && apt clean all
+# graph helpers qt6 and mp4 export
+RUN apt-get install -y ffmpeg libxcb-xinerama0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-render0 libxcb-shape0 libxcb-shm0 libxcb-sync1 libxcb-util1 libxcb-xfixes0 libx11-xcb1 libqt5gui5 qt6-qpa-plugins && apt clean all
 
 # workaround for 3.14
      RUN apt-get update && apt-get install -y wget build-essential libgmp-dev python3-dev git && \
