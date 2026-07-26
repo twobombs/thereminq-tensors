@@ -234,8 +234,10 @@ install_deps() {
         apt-get install -y --no-install-recommends libvulkan1
     fi
 
-    # Vulkan validation layers (optional but useful for debug)
-    if pkg_exists "vulkan-validationlayers-dev"; then
+    # Vulkan utility libraries (replaces vulkan-validationlayers-dev on newer Ubuntu)
+    if pkg_exists "vulkan-utility-libraries-dev"; then
+        apt-get install -y --no-install-recommends vulkan-utility-libraries-dev
+    elif pkg_exists "vulkan-validationlayers-dev"; then
         apt-get install -y --no-install-recommends vulkan-validationlayers-dev
     fi
 
@@ -251,6 +253,7 @@ install_deps() {
         libxcb-dri3-dev \
         libxcb-present-dev \
         libxcb-randr0-dev \
+        libxcb-shm0-dev \
         libxshmfence-dev
 
     # -- DRM + misc ------------------------------------------------------------
