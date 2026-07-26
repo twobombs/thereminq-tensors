@@ -1,7 +1,7 @@
 FROM twobombs/thereminq-desktop
 #
 # install apt packages because 
-RUN apt update && apt install -y cmake nodejs npm libssl-dev gnome-calculator bc python3-tk && apt clean all
+RUN apt update && apt install -y cmake nodejs npm libssl-dev gnome-calculator bc python3-tk build-essential && apt clean all
 
 # install qps
 #RUN npm install -g qps-client
