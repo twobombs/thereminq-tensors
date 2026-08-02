@@ -9,8 +9,8 @@ pulseaudio --system &
 websockify --web=/usr/share/novnc/ 6080 localhost:5900 &
 export DISPLAY=:0&&xterm -e "xset s off"&&
 
-# precompile cl kernels for Qrack	
-cd /qrack/_build/ && ./qrack_cl_precompile &
+# precompile cl kernels for Qrack32
+# cd /qrack/_build/ && ./qrack_cl_precompile &
 
 # placeholder for tensorflow/board/projector start, test GPUs
 tensorboard --logdir --db sqlite:~/.tensorboard.db --host=127.0.0.1 &
