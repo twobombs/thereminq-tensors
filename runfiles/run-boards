@@ -17,7 +17,7 @@ tensorboard --logdir --db sqlite:~/.tensorboard.db --host=127.0.0.1 &
 python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
 
 # start session with jupyter notebooks
-jupyter notebook --notebook-dir=/notebooks --ip 127.0.0.1 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
+jupyter notebook --notebook-dir=/notebooks --ip 0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' &
 sleep 5
 
 # start apps
