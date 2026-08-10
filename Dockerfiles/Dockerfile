@@ -26,8 +26,10 @@ RUN apt-get update && apt-get -y install build-essential cmake openssh-server wg
 RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
 RUN cp -r /qrack /qrack16
 RUN cp -r /qrack /qrack64
+
 RUN cp -r /qrack /qracknoavx
 RUN cp -r /qrack /qracknoavxfp16
+RUN cp -r /qrack /qracknoavxfp64
 
 # Qrack install with low and high qubit dependancies 
 RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DCMAKE_CXX_FLAGS="-Wno-error=array-bounds -march=native" -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
@@ -41,6 +43,8 @@ RUN cd /qracknoavx/include && mkdir -p CL && \
 RUN cd /qracknoavxfp16/include && mkdir -p CL && \
     cd /qracknoavxfp16 && mkdir -p _build && cd _build && \
     cmake -DCMAKE_CXX_FLAGS="-Wno-error=array-bounds" -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DENABLE_COMPLEX_X2=ON -DENABLE_FMA=OFF -DENABLE_SSE3=ON -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=4 .. && make -j $(nproc) all
+# noavxfp64
+RUN cd /qracknoavxfp64/include && mkdir CL && cd /qracknoavxfp64 && mkdir _build && cd _build && cmake -DCMAKE_CXX_FLAGS="-Wno-error=array-bounds -march=native" -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=7 -DENABLE_COMPLEX_X2=ON -DENABLE_FMA=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all 
 
 # install pyqrack for runtime system with other then default requirements
 # RUN CMAKE_ARGS="-DCMAKE_CXX_FLAGS='-Wno-error=array-bounds -march=native' -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5" CMAKE_BUILD_PARALLEL_LEVEL=$(nproc) pip install --break-system-packages --no-binary :all: --force-reinstall pyqrack
