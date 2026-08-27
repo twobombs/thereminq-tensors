@@ -26,10 +26,11 @@ export DISPLAY=:0 && (while true; do google-chrome-stable --disable-fre --no-def
 export DISPLAY=:0 && code . --no-sandbox -disable-dev-shm-usage
 
 # clean desktop & info
-export DISPLAY=:0&&xterm -e "xset s off" &
-export DISPLAY=:0&&xterm -bg black -fg white -e "neofetch && tail -f /dev/null" &
-export DISPLAY=:0&&exo-open --launch TerminalEmulator &
-export DISPLAY=:0&&xfce4-terminal --command='gemini --yolo' &
+export DISPLAY=:0 && xterm -e "xset s off" &
+export DISPLAY=:0 && xterm -bg black -fg white -e "neofetch && tail -f /dev/null" &
+export DISPLAY=:0 && exo-open --launch TerminalEmulator &
+export DISPLAY=:0 && xfce4-terminal --command='gemini --yolo' &
+export DISPLAY=:0 && code . --no-sandbox --disable-dev-shm-usage
 
 echo "done"
 # end run, do not stop container
