@@ -17,6 +17,9 @@ RUN pip install --break-system-packages --prefer-binary --upgrade pyscf && pip c
 RUN pip install --break-system-packages --prefer-binary --upgrade pennylane pennylane-qrack pennylane-lightning[gpu] openfermion cirq matplotlib ply autograd plotly && pip cache purge
 # openfermionpyscf pennylane-qchem pennylane-cirq
 
+# fetch autoresearch and vscode for agentic container work
+RUN git clone https://github.com/twobombs/thereminq-autoresearch
+RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y wget gpg apt-transport-https ca-certificates && mkdir -p /etc/apt/keyrings && wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o /etc/apt/keyrings/packages.microsoft.gpg && echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list && apt-get update && apt-get install -y code
 
 # convert md / py / ipynb files
 # RUN cd /notebooks/qrack/pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
