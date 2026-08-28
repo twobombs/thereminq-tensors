@@ -51,7 +51,7 @@ RUN cd /qracknoavxfp64/include && mkdir CL && cd /qracknoavxfp64 && mkdir _build
 #E NV PYQRACK_SHARED_LIB_PATH="/usr/local/lib/qrack/libqrack_pinvoke.so"
 
 # install runtime requirements
-RUN pip3 install --break-system-packages --ignore-installed pyqrack qiskit-qrack-provider pyqrackising pyopencl && pip cache purge
+RUN pip3 install --break-system-packages --ignore-installed pyqrack qiskit-qrack-provider pyqrackising pyopencl pyqrack-complex128 && pip cache purge
 
 # RUN pip3 install --break-system-packages --ignore-installed pennyLane catalyst 
 # RUN pip3 install --break-system-packages --ignore-installed pyzx ipyparallel mistune cmake 
