@@ -6,7 +6,7 @@ RUN apt update && apt install -y cmake nodejs npm libssl-dev gnome-calculator bc
 # install qps
 #RUN npm install -g qps-client
 
-# install separate python 3.14 instance - gemini25
+# install separate python 3.14 instance
 # 1. INSTALL SYSTEM DEPENDENCIES
 # Install build tools for compiling Python and git for other tools.
 # Also, install python2.7, which is not included by default in modern Ubuntu.
