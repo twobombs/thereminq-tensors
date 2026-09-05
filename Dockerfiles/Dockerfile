@@ -137,12 +137,6 @@ RUN cd notebooks/misc && git clone --recursive --depth=1 https://github.com/Hita
 # highly experimental quantum energy teleportation algo
 RUN cd notebooks/misc && git clone --recursive  --depth=1 https://github.com/IKEDAKAZUKI/Quantum-Energy-Teleportation.git
 
-# agentic CLI integration and prerequisites - could move further up the stack to mitigate removal of already included packages
-#RUN apt -y remove nodejs libnode-dev npm && curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && apt install nodejs && apt clean
-RUN cd notebooks/google/ && git clone --recursive  --depth=1 https://github.com/google-gemini/gemini-cli && npm install -g @google/gemini-cli
-RUN pip install --break-system-packages google-generativeai gguf && pip cache purge 
-COPY runfiles/settings.json /root/.gemini/
-
 # install qiskit[metal/visualisation] tooling
 RUN apt update && apt install -y cmake libssl-dev gnome-calculator && apt clean all
 
