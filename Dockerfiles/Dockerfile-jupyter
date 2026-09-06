@@ -44,5 +44,5 @@ RUN cd /notebooks && find . -type f -name "*.py" -print0 | xargs -0 -n 1 -P $(np
 # legacy: place tensorboard projector project 
 RUN cd notebooks/misc && mkdir tensorboard-projector && cd tensorboard-projector && wget https://storage.googleapis.com/tensorflow_docs/tensorboard/docs/tensorboard_projector_plugin.ipynb
 
-EXPOSE 6080 8080 443 2022 7880
+EXPOSE 6080 8030 8080 443 2022 7880 9931
 ENTRYPOINT /root/run-boards
