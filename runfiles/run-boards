@@ -30,6 +30,10 @@ export DISPLAY=:0 && xterm -bg black -fg white -e "neofetch && tail -f /dev/null
 export DISPLAY=:0 && exo-open --launch TerminalEmulator &
 export DISPLAY=:0 && code . --no-sandbox --disable-dev-shm-usage --user-data-dir /root/
 
+# start Ai engine
+chmod 755 /thereminq-autoresearch/0-build/GITS-SAC.sh
+cd /thereminq-autoresearch/0-build/ && ./GITS-SAC.sh && export DISPLAY=:0 && (while true; do google-chrome-stable --disable-fre --no-default-browser-check --no-first-run --no-sandbox --password-store=basic http://localhost:9931; sleep 2; done) &
+
 echo "done"
 # end run, do not stop container
 tail -f /dev/null
