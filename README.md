@@ -77,7 +77,7 @@ ThereminQ-Tensors provides a variety of specialized Docker images for different 
 |---|---|
 | `:latest` | Ollama powered PyQrack & Qiskit Jupyter Notebooks |
 | `:qml` | Includes QML Jupyter notebooks |
-| `:jupyter` | Jupyter notebook based data analysis |
+| `:jupyter` | Jupyter notebook based data analysis with vscode and Ai |
 | `:metal` | Qiskit Metal and IQM KQCircuits design |
 | `:agent` | Adds AgentOPS with Open Interpreter UI |
 | `:shors` | PoC Shors' Algorithm Analysis with Qimcifa and pyQrack |
