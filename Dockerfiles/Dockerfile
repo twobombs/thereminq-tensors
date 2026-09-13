@@ -116,7 +116,6 @@ RUN cd notebooks/qiskit && git clone --recursive  --depth=1 https://github.com/q
 RUN cd notebooks/qiskit && git clone --recursive  --depth=1 https://github.com/qiskit-community/qiskit-algorithms.git
 
 # Google
-RUN cd notebooks/google && git clone --recursive  --depth=1 https://github.com/quantumlib/Cirq.git
 RUN cd notebooks/google && git clone --recursive  --depth=1 https://github.com/tensorflow/gnn.git tensorflow_gnn
 
 # integrate thereminq repos
