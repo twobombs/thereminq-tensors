@@ -1,0 +1,42 @@
+FROM twobombs/thereminq-tensors:arm
+
+# prerequisites for functionality offered in this container
+RUN pip3 install --break-system-packages --ignore-installed jupytext ipython tensorboard cirq jupyter pyvista pyqt5 bc cvxpy traitlets nbconvert openai matplotlib jupyter_http_over_ws jupyterlab notebook jupyter-book vedo numba-cuda && pip cache purge
+RUN pip3 install --break-system-packages --ignore-installed dimod torch torchvision torchaudio matplotlib quimb && pip cache purge && apt install -y pybind11-dev && apt clean all
+
+# install math packages
+RUN apt update && apt install -y python3-pip mathomatic-primes mathomatic && apt clean all 
+RUN pip3 install --break-system-packages --ignore-installed matplotlib && pip3 cache purge
+
+# install pennylane, openfermion and other dependancies for pyqrack vqe benchmark scripts
+RUN apt install -y libopenblas-dev && apt clean all
+RUN pip install --break-system-packages --prefer-binary --upgrade pyscf && pip cache purge
+RUN pip install --break-system-packages --prefer-binary --upgrade pennylane pennylane-qrack pennylane-lightning[gpu] openfermion cirq matplotlib ply autograd plotly && pip cache purge
+# openfermionpyscf pennylane-qchem pennylane-cirq
+
+# fetch autoresearch and vscode for agentic container work
+RUN git clone https://github.com/twobombs/thereminq-autoresearch
+RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y wget gpg apt-transport-https ca-certificates && mkdir -p /etc/apt/keyrings && wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o /etc/apt/keyrings/packages.microsoft.gpg && echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list && apt-get update && apt-get install -y code
+
+# build llama.cpp instances for local inference ( CPU + MESA OpenCL Vulkan only )
+RUN git clone --depth=1 https://github.com/ggerganov/llama.cpp
+RUN cp -r llama.cpp llama-vulkan
+
+# setup llama.cpp build env
+RUN pip install --break-system-packages --upgrade setuptools && pip cache purge
+RUN apt update && apt install -y libvulkan-dev glslc spirv-headers glslang-tools libcurl4-gnutls-dev cmake build-essential && apt clean all
+
+# build versions via cmake
+RUN cd llama.cpp && cmake -B build && cmake --build build --config Release -j $(grep -c ^processor /proc/cpuinfo)
+RUN cd llama-vulkan && cmake -B build -DGGML_VULKAN=1 && cmake --build build --config Release -j $(grep -c ^processor /proc/cpuinfo)
+
+# convert md / py / ipynb files
+# RUN cd /notebooks/qrack/pyqrack-jupyter && jupyter nbconvert --to script *.ipynb
+# RUN cd /notebooks/google/Cirq/docs/simulate && jupyter nbconvert --to script *.ipynb
+# RUN cd /notebooks/agentics/all-agentic-architectures && jupyter nbconvert --to html *.ipynb
+
+# convert some of the py files to ipynb for convenience
+RUN cd /notebooks && find . -type f -name "*.py" -print0 | xargs -0 -n 1 -P $(nproc) sh -c 'jupytext --to notebook "$1" || echo "WARNING: Failed to convert $1"' _
+
+EXPOSE 6080 8030 8080 443 2022 7880 9931
+ENTRYPOINT /root/run-boards-arm
