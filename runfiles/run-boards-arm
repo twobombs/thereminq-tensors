@@ -1,0 +1,23 @@
+# X-run script
+rm /tmp/.X0-lock
+Xvfb :0 -screen 0 2560x1440x24+32 -ac &
+export DISPLAY=:0&&startxfce4 &
+sleep 10
+x0vncserver -display :0 -passwordfile ~/.vnc/passwd &
+service xrdp start && xrdp &
+pulseaudio --system &
+websockify --web=/usr/share/novnc/ 6080 localhost:5900 &
+export DISPLAY=:0&&xterm -e "xset s off"&&
+
+# clean desktop & info
+export DISPLAY=:0 && xterm -e "xset s off" &
+export DISPLAY=:0 && xterm -bg black -fg white -e "neofetch && tail -f /dev/null" &
+export DISPLAY=:0 && exo-open --launch TerminalEmulator &
+
+# start Ai engine
+# chmod 755 /thereminq-autoresearch/0-build/GITS-SAC.sh
+# cd /thereminq-autoresearch/0-build/ && ./GITS-SAC.sh && export DISPLAY=:0 && (while true; do google-chrome-stable --disable-fre --no-default-browser-check --no-first-run --no-sandbox --password-store=basic http://localhost:9931; sleep 2; done) &
+
+echo "done"
+# end run, do not stop container
+tail -f /dev/null
