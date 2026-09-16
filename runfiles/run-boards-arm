@@ -11,7 +11,7 @@ export DISPLAY=:0&&xterm -e "xset s off"&&
 
 # clean desktop & info
 export DISPLAY=:0 && xterm -e "xset s off" &
-export DISPLAY=:0 && xterm -bg black -fg white -e "neofetch && tail -f /dev/null" &
+export DISPLAY=:0 && xterm -bg black -fg white -e "fastfetch && tail -f /dev/null" &
 export DISPLAY=:0 && exo-open --launch TerminalEmulator &
 
 # start Ai engine
