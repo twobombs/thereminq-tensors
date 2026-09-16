@@ -1,0 +1,152 @@
+FROM twobombs/thereminq-desktop:arm
+#
+# install apt packages because 
+RUN apt update && apt install -y cmake nodejs npm libssl-dev gnome-calculator bc python3-tk build-essential && apt clean all
+
+# install qps
+#RUN npm install -g qps-client
+
+# install separate python 3.14 instance
+# 1. INSTALL SYSTEM DEPENDENCIES
+# Install build tools for compiling Python and git for other tools.
+# Also, install python2.7, which is not included by default in modern Ubuntu.
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev && rm -rf /var/lib/apt/lists/*
+
+# install and upgrade pip
+RUN apt-get update && apt-get install -y python3-pip python-is-python3 python3-pytest && apt clean all
+# RUN pip3 install --break-system-packages --upgrade pip && pip cache purge
+
+# fetch alloy
+# RUN apt install -y portaudio19-dev alsa-oss pulseaudio && apt clean all && git clone https://github.com/svpino/alloy-voice-assistant.git && cd alloy-voice-assistant && pip install -r requirements.txt && pip cache purge
+
+# install qrack compile features
+RUN apt-get update && apt-get -y install build-essential cmake openssh-server wget vim-common opencl-headers curl libfreetype6-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev && apt-get clean all
+
+# clone qrack repo for specia high-qubit edition
+RUN git clone --depth=1 --recursive https://github.com/unitaryfund/qrack.git
+RUN cp -r /qrack /qrack16
+RUN cp -r /qrack /qrack64
+
+RUN cp -r /qrack /qracknoavx
+RUN cp -r /qrack /qracknoavxfp16
+RUN cp -r /qrack /qracknoavxfp64
+
+# Qrack install with low and high qubit dependancies 
+RUN cd /qrack/include && mkdir CL && cd /qrack && mkdir _build && cd _build && cmake -DCMAKE_CXX_FLAGS="-Wno-error=array-bounds -march=native" -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
+RUN cd /qrack16/include && mkdir CL && cd /qrack16 && mkdir _build && cd _build && cmake -DCMAKE_CXX_FLAGS="-Wno-error=array-bounds -march=native" -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=4 .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all && make install
+RUN cd /qrack64/include && mkdir CL && cd /qrack64 && mkdir _build && cd _build && cmake -DCMAKE_CXX_FLAGS="-Wno-error=array-bounds -march=native" -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=7 -DENABLE_COMPLEX_X2=ON .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all 
+# noavx build - FMA off - for Bulldozer build and example of filtering CPU features
+RUN cd /qracknoavx/include && mkdir -p CL && \
+    cd /qracknoavx && mkdir -p _build && cd _build && \
+    cmake -DCMAKE_CXX_FLAGS="-Wno-error=array-bounds" -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DENABLE_COMPLEX_X2=ON -DENABLE_FMA=OFF -DENABLE_SSE3=ON -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5 .. && make -j $(nproc) all && make install && ldconfig
+# noavxfp16
+RUN cd /qracknoavxfp16/include && mkdir -p CL && \
+    cd /qracknoavxfp16 && mkdir -p _build && cd _build && \
+    cmake -DCMAKE_CXX_FLAGS="-Wno-error=array-bounds" -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DENABLE_COMPLEX_X2=ON -DENABLE_FMA=OFF -DENABLE_SSE3=ON -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=4 .. && make -j $(nproc) all
+# noavxfp64
+RUN cd /qracknoavxfp64/include && mkdir CL && cd /qracknoavxfp64 && mkdir _build && cd _build && cmake -DCMAKE_CXX_FLAGS="-Wno-error=array-bounds -march=native" -DENABLE_DEVRAND=ON -DFPPOW=6 -DUINTPOW=6 -DQBCAPPOW=7 -DENABLE_COMPLEX_X2=ON -DENABLE_FMA=OFF .. && make -i -k -j $(grep -c ^processor /proc/cpuinfo) all 
+
+# install pyqrack for runtime system with other then default requirements
+# RUN CMAKE_ARGS="-DCMAKE_CXX_FLAGS='-Wno-error=array-bounds -march=native' -DENABLE_DEVRAND=ON -DENABLE_RDRAND=OFF -DQBCAPPOW=8 -DUINTPOW=6 -DFPPOW=5" CMAKE_BUILD_PARALLEL_LEVEL=$(nproc) pip install --break-system-packages --no-binary :all: --force-reinstall pyqrack
+#E NV PYQRACK_SHARED_LIB_PATH="/usr/local/lib/qrack/libqrack_pinvoke.so"
+
+# install runtime requirements
+RUN pip3 install --break-system-packages --ignore-installed pyqrack qiskit-qrack-provider pyqrackising pyopencl pyqrack-complex128 && pip cache purge
+
+# RUN pip3 install --break-system-packages --ignore-installed pennyLane catalyst 
+# RUN pip3 install --break-system-packages --ignore-installed pyzx ipyparallel mistune cmake 
+
+# graph helpers qt6 and mp4 export
+RUN apt-get install -y ffmpeg libxcb-xinerama0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-render0 libxcb-shape0 libxcb-shm0 libxcb-sync1 libxcb-util1 libxcb-xfixes0 libx11-xcb1 libqt5gui5 qt6-qpa-plugins && apt clean all
+
+# workaround for 3.14
+     RUN apt-get update && apt-get install -y wget build-essential libgmp-dev python3-dev git && \
+         pip3 install --break-system-packages "cmake<4.0.0" cython && \
+         git clone --branch v0.13.0 https://github.com/symengine/symengine.git /tmp/symengine && \
+         cd /tmp/symengine && cmake -DCMAKE_INSTALL_PREFIX=/usr/local . && make -j$(nproc) install && \
+         cd / && rm -rf /tmp/symengine && \
+         CMAKE_BUILD_PARALLEL_LEVEL=$(nproc) MAKEFLAGS="-j$(nproc)" pip3 install --break-system-packages qiskit[all] qiskit-nature qiskit_aer qiskit_quimb qiskit_algorithms pyscf sparse && \
+         apt-get autoremove -y && \
+         apt-get clean && \
+         rm -rf /var/lib/apt/lists/* && \
+         pip cache purge
+
+# RUN pip3 install --break-system-packages --upgrade scikit-build && pip cache purge
+# RUN git clone --depth=1 https://github.com/unitaryfund/pennylane-qrack.git && cd pennylane-qrack &&  mkdir _build && cd _build && cmake -DCPP_STD=14 .. && make all -j$(nproc --all) && make install
+
+# Create notebook repos
+RUN mkdir notebooks && cd notebooks && mkdir agentics && mkdir qrack && mkdir nvidia && mkdir misc && mkdir uf && mkdir qiskit && mkdir google && mkdir thereminq
+
+# agentics
+RUN cd notebooks/agentics && git clone https://github.com/FareedKhan-dev/all-agentic-architectures.git
+
+# Dan Strano's repos/forks
+RUN cd notebooks/qrack && git clone --recursive --depth=1 https://github.com/twobombs/weed.git
+# && cd weed && mkdir build && cd build && cmake -DENABLE_OPENCL=ON -DCMAKE_BUILD_TYPE=Release .. && make -j$(nproc) && make install
+RUN cd notebooks/qrack && git clone --recursive --depth=1 https://github.com/vm6502q/pyqrack-jupyter.git 
+RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/simulator-benchmarks.git
+RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/qiskit-qrack-provider.git
+RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/pyqrack-examples.git
+RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/vm6502q/PyQrackIsing.git 
+
+#&& cp /notebooks/qrack/PyQrackIsing/pyqrackising/kernels.cl /usr/local/lib/python3.10/dist-packages/pyqrackising/kernels.cl
+# ^ with fix for python 3.10 with cl kernel copy
+RUN cd notebooks/qrack && git clone --recursive  --depth=1 https://github.com/unitaryfoundation/qrack.git
+
+# NVidia
+RUN cd notebooks/nvidia && git clone --recursive  --depth=1 https://github.com/NVIDIA/cuQuantum.git
+
+# unitary fund
+RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/unitaryfund/research
+RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/unitaryfund/mitiq.git
+# quantum wednesdays
+RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/twobombs/mdopt.git
+RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/twobombs/QRISE2024.git
+RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/csenrui/PauliGST.git
+RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/QSAR-UBC/shortalyst.git
+RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/Classiq/classiq-library.git
+RUN cd notebooks/uf && git clone --recursive  --depth=1 https://github.com/twobombs/FTCircuitBench
+
+# IBM Qiskit [deprecated] projects
+RUN cd notebooks/qiskit && git clone --recursive  --depth=1 https://github.com/Qiskit/qiskit-iqx-tutorials.git
+RUN cd notebooks/qiskit && git clone --recursive  --depth=1 https://github.com/Qiskit/qiskit-metal.git
+RUN cd notebooks/qiskit && git clone --recursive  --depth=1 https://github.com/qiskit-community/qiskit-nature
+RUN cd notebooks/qiskit && git clone --recursive  --depth=1 https://github.com/twobombs/qiskit-qrack-nature
+RUN cd notebooks/qiskit && git clone --recursive  --depth=1 https://github.com/qiskit-community/qiskit-community-tutorials.git
+RUN cd notebooks/qiskit && git clone --recursive  --depth=1 https://github.com/qiskit-community/qiskit-algorithms.git
+
+# Google
+RUN cd notebooks/google && git clone --recursive  --depth=1 https://github.com/tensorflow/gnn.git tensorflow_gnn
+
+# integrate thereminq repos
+RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-tensors
+RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-examples
+RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-holoqubed
+RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/qrack
+RUN cd notebooks/thereminq && git clone --recursive  --depth=1 https://github.com/twobombs/thereminq-autoresearch.git
+
+# misc
+RUN cd notebooks/misc && git clone --recursive  --depth=1 https://github.com/sebwouters/chemps2
+# RUN cd notebooks/misc/chemps2 && mkdir _build && cd _build && CXX=option1 cmake .. -DMKL=option2 -DCMAKE_INSTALL_PREFIX=/option3 -DWITH_MPI=option4 && make && make install
+# https://sebwouters.github.io/CheMPS2/sourcecode.html#dependencies
+# QAOA ADAPT
+RUN cd notebooks/misc && git clone --recursive --depth=1 https://github.com/Hitachi-Cambridge/PaperDynamicADAPT-QAOA-Data.git
+# IBM QC benchmarks
+# RUN cd notebooks/misc && git clone --recursive  --depth=1 https://git.zib.de/qopt/qoblib-quantum-optimization-benchmarking-library.git
+# highly experimental quantum energy teleportation algo
+RUN cd notebooks/misc && git clone --recursive  --depth=1 https://github.com/IKEDAKAZUKI/Quantum-Energy-Teleportation.git
+
+# install qiskit[metal/visualisation] tooling
+RUN apt update && apt install -y cmake libssl-dev gnome-calculator && apt clean all
+
+# Install IBM QC connector
+RUN pip3 install --break-system-packages -U IBMQuantumExperience && pip cache purge
+
+# make log dir for measured results
+RUN mkdir /var/log/thereminq
+
+#RUN mkdir /root/.ssh
+COPY runfiles/run* /root/
+RUN chmod 744 /root/run*
+
+EXPOSE 6080
